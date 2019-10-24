@@ -13,7 +13,6 @@ public class EnemyAI : MonoBehaviour
 
     public void reduceHealth(int healthLost)
     {
-        Debug.Log("Ow");
         health -= healthLost;
 
         if(health <= 0)
