@@ -4,30 +4,32 @@ using UnityEngine;
 
 public class GetMousePos : MonoBehaviour
 {
-    public GunTrigger outerRingTrigger;
-    public GunTrigger innerRingTrigger;
-    public GunTrigger boxTrigger;
 
     public float rotation;
     public Transform centre;
 
+    public bool mouseDown = false;
     // Start is called before the first frame update
-    void Start()
-    {
-        outerRingTrigger = transform.Find("Outer Ring Trigger").GetComponent<GunTrigger>();
-        innerRingTrigger = transform.Find("Inner Ring Trigger").GetComponent<GunTrigger>();
-        boxTrigger = transform.Find("Box Trigger").GetComponent<GunTrigger>();
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if(outerRingTrigger.mouseOver && boxTrigger.mouseOver && !innerRingTrigger.mouseOver)
+        Touch touch = new Touch();
+        if (TouchManager.instance.GetTouch(this.gameObject, ref touch))
         {
-            if(Input.GetMouseButton(0))
+            if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
             {
+                mouseDown = true;
                 rotation = Quaternion.FromToRotation(Vector2.up, Camera.main.ScreenPointToRay(Input.mousePosition).origin - centre.position).eulerAngles.z;
             }
+            else
+            {
+                mouseDown = false;
+            }
+        }
+        else
+        {
+            mouseDown = false;
         }
     }
 }
