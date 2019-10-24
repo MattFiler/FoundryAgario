@@ -9,14 +9,13 @@ public class GetMousePos : MonoBehaviour
     public Transform centre;
 
     public bool mouseDown = false;
-    // Start is called before the first frame update
 
-    // Update is called once per frame
     void Update()
     {
         Touch touch = new Touch();
         if (TouchManager.instance.GetTouch(this.gameObject, ref touch))
         {
+            Debug.Log("touched");
             if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
             {
                 mouseDown = true;

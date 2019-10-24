@@ -53,7 +53,13 @@ public class TouchManager : MonoBehaviour
 
         if (mouseClicked)
         {
+            Debug.Log("Mouse Clicked");
             allTouches.Add(mouseTouch);
+        }
+
+        if (allTouches.Count > 0)
+        {
+            Debug.Log(allTouches.Count);
         }
 
         foreach (Touch t in allTouches)
@@ -61,7 +67,10 @@ public class TouchManager : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenPointToRay(t.position).origin, Vector3.forward, Mathf.Infinity, validTouchLayers);
             if (hit.collider != null)
             {
-                touchedObjects.Add(hit.collider.gameObject, t);
+                if (!touchedObjects.ContainsKey(hit.collider.gameObject))
+                {
+                    touchedObjects.Add(hit.collider.gameObject, t);
+                }
             }
         }
     }

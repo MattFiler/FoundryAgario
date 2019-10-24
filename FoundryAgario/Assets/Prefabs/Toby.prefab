@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   points:
   - {x: -3.0236895, y: -0.8411378, z: -1}
-  - {x: -0.00706809, y: -1.5833182, z: -1}
+  - {x: 0.011692047, y: -1.602078, z: -1}
   - {x: 3.0394056, y: -0.8623431, z: -1}
   - {x: 3.0323374, y: 0.8270015, z: -1}
   - {x: 0.007068701, y: 1.5762502, z: -1}
@@ -58,11 +58,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4367107535474769462}
     m_Modifications:
-    - target: {fileID: 6986409256931360548, guid: acb7738e710d2bc4a88c3440ff443c8f,
-        type: 3}
-      propertyPath: m_Name
-      value: FOUNDRY SHIP
-      objectReference: {fileID: 0}
     - target: {fileID: 8791867445754523563, guid: acb7738e710d2bc4a88c3440ff443c8f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -117,6 +112,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986409256931360548, guid: acb7738e710d2bc4a88c3440ff443c8f,
+        type: 3}
+      propertyPath: m_Name
+      value: FOUNDRY SHIP
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acb7738e710d2bc4a88c3440ff443c8f, type: 3}
