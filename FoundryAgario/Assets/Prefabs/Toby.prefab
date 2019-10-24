@@ -4876,7 +4876,7 @@ GameObject:
   - component: {fileID: 5706010499142101873}
   - component: {fileID: 6601560382068513281}
   - component: {fileID: 586035847530127708}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Turret Outline Temp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5205,7 +5205,7 @@ GameObject:
   - component: {fileID: 5171696754877323494}
   - component: {fileID: 4782328398011262500}
   - component: {fileID: 5920789081693220514}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Turret Base Temp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5221,7 +5221,7 @@ Transform:
   m_GameObject: {fileID: 3610539610415458383}
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 3.029, y: -0.06, z: 0}
-  m_LocalScale: {x: 0.05000009, y: 0.05000009, z: 0.05}
+  m_LocalScale: {x: 0.07238513, y: 0.07238513, z: 0.072385006}
   m_Children:
   - {fileID: 9034829285410626103}
   - {fileID: 6067680908788545222}

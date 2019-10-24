@@ -13,6 +13,13 @@ public class RotateGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, mousePos.rotation);
+        if (mousePos.mouseDown)
+        {
+            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, mousePos.rotation);
+        }
+        else
+        { 
+            transform.rotation = Quaternion.Lerp(transform.rotation, transform.parent.rotation, 0.1f);
+        }
     }
 }
