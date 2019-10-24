@@ -13,6 +13,10 @@ public class MousePosDebug : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Camera.main.ScreenPointToRay(Input.mousePosition).origin;
+        Touch touch = new Touch();
+        if (TouchManager.instance.GetTouch(this.gameObject, ref touch))
+        {
+            transform.position = touch.position;
+        }
     }
 }

@@ -53,23 +53,19 @@ public class TouchManager : MonoBehaviour
 
         if (mouseClicked)
         {
-            Debug.Log("Mouse Clicked");
             allTouches.Add(mouseTouch);
         }
 
-        if (allTouches.Count > 0)
+        for(int i = 0; i < allTouches.Count; i++)
         {
-            Debug.Log(allTouches.Count);
-        }
-
-        foreach (Touch t in allTouches)
-        {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenPointToRay(t.position).origin, Vector3.forward, Mathf.Infinity, validTouchLayers);
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenPointToRay(allTouches[i].position).origin, Vector3.forward, Mathf.Infinity, validTouchLayers);
             if (hit.collider != null)
             {
                 if (!touchedObjects.ContainsKey(hit.collider.gameObject))
                 {
-                    touchedObjects.Add(hit.collider.gameObject, t);
+                    Touch touchy = allTouches[i];
+                    touchy.position = hit.point;
+                    touchedObjects.Add(hit.collider.gameObject, touchy);
                 }
             }
         }
