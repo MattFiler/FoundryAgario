@@ -7,11 +7,24 @@ public class FireLazer : MonoBehaviour
     public Transform rayPoint;
     public LayerMask layerMask;
     public GetMousePos mousePos;
+    LineRenderer lazerBeam;
+
+
+    private void Start()
+    {
+        lazerBeam = GetComponent<LineRenderer>();
+    }
+
 
     void Update()
     {
         if (mousePos.mouseDown)
         {
+            lazerBeam.enabled = true;
+
+            lazerBeam.SetPosition(0, transform.parent.position);
+            lazerBeam.SetPosition(1, rayPoint.position);
+
             List<RaycastHit2D> hits = new List<RaycastHit2D>();
             ContactFilter2D cf = new ContactFilter2D();
             cf.useTriggers = true;
@@ -19,15 +32,55 @@ public class FireLazer : MonoBehaviour
 
             foreach (RaycastHit2D hit in hits)
             {
-                if (hit.collider != null && hit.transform.CompareTag("Friendly"))
+                if (hit.collider != null)
                 {
                     Debug.Log(hit.collider.gameObject.name);
-                    Debug.DrawRay(transform.parent.position, hit.point - (Vector2)transform.position, Color.red);
+
+                    if (hit.transform.CompareTag("Friendly"))
+                    {
+                        hit.collider.GetComponent<FriendlyAI>().shrink = true;
+                        lazerBeam.SetPosition(1, hit.point);
+                        break;
+                    }
+                    else if(!hit.transform.CompareTag("Turret Outline"))
+                    {
+                        lazerBeam.SetPosition(1, hit.point);
+                        StopShrinking();
+                    }
+                    else
+                    {
+                        StopShrinking();
+                    }
+
+
+                }
+                else
+                {
+                    StopShrinking();
                 }
             }
 
+            if(hits == null)
+            {
+                Debug.Log("null");
+                StopShrinking();
+            }
+
+        }
+        else
+        {
+            StopShrinking();
+            lazerBeam.enabled = false;
         }
 
+    }
+
+    private void StopShrinking()
+    {
+        foreach (GameObject gameObject in GameObject.FindGameObjectsWithTag("Friendly"))
+        {
+            gameObject.GetComponent<FriendlyAI>().shrink = false;
+        }
     }
 }
 
