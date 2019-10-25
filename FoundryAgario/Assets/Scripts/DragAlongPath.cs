@@ -15,7 +15,7 @@ public class DragAlongPath : MonoBehaviour
     private Quaternion targetAngle;
     private Vector3 targetPos;
 
-
+    public bool forcePolyEnable = false;
     private void Start()
     {
         GenerateLinesFromPath();
@@ -42,7 +42,8 @@ public class DragAlongPath : MonoBehaviour
         }
         else
         {
-            target.GetComponent<PolygonCollider2D>().enabled = false;
+            target.GetComponent<PolygonCollider2D>().enabled = forcePolyEnable;
+
         }
 
         target.transform.rotation = Quaternion.Lerp(target.transform.rotation, targetAngle, 0.1f);

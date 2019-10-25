@@ -7,6 +7,7 @@ public class GetMousePos : MonoBehaviour
 
     public float rotation;
     public Transform centre;
+    public DragAlongPath dragAlongPath;
 
     public bool mouseDown = false;
 
@@ -20,14 +21,17 @@ public class GetMousePos : MonoBehaviour
             {
                 mouseDown = true;
                 rotation = Quaternion.FromToRotation(Vector2.up, Camera.main.ScreenPointToRay(Input.mousePosition).origin - centre.position).eulerAngles.z;
+                dragAlongPath.forcePolyEnable = true;
             }
             else
             {
+                dragAlongPath.forcePolyEnable = false;
                 mouseDown = false;
             }
         }
         else
         {
+            dragAlongPath.forcePolyEnable = false;
             mouseDown = false;
         }
     }
