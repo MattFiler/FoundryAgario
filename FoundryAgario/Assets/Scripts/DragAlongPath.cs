@@ -12,10 +12,15 @@ public class DragAlongPath : MonoBehaviour
 
     private Line currentLine;
 
+    private Quaternion targetAngle;
+    private Vector3 targetPos;
+
+
     private void Start()
     {
         GenerateLinesFromPath();
         target.transform.position = GetClosestPointOnPath(target.transform.position);
+        targetPos = target.transform.position;
     }
     // Update is called once per frame
     void Update()
@@ -25,13 +30,23 @@ public class DragAlongPath : MonoBehaviour
         {
             if(touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
             {
-                target.transform.position = GetClosestPointOnPath(touch.position);
+                target.GetComponent<PolygonCollider2D>().enabled = true;
+
+                targetPos = GetClosestPointOnPath(touch.position);
                 Vector3 vec = currentLine.b - currentLine.a;
                 vec = new Vector3(-vec.x, -vec.y);
                 float angle = Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg;
-                target.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                targetAngle = Quaternion.AngleAxis(angle, Vector3.forward);
+
             }
         }
+        else
+        {
+            target.GetComponent<PolygonCollider2D>().enabled = false;
+        }
+
+        target.transform.rotation = Quaternion.Lerp(target.transform.rotation, targetAngle, 0.1f);
+        target.transform.position = Vector3.Lerp(target.transform.position, targetPos, 0.3f);
     }
 
     private void GenerateLinesFromPath()
