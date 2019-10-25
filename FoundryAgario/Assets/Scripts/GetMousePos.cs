@@ -15,7 +15,7 @@ public class GetMousePos : MonoBehaviour
         Touch touch = new Touch();
         if (TouchManager.instance.GetTouch(this.gameObject, ref touch))
         {
-            Debug.Log("touched");
+            //Debug.Log("touched");
             if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
             {
                 mouseDown = true;

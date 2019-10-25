@@ -411,6 +411,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   mousePos: {fileID: 853207336462217596}
+  maxLazerCount: 5
 --- !u!120 &6332402407752791081
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -451,7 +452,6 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 14, y: 5, z: 0}
-  - {x: 14, y: -2, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -5784,7 +5784,7 @@ PrefabInstance:
     - target: {fileID: 735327357961019580, guid: cd62f024992e1c6458ef8a7b073498d0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.215886
+      value: 20.36
       objectReference: {fileID: 0}
     - target: {fileID: 735327357961019580, guid: cd62f024992e1c6458ef8a7b073498d0,
         type: 3}
@@ -5861,6 +5861,11 @@ PrefabInstance:
       propertyPath: shrinkThreshold
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 770431647624022864, guid: cd62f024992e1c6458ef8a7b073498d0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 234973726577028105, guid: cd62f024992e1c6458ef8a7b073498d0,
         type: 3}
       propertyPath: m_IsTrigger
@@ -5919,12 +5924,12 @@ PrefabInstance:
     - target: {fileID: 418225103986597734, guid: 55da88d71e5d1bd41b6e1e08aae1db95,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.27
+      value: 8.22
       objectReference: {fileID: 0}
     - target: {fileID: 418225103986597734, guid: 55da88d71e5d1bd41b6e1e08aae1db95,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.48
+      value: 3.91
       objectReference: {fileID: 0}
     - target: {fileID: 418225103986597734, guid: 55da88d71e5d1bd41b6e1e08aae1db95,
         type: 3}
@@ -5999,7 +6004,7 @@ PrefabInstance:
     - target: {fileID: 1847647178505424871, guid: 55da88d71e5d1bd41b6e1e08aae1db95,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8033423349352876706, guid: 55da88d71e5d1bd41b6e1e08aae1db95,
         type: 3}
