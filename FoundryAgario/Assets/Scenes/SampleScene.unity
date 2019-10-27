@@ -330,6 +330,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6846541809911236910, guid: 7e47ebc576a7336408bfb66b79bb770c,
+        type: 3}
+      propertyPath: m_Name
+      value: Mike
+      objectReference: {fileID: 0}
     - target: {fileID: 2270365873468785421, guid: 7e47ebc576a7336408bfb66b79bb770c,
         type: 3}
       propertyPath: ShapeModule.radius.value
@@ -679,11 +684,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tractor Beam
-      objectReference: {fileID: 0}
-    - target: {fileID: 6846541809911236910, guid: 7e47ebc576a7336408bfb66b79bb770c,
-        type: 3}
-      propertyPath: m_Name
-      value: Mike
       objectReference: {fileID: 0}
     - target: {fileID: 3923162247384423332, guid: 7e47ebc576a7336408bfb66b79bb770c,
         type: 3}
