@@ -4892,7 +4892,7 @@ GameObject:
   - component: {fileID: 172376877680251801}
   m_Layer: 8
   m_Name: Turret Outline Temp
-  m_TagString: Untagged
+  m_TagString: Turret Outline
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5023,7 +5023,8 @@ GameObject:
   - component: {fileID: 5585568997236156963}
   - component: {fileID: 5195005472298210529}
   - component: {fileID: 6371676377496099943}
-  - component: {fileID: 1354727230963806255}
+  - component: {fileID: 7272315807554027380}
+  - component: {fileID: 8758508820544975478}
   m_Layer: 8
   m_Name: Money Blasta
   m_TagString: Untagged
@@ -5112,20 +5113,34 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.5599997
---- !u!60 &1354727230963806255
-PolygonCollider2D:
+--- !u!114 &7272315807554027380
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4061495904332978826}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b03dba3c599b144e8b71166d0a5297b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canFire: 1
+  turretType: 0
+--- !u!61 &8758508820544975478
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4061495904332978826}
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.1779232, y: 2.3741434}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -5135,20 +5150,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.31612143, y: -5.4101477}
-      - {x: -9.920796, y: -4.963601}
-      - {x: -9.823992, y: -2.114223}
-      - {x: -9.799304, y: 0.124542475}
-      - {x: -5.877214, y: -0.055161264}
-      - {x: 0.04586368, y: 2.596184}
-      - {x: 5.5337787, y: 0.11201469}
-      - {x: 5.5588965, y: 0.064946994}
-      - {x: 8.172972, y: 0.06697924}
-      - {x: 9.5636835, y: 0.010099462}
-      - {x: 9.746856, y: -1.8651117}
-      - {x: 9.5870695, y: -5.338277}
+  serializedVersion: 2
+  m_Size: {x: 23.065079, y: 19.486187}
+  m_EdgeRadius: 0
 --- !u!1 &9083068822985917429
 GameObject:
   m_ObjectHideFlags: 0
@@ -5161,7 +5165,7 @@ GameObject:
   - component: {fileID: 6333494645946446516}
   m_Layer: 0
   m_Name: GunPivot
-  m_TagString: Untagged
+  m_TagString: Turret Pivot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

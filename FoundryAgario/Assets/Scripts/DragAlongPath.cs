@@ -15,7 +15,7 @@ public class DragAlongPath : MonoBehaviour
     private Dictionary<GameObject, Quaternion> targetAngles = new Dictionary<GameObject, Quaternion>();
     private Dictionary<GameObject, Vector3> targetPos = new Dictionary<GameObject, Vector3>();
 
-    public bool forcePolyEnable = false;
+    public bool forceBoxColliderEnable = false;
     private void Start()
     {
         GenerateLinesFromPath();
@@ -40,7 +40,7 @@ public class DragAlongPath : MonoBehaviour
             {
                 if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
                 {
-                    target.GetComponent<PolygonCollider2D>().enabled = true;
+                    target.GetComponent<BoxCollider2D>().enabled = true;
 
                     targetPos[target] = GetClosestPointOnPath(transform.InverseTransformPoint(touch.position), target);
                     Vector3 vec = currentLines[target].b - currentLines[target].a;
@@ -48,16 +48,32 @@ public class DragAlongPath : MonoBehaviour
                     float angle = Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg;
                     targetAngles[target] = Quaternion.AngleAxis(angle, Vector3.forward);
 
+                    if (target.GetComponent<CanFire>() != null)
+                    {
+                        target.GetComponent<CanFire>().canFire = false;
+                    }
+                }
+                else if(touch.phase == TouchPhase.Ended)
+                {
+                    if (target.GetComponent<CanFire>() != null)
+                    {
+                        target.GetComponent<CanFire>().canFire = true;
+                    }
                 }
             }
             else
             {
-                target.GetComponent<PolygonCollider2D>().enabled = forcePolyEnable;
+                target.GetComponent<BoxCollider2D>().enabled = false;
 
+
+                if ( target.GetComponent<CanFire>() != null)
+                {
+                    target.GetComponent<CanFire>().canFire = true;
+                }
             }
 
             target.transform.rotation = Quaternion.Lerp(target.transform.rotation, targetAngles[target], 0.1f);
-            target.transform.localPosition = Vector3.Lerp(target.transform.localPosition, targetPos[target], 0.3f);
+            target.transform.localPosition = Vector3.Lerp(target.transform.localPosition, targetPos[target], 0.6f);
         }
     }
 

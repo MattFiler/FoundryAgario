@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4740736965693952644}
   - component: {fileID: 5583688277764367070}
-  - component: {fileID: 8544923331799634852}
   - component: {fileID: 5338655238344553285}
+  - component: {fileID: 3449632077289626439}
+  - component: {fileID: 5649510209460231570}
   m_Layer: 0
   m_Name: Consulation Beeem
   m_TagString: Untagged
@@ -84,43 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &8544923331799634852
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 67812414788326401}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 5.12}
-    newSize: {x: 5.12, y: 5.12}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.31612143, y: -5.4101477}
-      - {x: -9.920796, y: -4.963601}
-      - {x: -9.823992, y: -2.114223}
-      - {x: -9.799304, y: 0.124542475}
-      - {x: -5.877214, y: -0.055161264}
-      - {x: 0.04586368, y: 2.596184}
-      - {x: 5.5337787, y: 0.11201469}
-      - {x: 5.5588965, y: 0.064946994}
-      - {x: 8.172972, y: 0.06697924}
-      - {x: 9.5636835, y: 0.010099462}
-      - {x: 9.746856, y: -1.8651117}
-      - {x: 9.5870695, y: -5.338277}
 --- !u!58 &5338655238344553285
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -137,6 +101,46 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.5600007
+--- !u!114 &3449632077289626439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67812414788326401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b03dba3c599b144e8b71166d0a5297b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canFire: 1
+  turretType: 1
+--- !u!61 &5649510209460231570
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67812414788326401}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.1779232, y: 2.3741434}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.12, y: 5.12}
+    newSize: {x: 5.12, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 23.065079, y: 19.486187}
+  m_EdgeRadius: 0
 --- !u!1 &887243167611484562
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,7 +483,7 @@ GameObject:
   - component: {fileID: 1071084490639075846}
   m_Layer: 0
   m_Name: GunPivot
-  m_TagString: Untagged
+  m_TagString: Turret Pivot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

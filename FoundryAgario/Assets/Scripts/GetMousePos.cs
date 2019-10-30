@@ -21,17 +21,14 @@ public class GetMousePos : MonoBehaviour
             {
                 mouseDown = true;
                 rotation = Quaternion.FromToRotation(Vector2.up,(Vector3) touch.position - centre.position).eulerAngles.z;
-                dragAlongPath.forcePolyEnable = true;
             }
             else
             {
-                dragAlongPath.forcePolyEnable = false;
                 mouseDown = false;
             }
         }
         else
         {
-            dragAlongPath.forcePolyEnable = false;
             mouseDown = false;
         }
     }
