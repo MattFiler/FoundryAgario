@@ -15,8 +15,8 @@ public class ContractSpawneer : MonoBehaviour
     [SerializeField] private GameObject friendlyObject;
     [SerializeField] private GameObject enemyObject;
 
-    [SerializeField] private int numOfFriendlyContracts = 10;
-    [SerializeField] private int numOfEnemyContracts = 10;
+    [SerializeField] private int numOfFriendlyContracts = 10; 
+    [SerializeField] private int numOfEnemyContracts = 10; 
 
     private List<GameObject> friendlyObjects = new List<GameObject>();
     private List<GameObject> enemyObjects = new List<GameObject>();
@@ -25,7 +25,10 @@ public class ContractSpawneer : MonoBehaviour
     [SerializeField] private int zonesY = 10;
     private Vector2 zoneSize;
     private List<PlayspaceZone> spawnZones = new List<PlayspaceZone>();
-    
+
+    [SerializeField] private float spawnInterval = 5.0f;
+    private float spawnTimer = 0.0f;
+
     private Bounds envBounds;
     private Bounds lastBounds; //For in-editor only
 
@@ -33,15 +36,18 @@ public class ContractSpawneer : MonoBehaviour
     void Start()
     {
         CreateZones();
+        SpawnEntities();
+    }
 
-        //Spawn entites in the zones
-        for (int i = 0; i < numOfFriendlyContracts; i++)
+    /* On set intervals, keep the entity count up to the max */
+    void FixedUpdate()
+    {
+        spawnTimer += Time.deltaTime;
+        if (spawnTimer >= spawnInterval)
         {
-            friendlyObjects.Add(Instantiate(friendlyObject, GeneratePosition(), Quaternion.identity) as GameObject);
-        }
-        for (int i = 0; i < numOfEnemyContracts; i++)
-        {
-            enemyObjects.Add(Instantiate(enemyObject, GeneratePosition(), Quaternion.identity) as GameObject);
+            ValidateSpawnedEntities();
+            SpawnEntities();
+            spawnTimer = 0;
         }
     }
 
@@ -72,6 +78,42 @@ public class ContractSpawneer : MonoBehaviour
                 spawnZones.Add(zone);
             }
         }
+    }
+
+    /* Spawn entites in the zones */
+    void SpawnEntities()
+    {
+        for (int i = friendlyObjects.Count; i < numOfFriendlyContracts; i++)
+        {
+            friendlyObjects.Add(Instantiate(friendlyObject, GeneratePosition(), Quaternion.identity) as GameObject);
+        }
+        for (int i = enemyObjects.Count; i < numOfEnemyContracts; i++)
+        {
+            enemyObjects.Add(Instantiate(enemyObject, GeneratePosition(), Quaternion.identity) as GameObject);
+        }
+    }
+
+    /* Remove any despawned entities from the entity lists */
+    void ValidateSpawnedEntities()
+    {
+        List<GameObject> friendlyObjectsNew = new List<GameObject>();
+        List<GameObject> enemyObjectsNew = new List<GameObject>();
+        for (int i = 0; i < friendlyObjects.Count; i++)
+        {
+            if (friendlyObjects[i] != null)
+            {
+                friendlyObjectsNew.Add(friendlyObjects[i]);
+            }
+        }
+        for (int i = 0; i < enemyObjects.Count; i++)
+        {
+            if (enemyObjects[i] != null)
+            {
+                enemyObjectsNew.Add(enemyObjects[i]);
+            }
+        }
+        friendlyObjects = friendlyObjectsNew;
+        enemyObjects = enemyObjectsNew;
     }
 
     /* Evenly and randomly spawn entities in the zones */
