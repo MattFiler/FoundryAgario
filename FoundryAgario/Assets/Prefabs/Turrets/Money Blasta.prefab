@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 1213530405354518431}
   - component: {fileID: 114012341822952866}
   - component: {fileID: 8870446646968744843}
+  - component: {fileID: 4117978078638362051}
   m_Layer: 0
   m_Name: Coins
   m_TagString: Untagged
@@ -380,7 +381,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3847,7 +3848,7 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -4864,6 +4865,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &4117978078638362051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675076431240507158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa7f0743bf991e4cbf15844efaabb39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
 --- !u!1 &1302071466120949797
 GameObject:
   m_ObjectHideFlags: 0
@@ -5011,7 +5025,7 @@ GameObject:
   - component: {fileID: 6371676377496099943}
   - component: {fileID: 1354727230963806255}
   m_Layer: 8
-  m_Name: Turret Base Temp
+  m_Name: Money Blasta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

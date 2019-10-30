@@ -16,7 +16,7 @@ public class EnemyAI : MonoBehaviour
     public void reduceHealth(int healthLost)
     {
         health -= healthLost;
-
+        Debug.Log("OW");
         if(health <= 0)
         {
             GameObject.Destroy(this.gameObject);
