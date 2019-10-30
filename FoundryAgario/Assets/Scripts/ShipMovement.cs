@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class ShipMovement : MonoBehaviour
 {
+    public GetMousePos mousePos;
     public float thrust = 100;
     public ParticleSystem mainParticle;
+    public GameObject thruster;
     public bool isPlaying = false;
     // Start is called before the first frame update
     void Start()
@@ -17,6 +19,11 @@ public class ShipMovement : MonoBehaviour
     void Update()
     {
         Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
+
+        if (mousePos.mouseDown)
+        {
+            rb.AddForce(-thruster.transform.up * thrust);
+        }
 
         if (Input.GetKey(KeyCode.UpArrow))
         {
