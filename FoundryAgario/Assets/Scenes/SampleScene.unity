@@ -819,6 +819,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5633237586518882823, guid: cd62f024992e1c6458ef8a7b073498d0,
+        type: 3}
+      propertyPath: m_Name
+      value: FRIENDLY
+      objectReference: {fileID: 0}
     - target: {fileID: 735327357961019580, guid: cd62f024992e1c6458ef8a7b073498d0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -874,11 +879,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5633237586518882823, guid: cd62f024992e1c6458ef8a7b073498d0,
-        type: 3}
-      propertyPath: m_Name
-      value: FRIENDLY
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd62f024992e1c6458ef8a7b073498d0, type: 3}
 --- !u!1001 &4908367917974858431
@@ -888,6 +888,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5194240773105621499, guid: 55da88d71e5d1bd41b6e1e08aae1db95,
+        type: 3}
+      propertyPath: m_Name
+      value: ENEMY
+      objectReference: {fileID: 0}
     - target: {fileID: 418225103986597734, guid: 55da88d71e5d1bd41b6e1e08aae1db95,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -942,11 +947,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5194240773105621499, guid: 55da88d71e5d1bd41b6e1e08aae1db95,
-        type: 3}
-      propertyPath: m_Name
-      value: ENEMY
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55da88d71e5d1bd41b6e1e08aae1db95, type: 3}
@@ -1048,7 +1048,7 @@ GameObject:
   - component: {fileID: 2731431490291025380}
   m_Layer: 0
   m_Name: PLACEHOLDER ENVIRONMENT
-  m_TagString: Untagged
+  m_TagString: Enviroment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

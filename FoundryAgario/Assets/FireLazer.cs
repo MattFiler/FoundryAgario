@@ -75,7 +75,7 @@ public class FireLazer : MonoBehaviour
                     lazerBeam.SetPosition(lazerBeam.positionCount - 1, hit.point);
                     return;
                 }
-                else if (!hit.transform.CompareTag("Turret Outline"))
+                else if (!hit.transform.CompareTag("Turret Outline") && !hit.transform.CompareTag("Enviroment"))
                 {
                     ++lazerBeam.positionCount;
                     lazerBeam.SetPosition(lazerBeam.positionCount - 1, hit.point);
