@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9149021604119475202}
   - component: {fileID: 5546343986428748069}
   - component: {fileID: 1322222836328381016}
+  - component: {fileID: 5420508309002501567}
   m_Layer: 0
   m_Name: FOUNDRY SHIP
   m_TagString: Untagged
