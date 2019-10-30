@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public class PlayspaceZone
+{
+    public Bounds bounds;
+    public int count = 0;
+}
+
 public class ContractSpawneer : MonoBehaviour
 {
     [SerializeField] private GameObject environmentObject;
@@ -14,8 +20,19 @@ public class ContractSpawneer : MonoBehaviour
     private List<GameObject> friendlyObjects = new List<GameObject>();
     private List<GameObject> enemyObjects = new List<GameObject>();
 
+    [SerializeField] private int zonesX = 10;
+    [SerializeField] private int zonesY = 10;
+    private Vector2 zoneSize;
+    private List<PlayspaceZone> spawnZones = new List<PlayspaceZone>();
+    
+    private Bounds envBounds;
+
+    /* Create spawn zones and spawn entities within them */
     void Start()
     {
+        CreateZones();
+
+        //Spawn entites in the zones
         for (int i = 0; i < numOfFriendlyContracts; i++)
         {
             friendlyObjects.Add(Instantiate(friendlyObject, GeneratePosition(), Quaternion.identity) as GameObject);
@@ -26,9 +43,55 @@ public class ContractSpawneer : MonoBehaviour
         }
     }
 
+    /* Draw zone debugs in editor */
+    void OnDrawGizmosSelected()
+    {
+        CreateZones(true);
+    }
+
+    /* Create all possible spawn zones */
+    void CreateZones(bool drawDebug = false)
+    {
+        spawnZones.Clear();
+        envBounds = environmentObject.GetComponent<BoxCollider2D>().bounds;
+        zoneSize = new Vector2(envBounds.size.x / zonesX, envBounds.size.y / zonesY);
+        for (int x = 0; x < zonesX; x++)
+        {
+            for (int y = 0; y < zonesY; y++)
+            {
+                PlayspaceZone zone = new PlayspaceZone();
+                zone.bounds = new Bounds(new Vector3((zoneSize.x * x) + (zoneSize.x / 2), (zoneSize.y * y) + (zoneSize.y / 2), 0) + environmentObject.transform.position - (envBounds.size / 2), new Vector3(zoneSize.x, zoneSize.y, 0));
+                if (drawDebug) Gizmos.DrawWireCube(zone.bounds.center, zone.bounds.size);
+                spawnZones.Add(zone);
+            }
+        }
+    }
+
+    /* Evenly and randomly spawn entities in the zones */
     Vector3 GeneratePosition()
     {
-        Bounds envBounds = environmentObject.GetComponent<BoxCollider2D>().bounds;
-        return new Vector3(Random.Range(envBounds.min.x, envBounds.max.x), Random.Range(envBounds.min.y, envBounds.max.y), Random.Range(envBounds.min.z, envBounds.max.z));
+        int zoneToSpawn = GetSpawnZone();
+        Debug.Log(zoneToSpawn);
+        Bounds zoneBounds = spawnZones[zoneToSpawn].bounds;
+        return new Vector3(Random.Range(zoneBounds.min.x, zoneBounds.max.x), Random.Range(zoneBounds.min.y, zoneBounds.max.y), Random.Range(zoneBounds.min.z, zoneBounds.max.z));
+    }
+    int GetSpawnZone()
+    {
+        int zoneToSpawn = Random.Range(0, spawnZones.Count - 1);
+        if (spawnZones[zoneToSpawn].count > GetAverageSpawnCount())
+        {
+            return GetSpawnZone();
+        }
+        return zoneToSpawn;
+    }
+    float GetAverageSpawnCount()
+    {
+        float avg = 0.0f;
+        foreach (PlayspaceZone zone in spawnZones)
+        {
+            avg += zone.count;
+        }
+        avg /= spawnZones.Count;
+        return avg;
     }
 }
