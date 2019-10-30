@@ -10,12 +10,12 @@ public class FireLazer : MonoBehaviour
     public LayerMask layerMask;
     public GetMousePos mousePos;
     public int maxLazerCount = 3;
-    LineRenderer lazerBeam;
+    LineRenderer laserBeam;
     public float laserLength = 10.0f;
 
     private void Start()
     {
-        lazerBeam = GetComponent<LineRenderer>();
+        laserBeam = GetComponent<LineRenderer>();
     }
 
 
@@ -23,17 +23,22 @@ public class FireLazer : MonoBehaviour
     {
         if (mousePos.mouseDown)
         {
-            lazerBeam.enabled = true;
-            lazerBeam.positionCount = 1;
-            lazerBeam.SetPosition(0, transform.parent.position);
+            laserBeam.enabled = true;
+            laserBeam.positionCount = 1;
+            laserBeam.SetPosition(0, transform.parent.position);
             //lazerBeam.SetPosition(1, rayPoint.position);
-            CreateBeam(0, transform.parent.position, rayPoint.position - transform.position);
+            CreateBeam(0, transform.parent.position, rayPoint.position - transform.position, laserLength);
+
+            for (int i = 0; i < laserBeam.positionCount; i++)
+            {
+                laserBeam.SetPosition(i, new Vector3(laserBeam.GetPosition(i).x, laserBeam.GetPosition(i).y, 0));
+            }
 
         }
         else
         {
             StopShrinking();
-            lazerBeam.enabled = false;
+            laserBeam.enabled = false;
         }
 
     }
@@ -46,7 +51,7 @@ public class FireLazer : MonoBehaviour
         }
     }
 
-    private void CreateBeam (int lazerCount, Vector2 rayOrigin, Vector2 rayDirection)
+    private void CreateBeam (int lazerCount, Vector2 rayOrigin, Vector2 rayDirection, float currentLaserLength)
     {
         rayOrigin += rayDirection.normalized;
         if(lazerCount >= maxLazerCount)
@@ -63,7 +68,7 @@ public class FireLazer : MonoBehaviour
 
         foreach (RaycastHit2D hit in hits)
         {
-            if(hit.distance > laserLength)
+            if(hit.distance > currentLaserLength)
             {
                 continue;
             }
@@ -76,17 +81,17 @@ public class FireLazer : MonoBehaviour
                 {
                     Debug.Log("Shrink");
                     hit.collider.GetComponent<FriendlyAI>().shrink = true;
-                    ++lazerBeam.positionCount;
-                    lazerBeam.SetPosition(lazerBeam.positionCount - 1, hit.point);
+                    ++laserBeam.positionCount;
+                    laserBeam.SetPosition(laserBeam.positionCount - 1, hit.point);
                     return;
                 }
                 else if (!hit.transform.CompareTag("Turret Outline") && !hit.transform.CompareTag("Enviroment"))
                 {
-                    ++lazerBeam.positionCount;
-                    lazerBeam.SetPosition(lazerBeam.positionCount - 1, hit.point);
+                    ++laserBeam.positionCount;
+                    laserBeam.SetPosition(laserBeam.positionCount - 1, hit.point);
                     Vector2 reflectedBeam = Vector2.Reflect(rayDirection, hit.normal);
                     //lazerBeam.SetPosition(lazerBeam.positionCount - 1, hit.point + reflectedBeam);
-                    CreateBeam(lazerCount + 1, hit.point, reflectedBeam);
+                    CreateBeam(lazerCount + 1, hit.point, reflectedBeam, currentLaserLength - hit.distance);
                     //StopShrinking();
                     return;
                 }
@@ -95,8 +100,8 @@ public class FireLazer : MonoBehaviour
         }
 
         //If the raycast hits nothing
-        ++lazerBeam.positionCount;
-        lazerBeam.SetPosition(lazerBeam.positionCount - 1, rayOrigin + (rayDirection.normalized * laserLength));
+        ++laserBeam.positionCount;
+        laserBeam.SetPosition(laserBeam.positionCount - 1, rayOrigin + (rayDirection.normalized * currentLaserLength));
         StopShrinking();
 
     }
