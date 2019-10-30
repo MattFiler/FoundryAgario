@@ -7,47 +7,58 @@ public class DragAlongPath : MonoBehaviour
     // Start is called before the first frame update
     public Vector3[] points;
     public List<Line> lines = new List<Line>();
-    [SerializeField] private GameObject target;
+    [SerializeField] private GameObject[] targets;
     public bool pathIsLoop = true;
 
-    private Line currentLine;
+    private Dictionary<GameObject, Line> currentLines = new Dictionary<GameObject, Line>();
 
-    private Quaternion targetAngle;
-    private Vector3 targetPos;
+    private Dictionary<GameObject, Quaternion> targetAngles = new Dictionary<GameObject, Quaternion>();
+    private Dictionary<GameObject, Vector3> targetPos = new Dictionary<GameObject, Vector3>();
 
     public bool forcePolyEnable = false;
     private void Start()
     {
         GenerateLinesFromPath();
-        target.transform.position = GetClosestPointOnPath(target.transform.position);
-        targetPos = target.transform.position;
+        foreach(GameObject target in targets)
+        {
+            target.transform.localPosition = GetClosestPointOnPath(target.transform.localPosition, target);
+            targetPos[target] = target.transform.localPosition;
+            Vector3 vec = currentLines[target].b - currentLines[target].a;
+            vec = new Vector3(-vec.x, -vec.y);
+            float angle = Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg;
+            targetAngles[target] = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+
     }
     // Update is called once per frame
     void Update()
     {
-        Touch touch = new Touch();
-        if(TouchManager.instance.GetTouch(target, ref touch))
+        foreach (GameObject target in targets)
         {
-            if(touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
+            Touch touch = new Touch();
+            if (TouchManager.instance.GetTouch(target, ref touch))
             {
-                target.GetComponent<PolygonCollider2D>().enabled = true;
+                if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
+                {
+                    target.GetComponent<PolygonCollider2D>().enabled = true;
 
-                targetPos = GetClosestPointOnPath(touch.position);
-                Vector3 vec = currentLine.b - currentLine.a;
-                vec = new Vector3(-vec.x, -vec.y);
-                float angle = Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg;
-                targetAngle = Quaternion.AngleAxis(angle, Vector3.forward);
+                    targetPos[target] = GetClosestPointOnPath(transform.InverseTransformPoint(touch.position), target);
+                    Vector3 vec = currentLines[target].b - currentLines[target].a;
+                    vec = new Vector3(-vec.x, -vec.y);
+                    float angle = Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg;
+                    targetAngles[target] = Quaternion.AngleAxis(angle, Vector3.forward);
+
+                }
+            }
+            else
+            {
+                target.GetComponent<PolygonCollider2D>().enabled = forcePolyEnable;
 
             }
-        }
-        else
-        {
-            target.GetComponent<PolygonCollider2D>().enabled = forcePolyEnable;
 
+            target.transform.rotation = Quaternion.Lerp(target.transform.rotation, targetAngles[target], 0.1f);
+            target.transform.localPosition = Vector3.Lerp(target.transform.localPosition, targetPos[target], 0.3f);
         }
-
-        target.transform.rotation = Quaternion.Lerp(target.transform.rotation, targetAngle, 0.1f);
-        target.transform.position = Vector3.Lerp(target.transform.position, targetPos, 0.3f);
     }
 
     private void GenerateLinesFromPath()
@@ -56,12 +67,12 @@ public class DragAlongPath : MonoBehaviour
         {
             Line line = new Line();
 
-            Vector3 a = points[i];
+            Vector3 a = transform.InverseTransformPoint(points[i]);
             Vector3 b;
             if (i == points.Length - 1)
-                b = points[0];
+                b = transform.InverseTransformPoint(points[0]);
             else
-                b = points[i + 1];
+                b = transform.InverseTransformPoint(points[i + 1]);
 
             line.a = a;
             line.b = b;
@@ -82,7 +93,7 @@ public class DragAlongPath : MonoBehaviour
         }
     }
 
-    private Vector3 GetClosestPointOnPath(Vector3 point)
+    private Vector3 GetClosestPointOnPath(Vector3 point, GameObject objRef)
     {
         float closestDist = 10000000;
         Vector3 returnVec = new Vector3();
@@ -161,7 +172,7 @@ public class DragAlongPath : MonoBehaviour
                 {
                     closestDist = dist;
                     returnVec = vec;
-                    currentLine = line;
+                    currentLines[objRef] = line;
                 }
             }
         }
