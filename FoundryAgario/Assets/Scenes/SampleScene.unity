@@ -185,6 +185,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 117788790931935291}
     m_Modifications:
+    - target: {fileID: 4061495904332978826, guid: 3ed71155d7a2318469dea3ef209ae89f,
+        type: 3}
+      propertyPath: m_Name
+      value: Thruster
+      objectReference: {fileID: 0}
     - target: {fileID: 5585568997236156963, guid: 3ed71155d7a2318469dea3ef209ae89f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -254,11 +259,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.072385
-      objectReference: {fileID: 0}
-    - target: {fileID: 4061495904332978826, guid: 3ed71155d7a2318469dea3ef209ae89f,
-        type: 3}
-      propertyPath: m_Name
-      value: Thruster
       objectReference: {fileID: 0}
     - target: {fileID: 5898334061735094468, guid: 3ed71155d7a2318469dea3ef209ae89f,
         type: 3}
@@ -5612,6 +5612,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: FOUNDRY SHIP
       objectReference: {fileID: 0}
+    - target: {fileID: 1322222836328381016, guid: acb7738e710d2bc4a88c3440ff443c8f,
+        type: 3}
+      propertyPath: targets.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1322222836328381016, guid: acb7738e710d2bc4a88c3440ff443c8f,
+        type: 3}
+      propertyPath: targets.Array.data[2]
+      value: 
+      objectReference: {fileID: 303932658}
     - target: {fileID: 3298604374782785190, guid: acb7738e710d2bc4a88c3440ff443c8f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5677,16 +5687,6 @@ PrefabInstance:
       propertyPath: mousePos
       value: 
       objectReference: {fileID: 241911197}
-    - target: {fileID: 1322222836328381016, guid: acb7738e710d2bc4a88c3440ff443c8f,
-        type: 3}
-      propertyPath: targets.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1322222836328381016, guid: acb7738e710d2bc4a88c3440ff443c8f,
-        type: 3}
-      propertyPath: targets.Array.data[2]
-      value: 
-      objectReference: {fileID: 303932658}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acb7738e710d2bc4a88c3440ff443c8f, type: 3}
 --- !u!114 &117788790931935290 stripped
@@ -5776,7 +5776,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8529672937011174769}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
