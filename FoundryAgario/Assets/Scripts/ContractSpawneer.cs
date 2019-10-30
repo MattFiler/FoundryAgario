@@ -6,6 +6,7 @@ public class PlayspaceZone
 {
     public Bounds bounds;
     public int count = 0;
+    public bool locked = false;
 }
 
 public class ContractSpawneer : MonoBehaviour
@@ -63,8 +64,11 @@ public class ContractSpawneer : MonoBehaviour
             for (int y = 0; y < zonesY; y++)
             {
                 PlayspaceZone zone = new PlayspaceZone();
-                zone.bounds = new Bounds(new Vector3((zoneSize.x * x) + (zoneSize.x / 2), (zoneSize.y * y) + (zoneSize.y / 2), 0) + environmentObject.transform.position - (envBounds.size / 2), new Vector3(zoneSize.x, zoneSize.y, 0));
+                zone.bounds = new Bounds(new Vector3((zoneSize.x * x) + (zoneSize.x / 2), (zoneSize.y * y) + (zoneSize.y / 2)) + environmentObject.transform.position - (envBounds.size / 2), new Vector3(zoneSize.x, zoneSize.y));
                 if (drawDebug) Gizmos.DrawWireCube(zone.bounds.center, zone.bounds.size);
+                Bounds camBounds = new Bounds(Camera.main.rect.position, new Vector3((Camera.main.aspect * (Camera.main.orthographicSize * 2)) + zoneSize.x, (Camera.main.orthographicSize * 2) + zoneSize.y));
+                if (drawDebug) Gizmos.DrawWireCube(camBounds.center, camBounds.size);
+                zone.locked = camBounds.Contains(zone.bounds.center);
                 spawnZones.Add(zone);
             }
         }
@@ -81,7 +85,7 @@ public class ContractSpawneer : MonoBehaviour
     int GetSpawnZone()
     {
         int zoneToSpawn = Random.Range(0, spawnZones.Count - 1);
-        if (spawnZones[zoneToSpawn].count > GetAverageSpawnCount())
+        if (spawnZones[zoneToSpawn].count > GetAverageSpawnCount() || spawnZones[zoneToSpawn].locked)
         {
             return GetSpawnZone();
         }
