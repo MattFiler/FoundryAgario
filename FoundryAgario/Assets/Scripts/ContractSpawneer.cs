@@ -56,7 +56,7 @@ public class ContractSpawneer : MonoBehaviour
     {
         spawnZones.Clear();
         envBounds = environmentObject.GetComponent<BoxCollider2D>().bounds;
-        //if (drawDebug && envBounds == lastBounds) return; //Optimise for in-editor
+        if (drawDebug && envBounds == lastBounds) return; //Optimise for in-editor
         if (drawDebug) lastBounds = envBounds;
         zoneSize = new Vector2(envBounds.size.x / zonesX, envBounds.size.y / zonesY);
         for (int x = 0; x < zonesX; x++)
