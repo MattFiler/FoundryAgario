@@ -26,6 +26,7 @@ public class ContractSpawneer : MonoBehaviour
     private List<PlayspaceZone> spawnZones = new List<PlayspaceZone>();
     
     private Bounds envBounds;
+    private Bounds lastBounds; //For in-editor only
 
     /* Create spawn zones and spawn entities within them */
     void Start()
@@ -54,6 +55,8 @@ public class ContractSpawneer : MonoBehaviour
     {
         spawnZones.Clear();
         envBounds = environmentObject.GetComponent<BoxCollider2D>().bounds;
+        if (drawDebug && envBounds == lastBounds) return; //Optimise for in-editor
+        if (drawDebug) lastBounds = envBounds;
         zoneSize = new Vector2(envBounds.size.x / zonesX, envBounds.size.y / zonesY);
         for (int x = 0; x < zonesX; x++)
         {
