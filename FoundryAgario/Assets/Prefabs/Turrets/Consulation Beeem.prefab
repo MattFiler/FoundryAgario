@@ -237,6 +237,7 @@ MonoBehaviour:
     m_Bits: 512
   mousePos: {fileID: 4988592118615739203}
   maxLazerCount: 5
+  laserLength: 7
 --- !u!120 &1805116501030538774
 LineRenderer:
   m_ObjectHideFlags: 0

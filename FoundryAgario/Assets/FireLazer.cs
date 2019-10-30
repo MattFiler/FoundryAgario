@@ -11,7 +11,7 @@ public class FireLazer : MonoBehaviour
     public GetMousePos mousePos;
     public int maxLazerCount = 3;
     LineRenderer lazerBeam;
-
+    public float laserLength = 10.0f;
 
     private void Start()
     {
@@ -63,9 +63,14 @@ public class FireLazer : MonoBehaviour
 
         foreach (RaycastHit2D hit in hits)
         {
+            if(hit.distance > laserLength)
+            {
+                continue;
+            }
+
             if (hit.collider != null)
             {
-                //Debug.Log(hit.collider.gameObject.name);
+                Debug.Log(hit.collider.gameObject.name);  
 
                 if (hit.transform.CompareTag("Friendly"))
                 {
@@ -91,7 +96,7 @@ public class FireLazer : MonoBehaviour
 
         //If the raycast hits nothing
         ++lazerBeam.positionCount;
-        lazerBeam.SetPosition(lazerBeam.positionCount - 1, rayOrigin + rayDirection);
+        lazerBeam.SetPosition(lazerBeam.positionCount - 1, rayOrigin + (rayDirection.normalized * laserLength));
         StopShrinking();
 
     }
