@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3976878427249190441}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.4050001, y: 1.2100002, z: 2}
   m_Children:
   - {fileID: 126199213108140742}
   - {fileID: 8654659521644184674}
@@ -73,12 +73,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: bcf3fc809a68e994ca92bfbb42f1ab3f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 259e4ad77062bfa4caf5318601fb6fbb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 20, y: 20}
+  m_Size: {x: 14.05, y: 12.1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -112,18 +112,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points:
-  - {x: -5.9719687, y: -1.3460084, z: -1}
-  - {x: -5.715104, y: -1.7429515, z: -1}
+  - {x: -6.0231113, y: -1.0135739, z: -1}
+  - {x: -5.740676, y: -1.5128045, z: -1}
   - {x: -0.3851291, y: -3.0832071, z: -1}
   - {x: 0.4129777, y: -3.0697184, z: -1}
-  - {x: 5.6696467, y: -1.7358991, z: -1}
-  - {x: 6.0509725, y: -1.2337309, z: -1}
-  - {x: 6.0258307, y: 1.2804141, z: -1}
-  - {x: 5.673851, y: 1.7329602, z: -1}
+  - {x: 5.7207923, y: -1.5057518, z: -1}
+  - {x: 6.0765433, y: -1.0802996, z: -1}
+  - {x: 5.9746876, y: 1.2036973, z: -1}
+  - {x: 5.545991, y: 1.5028138, z: -1}
   - {x: 0.39414692, y: 3.0654573, z: -1}
   - {x: -0.25953114, y: 3.0654573, z: -1}
-  - {x: -5.589518, y: 1.783243, z: -1}
-  - {x: -5.9917817, y: 1.2804141, z: -1}
+  - {x: -5.6150904, y: 1.5275232, z: -1}
+  - {x: -6.0429254, y: 1.0502658, z: -1}
   targets:
   - {fileID: 8367373567116192367}
   - {fileID: 4116596635064877799}
@@ -136,16 +136,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3298604374782785190}
     m_Modifications:
-    - target: {fileID: 67812414788326401, guid: 30457006fa1c0e24787664fcb79067b7,
-        type: 3}
-      propertyPath: m_Name
-      value: Consulation Beeem
-      objectReference: {fileID: 0}
-    - target: {fileID: 67812414788326401, guid: 30457006fa1c0e24787664fcb79067b7,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 4740736965693952644, guid: 30457006fa1c0e24787664fcb79067b7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -201,6 +191,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 67812414788326401, guid: 30457006fa1c0e24787664fcb79067b7,
+        type: 3}
+      propertyPath: m_Name
+      value: Consulation Beeem
+      objectReference: {fileID: 0}
+    - target: {fileID: 67812414788326401, guid: 30457006fa1c0e24787664fcb79067b7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4988592118615739203, guid: 30457006fa1c0e24787664fcb79067b7,
         type: 3}
       propertyPath: dragAlongPath
@@ -232,11 +232,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3298604374782785190}
     m_Modifications:
-    - target: {fileID: 4061495904332978826, guid: 3ed71155d7a2318469dea3ef209ae89f,
-        type: 3}
-      propertyPath: m_Name
-      value: Money Blasta
-      objectReference: {fileID: 0}
     - target: {fileID: 5585568997236156963, guid: 3ed71155d7a2318469dea3ef209ae89f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -291,6 +286,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4061495904332978826, guid: 3ed71155d7a2318469dea3ef209ae89f,
+        type: 3}
+      propertyPath: m_Name
+      value: Money Blasta
       objectReference: {fileID: 0}
     - target: {fileID: 5898334061735094468, guid: 3ed71155d7a2318469dea3ef209ae89f,
         type: 3}
