@@ -235,7 +235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80d882a2f15319f42aed6525f92fb46b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayPoint: {fileID: 652671876528641270}
+  startRayPoint: {fileID: 1703447541159352298}
+  endRayPoint: {fileID: 652671876528641270}
   layerMask:
     serializedVersion: 2
     m_Bits: 512
@@ -501,6 +502,7 @@ Transform:
   m_Children:
   - {fileID: 8789132029725687979}
   - {fileID: 652671876528641270}
+  - {fileID: 1703447541159352298}
   m_Father: {fileID: 4740736965693952644}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -517,6 +519,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mousePos: {fileID: 4988592118615739203}
+--- !u!1 &8491557814917093575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1703447541159352298}
+  m_Layer: 0
+  m_Name: Start Ray Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1703447541159352298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8491557814917093575}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 5.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4956350731186446884}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8550701779674055753
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,7 +559,7 @@ GameObject:
   m_Component:
   - component: {fileID: 652671876528641270}
   m_Layer: 0
-  m_Name: Ray Point
+  m_Name: End Ray Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

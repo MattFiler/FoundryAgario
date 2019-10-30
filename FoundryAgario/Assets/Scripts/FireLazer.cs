@@ -6,7 +6,8 @@ using System.Linq;
 
 public class FireLazer : MonoBehaviour
 {
-    public Transform rayPoint;
+    public Transform startRayPoint;
+    public Transform endRayPoint;
     public LayerMask layerMask;
     public GetMousePos mousePos;
     public int maxLazerCount = 3;
@@ -27,7 +28,7 @@ public class FireLazer : MonoBehaviour
             laserBeam.positionCount = 1;
             laserBeam.SetPosition(0, transform.parent.position);
             //lazerBeam.SetPosition(1, rayPoint.position);
-            CreateBeam(0, transform.parent.position, rayPoint.position - transform.position, laserLength);
+            CreateBeam(0, startRayPoint.position, endRayPoint.position - transform.position, laserLength);
 
             for (int i = 0; i < laserBeam.positionCount; i++)
             {

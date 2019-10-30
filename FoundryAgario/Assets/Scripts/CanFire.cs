@@ -6,18 +6,18 @@ public class CanFire : MonoBehaviour
 {
     public bool canFire = true;
 
-    public enum TurretType { COIN, LASER, CLAW};
+    public enum TurretType { COIN, LASER, CLAW, THRUSTER};
     public TurretType turretType;
 
     private void Update()
     {
-        GameObject gunPivot = null;
+        GameObject turretPivot = null;
 
         foreach(Transform child in transform)
         {
             if(child.CompareTag("Turret Pivot"))
             {
-                gunPivot = child.gameObject;
+                turretPivot = child.gameObject;
             }
             else if(child.CompareTag("Turret Outline"))
             {
@@ -25,20 +25,23 @@ public class CanFire : MonoBehaviour
             }
         }
 
-        if (gunPivot != null)
+        if (turretPivot != null)
         {
-            gunPivot.GetComponent<RotateGun>().enabled = canFire;
+            turretPivot.GetComponent<RotateGun>().enabled = canFire;
 
             switch (turretType)
             {
                 case TurretType.COIN:
-                    gunPivot.GetComponentInChildren<FireCoins>().enabled = canFire;
+                    turretPivot.GetComponentInChildren<FireCoins>().enabled = canFire;
                     break;
                 case TurretType.LASER:
-                    gunPivot.GetComponentInChildren<FireLazer>().enabled = canFire;
+                    turretPivot.GetComponentInChildren<FireLazer>().enabled = canFire;
                     break;
                 case TurretType.CLAW:
                     //gunPivot.GetComponentInChildren<FireLazer>().enabled = canFire;
+                    break;
+                case TurretType.THRUSTER:
+                    turretPivot.GetComponentInChildren<FireCoins>().enabled = canFire;
                     break;
                 default:
                     break;
