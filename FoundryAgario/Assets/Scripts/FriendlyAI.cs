@@ -27,5 +27,8 @@ public class FriendlyAI : MonoBehaviour
         {
             this.gameObject.transform.position = Vector3.MoveTowards(this.gameObject.transform.position, Vector3.zero, 0.025f);
         }
+
+        //temp
+        if (this.gameObject.transform.position == Vector3.zero) Destroy(this.gameObject);
     }
 }
