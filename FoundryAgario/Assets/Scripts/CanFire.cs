@@ -27,7 +27,7 @@ public class CanFire : MonoBehaviour
 
         if (turretPivot != null)
         {
-            turretPivot.GetComponent<RotateGun>().enabled = canFire;
+            turretPivot.GetComponent<RotateGun>().canFire = canFire;
 
             switch (turretType)
             {
