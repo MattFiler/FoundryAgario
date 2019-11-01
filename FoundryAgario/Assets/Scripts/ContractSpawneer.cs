@@ -79,9 +79,19 @@ public class ContractSpawneer : MonoSingleton<ContractSpawneer>
         CreateOutOfBoundsCollider();
     }
 
+    /* Lock/unlock grid tiles based on the camera position (we don't want to spawn stuff in view) */
+    void LockZonesInView()
+    {
+        foreach (PlayspaceZone zone in spawnZones)
+        {
+            zone.locked = PointIsWithinCameraView(zone.bounds.center);
+        }
+    }
+
     /* Spawn entites in the zones */
     void SpawnEntities()
     {
+        LockZonesInView();
         for (int i = friendlyObjects.Count; i < numOfFriendlyContracts; i++)
         {
             friendlyObjects.Add(Instantiate(friendlyObject, GeneratePosition(), Quaternion.identity) as GameObject);
