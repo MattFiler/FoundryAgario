@@ -5,8 +5,11 @@ using UnityEngine;
 public class FireCoins : MonoBehaviour
 {
     public GetMousePos mousePos;
-    ParticleSystem coins;
-    public float emmisionRate = 50;
+     ParticleSystem coins;
+    public GameObject sparkles;
+    public float coinEmmisionRate = 50;
+    public float sparkleEmmisionRate = 30;
+    public GameObject light;
 
     private void Start()
     {
@@ -15,6 +18,8 @@ public class FireCoins : MonoBehaviour
 
     void Update()
     {
-        coins.emissionRate = mousePos.mouseDown? emmisionRate : 0;
+        coins.emissionRate = mousePos.mouseDown? coinEmmisionRate : 0;
+        sparkles.GetComponent<ParticleSystem>().emissionRate = mousePos.mouseDown? sparkleEmmisionRate : 0;
+        light.SetActive(mousePos.mouseDown);
     }
 }

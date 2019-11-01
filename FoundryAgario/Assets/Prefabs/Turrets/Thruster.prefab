@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 533831760959191938}
   - component: {fileID: 2489196776629905246}
-  - component: {fileID: 1422153975374803443}
+  - component: {fileID: 2812928183766466192}
   m_Layer: 0
   m_Name: Turret Guns Temp
   m_TagString: Untagged
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1422153975374803443
+--- !u!114 &2812928183766466192
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,11 +91,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 85166882419509102}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d55e8b28b7f4d74c9eb38417d778794, type: 3}
+  m_Script: {fileID: 11500000, guid: 1acd9e8a235edd84f9e595ca4cd5fbe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mousePos: {fileID: 5898334061735094468}
-  emmisionRate: 50
+  flameEmmisionRate: 50
 --- !u!1 &1302071466120949797
 GameObject:
   m_ObjectHideFlags: 0

@@ -40,9 +40,9 @@ public class CanFire : MonoBehaviour
                 case TurretType.CLAW:
                     //gunPivot.GetComponentInChildren<FireLazer>().enabled = canFire;
                     break;
-                case TurretType.THRUSTER:
-                    turretPivot.GetComponentInChildren<FireCoins>().enabled = canFire;
-                    break;
+                //case TurretType.THRUSTER:
+                //    turretPivot.GetComponentInChildren<FireCoins>().enabled = canFire;
+                //    break;
                 default:
                     break;
             }

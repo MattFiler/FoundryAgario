@@ -145,7 +145,7 @@ public class ContractSpawneer : MonoSingleton<ContractSpawneer>
     /* Create a polygon collider around the world to repel the ship and any rogue contracts */
     void CreateOutOfBoundsCollider()
     {
-        Debug.Log("collider");
+        //Debug.Log("collider");
         Vector2[] colliderPoints = new Vector2[12];
         colliderPoints[0] = new Vector2(envBounds.min.x, envBounds.max.y); //Bottom left
         colliderPoints[1] = new Vector2(envBounds.min.x - 1, envBounds.max.y + 1); //Furthest bottom left

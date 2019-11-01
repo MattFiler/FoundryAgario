@@ -14,6 +14,8 @@ public class FireLazer : MonoBehaviour
     LineRenderer laserBeam;
     public float laserLength = 10.0f;
 
+    public float laserZPos = -1;
+    public GameObject light;
     private void Start()
     {
         laserBeam = GetComponent<LineRenderer>();
@@ -22,18 +24,23 @@ public class FireLazer : MonoBehaviour
 
     void Update()
     {
+        light.SetActive(mousePos.mouseDown);
+
         if (mousePos.mouseDown)
         {
             laserBeam.enabled = true;
             laserBeam.positionCount = 1;
-            laserBeam.SetPosition(0, transform.parent.position);
+            laserBeam.SetPosition(0, startRayPoint.position);
             //lazerBeam.SetPosition(1, rayPoint.position);
             CreateBeam(0, startRayPoint.position, endRayPoint.position - transform.position, laserLength);
 
+            var positions = new Vector3[laserBeam.positionCount];
             for (int i = 0; i < laserBeam.positionCount; i++)
             {
-                laserBeam.SetPosition(i, new Vector3(laserBeam.GetPosition(i).x, laserBeam.GetPosition(i).y, 0));
+                positions[i] = new Vector3(laserBeam.GetPosition(i).x, laserBeam.GetPosition(i).y, laserZPos);
             }
+
+            laserBeam.SetPositions(positions);
 
         }
         else
@@ -76,7 +83,7 @@ public class FireLazer : MonoBehaviour
 
             if (hit.collider != null)
             {
-                Debug.Log(hit.collider.gameObject.name);  
+                //Debug.Log(hit.collider.gameObject.name);  
 
                 if (hit.transform.CompareTag("Friendly"))
                 {

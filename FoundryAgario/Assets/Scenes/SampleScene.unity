@@ -488,15 +488,30 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 2975246797096442744, guid: acb7738e710d2bc4a88c3440ff443c8f,
+    - target: {fileID: 1400019782878003557, guid: acb7738e710d2bc4a88c3440ff443c8f,
         type: 3}
-      propertyPath: m_RootOrder
-      value: 5
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400019782878003557, guid: acb7738e710d2bc4a88c3440ff443c8f,
+        type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[1]
+      value: 1281240485
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400019782878003557, guid: acb7738e710d2bc4a88c3440ff443c8f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3723884773327102101, guid: acb7738e710d2bc4a88c3440ff443c8f,
         type: 3}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2975246797096442744, guid: acb7738e710d2bc4a88c3440ff443c8f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acb7738e710d2bc4a88c3440ff443c8f, type: 3}
