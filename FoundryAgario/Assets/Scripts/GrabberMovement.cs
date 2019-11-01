@@ -12,19 +12,26 @@ public class GrabberMovement : MonoBehaviour
 
     public float closingSpeed = 1.0f;
     public float maxClosedAngle = 35.0f;
+
     public float lengthToExtend = 5.0f;
     public float extendingSpeed = 2.0f;
 
+    [HideInInspector]
     public bool isExtending = false;
+    [HideInInspector]
     public bool hasExtended = false;
+    [HideInInspector]
     public bool hasStartedOpenClose = false;
+    [HideInInspector]
     public bool isOpened = true;
 
-    public float scaleAtStart;
-    public float grabberPositionAtStart;
+    [HideInInspector]
+    private float scaleAtStart;
+    [HideInInspector]
+    private float grabberPositionAtStart;
 
-    public float help = 0.0f;
-    public bool wasMouseDown = false;
+    [HideInInspector]
+    private bool wasMouseDown = false;
 
     // Start is called before the first frame update
     void Start()
@@ -96,8 +103,6 @@ public class GrabberMovement : MonoBehaviour
         {
             if(isOpened)
             {
-                help = hand1.transform.localRotation.z;
-
                 Vector3 Hand1Rotation = new Vector3();// = hand1.transform.rotation.eulerAngles;
                 if(hand1.transform.localRotation.z > -maxClosedAngle*0.01)
                 {
