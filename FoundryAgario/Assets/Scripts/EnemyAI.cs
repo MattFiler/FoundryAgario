@@ -26,4 +26,12 @@ public class EnemyAI : MonoBehaviour
             GameObject.Destroy(this.gameObject);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ship"))
+        {
+            GameObject.Destroy(this.gameObject);
+        }
+    }
 }

@@ -9,6 +9,7 @@ TagManager:
   - Turret Outline
   - Enviroment
   - Turret Pivot
+  - Ship
   layers:
   - Default
   - TransparentFX
