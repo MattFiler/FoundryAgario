@@ -76,6 +76,7 @@ public class ContractSpawneer : MonoSingleton<ContractSpawneer>
                 spawnZones.Add(zone);
             }
         }
+        CreateOutOfBoundsCollider();
     }
 
     /* Spawn entites in the zones */
@@ -139,6 +140,26 @@ public class ContractSpawneer : MonoSingleton<ContractSpawneer>
         }
         avg /= spawnZones.Count;
         return avg;
+    }
+
+    /* Create a polygon collider around the world to repel the ship and any rogue contracts */
+    void CreateOutOfBoundsCollider()
+    {
+        Debug.Log("collider");
+        Vector2[] colliderPoints = new Vector2[12];
+        colliderPoints[0] = new Vector2(envBounds.min.x, envBounds.max.y); //Bottom left
+        colliderPoints[1] = new Vector2(envBounds.min.x - 1, envBounds.max.y + 1); //Furthest bottom left
+        colliderPoints[2] = new Vector2(envBounds.min.x - 1, envBounds.min.y - 1); //Furthest top left
+        colliderPoints[3] = new Vector2(envBounds.max.x + 1, envBounds.min.y - 1); //Furthest top right
+        colliderPoints[4] = new Vector2(envBounds.max.x + 1, envBounds.max.y + 1); //Furthest bottom right
+        colliderPoints[5] = new Vector2(envBounds.max.x, envBounds.max.y); //Bottom right
+        colliderPoints[6] = new Vector2(envBounds.max.x, envBounds.min.y); //Top right
+        colliderPoints[7] = new Vector2(envBounds.min.x, envBounds.min.y); //Top left
+        colliderPoints[8] = new Vector2(envBounds.min.x, envBounds.max.y); //Bottom left
+        colliderPoints[9] = new Vector2(envBounds.max.x, envBounds.max.y); //Bottom right
+        colliderPoints[10] = new Vector2(envBounds.max.x + 1, envBounds.max.y + 1); //Furthest bottom right
+        colliderPoints[11] = new Vector2(envBounds.min.x - 1, envBounds.max.y + 1); //Furthest bottom left
+        gameObject.GetComponent<PolygonCollider2D>().points = colliderPoints;
     }
 
     /* Check if a point is visible within the view space */
