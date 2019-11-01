@@ -9,7 +9,7 @@ public class EnemyAI : MonoBehaviour
     /* When we're close to the player, start moving towards them */
     void FixedUpdate()
     {
-        if (Vector3.Distance(this.gameObject.transform.position, ShipMovement.Instance.GetPosition()) <= 17)
+        if (ContractSpawneer.Instance.PointIsWithinCameraView(this.gameObject.transform.position))
         {
             this.gameObject.transform.position = Vector3.MoveTowards(this.gameObject.transform.position, ShipMovement.Instance.GetPosition(), 0.025f);
             if (this.gameObject.transform.position == ShipMovement.Instance.GetPosition()) Destroy(this.gameObject);

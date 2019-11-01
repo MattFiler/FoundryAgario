@@ -41,7 +41,7 @@ public class FriendlyAI : MonoBehaviour
     /* Float around in the environment in a dumb way */
     private void DumbMove()
     {
-        if (Vector3.Distance(this.gameObject.transform.position, ShipMovement.Instance.GetPosition()) <= 17)
+        if (ContractSpawneer.Instance.PointIsWithinCameraView(this.gameObject.transform.position))
         {
             if (nextMoveTo == null || this.gameObject.transform.position == nextMoveTo)
             {

@@ -9,7 +9,7 @@ public class PlayspaceZone
     public bool locked = false;
 }
 
-public class ContractSpawneer : MonoBehaviour
+public class ContractSpawneer : MonoSingleton<ContractSpawneer>
 {
     [SerializeField] private GameObject environmentObject;
     [SerializeField] private GameObject friendlyObject;
@@ -72,9 +72,7 @@ public class ContractSpawneer : MonoBehaviour
                 PlayspaceZone zone = new PlayspaceZone();
                 zone.bounds = new Bounds(new Vector3((zoneSize.x * x) + (zoneSize.x / 2), (zoneSize.y * y) + (zoneSize.y / 2)) + environmentObject.transform.position - (envBounds.size / 2), new Vector3(zoneSize.x, zoneSize.y));
                 if (drawDebug) Gizmos.DrawWireCube(zone.bounds.center, zone.bounds.size);
-                Bounds camBounds = new Bounds(Camera.main.rect.position, new Vector3((Camera.main.aspect * (Camera.main.orthographicSize * 2)) + zoneSize.x, (Camera.main.orthographicSize * 2) + zoneSize.y));
-                if (drawDebug) Gizmos.DrawWireCube(camBounds.center, camBounds.size);
-                zone.locked = camBounds.Contains(zone.bounds.center);
+                zone.locked = PointIsWithinCameraView(zone.bounds.center, drawDebug);
                 spawnZones.Add(zone);
             }
         }
@@ -120,7 +118,6 @@ public class ContractSpawneer : MonoBehaviour
     Vector3 GeneratePosition()
     {
         int zoneToSpawn = GetSpawnZone();
-        Debug.Log(zoneToSpawn);
         Bounds zoneBounds = spawnZones[zoneToSpawn].bounds;
         return new Vector3(Random.Range(zoneBounds.min.x, zoneBounds.max.x), Random.Range(zoneBounds.min.y, zoneBounds.max.y), Random.Range(zoneBounds.min.z, zoneBounds.max.z));
     }
@@ -142,5 +139,13 @@ public class ContractSpawneer : MonoBehaviour
         }
         avg /= spawnZones.Count;
         return avg;
+    }
+
+    /* Check if a point is visible within the view space */
+    public bool PointIsWithinCameraView(Vector3 point, bool drawDebug = false)
+    {
+        Bounds camBounds = new Bounds(ShipMovement.Instance.GetPosition(), new Vector3((Camera.main.aspect * (Camera.main.orthographicSize * 2)) + zoneSize.x, (Camera.main.orthographicSize * 2) + zoneSize.y));
+        if (drawDebug) Gizmos.DrawWireCube(camBounds.center, camBounds.size);
+        return camBounds.Contains(point);
     }
 }
