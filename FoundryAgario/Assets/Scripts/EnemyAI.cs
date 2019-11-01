@@ -6,13 +6,17 @@ public class EnemyAI : MonoBehaviour
 {
     public int health = 100;
 
-    //TEMP MOVEMENT
+    /* When we're close to the player, start moving towards them */
     void FixedUpdate()
     {
-        this.gameObject.transform.position = Vector3.MoveTowards(this.gameObject.transform.position, Vector3.zero, 0.025f);
-        if (this.gameObject.transform.position == Vector3.zero) Destroy(this.gameObject);
+        if (Vector3.Distance(this.gameObject.transform.position, ShipMovement.Instance.GetPosition()) <= 17)
+        {
+            this.gameObject.transform.position = Vector3.MoveTowards(this.gameObject.transform.position, ShipMovement.Instance.GetPosition(), 0.025f);
+            if (this.gameObject.transform.position == ShipMovement.Instance.GetPosition()) Destroy(this.gameObject);
+        }
     }
 
+    /* When hit with a lazer, reduce our health */
     public void reduceHealth(int healthLost)
     {
         health -= healthLost;

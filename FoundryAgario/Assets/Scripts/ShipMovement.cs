@@ -2,18 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipMovement : MonoBehaviour
+public class ShipMovement : MonoSingleton<ShipMovement>
 {
     public GetMousePos mousePos;
     public float thrust = 100;
     public ParticleSystem mainParticle;
     public GameObject thruster;
     public bool isPlaying = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -74,8 +69,11 @@ public class ShipMovement : MonoBehaviour
                 }
             }
         }
+    }
 
-
-
+    /* Get the position of the ship in world space */
+    public Vector3 GetPosition()
+    {
+        return this.gameObject.transform.position;
     }
 }
