@@ -4818,7 +4818,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4914,7 +4914,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5081,7 +5081,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5217,7 +5217,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5261,6 +5261,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 336785d32dc1c954baec659879a5013e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestroyOnLoad: 0
+  mousePos: {fileID: 0}
+  thrust: 100
+  mainParticle: {fileID: 0}
+  thruster: {fileID: 0}
+  isPlaying: 0
 --- !u!114 &1439747676979893554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5286,9 +5292,9 @@ MonoBehaviour:
   - {x: -0.25953114, y: 3.0654573, z: -1}
   - {x: -5.589518, y: 1.783243, z: -1}
   - {x: -5.9917817, y: 1.2804141, z: -1}
-  target: {fileID: 3610539610415458383}
+  targets: []
   pathIsLoop: 1
-  forcePolyEnable: 0
+  forceBoxColliderEnable: 0
 --- !u!1 &8380048115628159280
 GameObject:
   m_ObjectHideFlags: 0
