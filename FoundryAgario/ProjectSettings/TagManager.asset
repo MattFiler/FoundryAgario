@@ -8,6 +8,7 @@ TagManager:
   - Friendly
   - Turret Outline
   - Enviroment
+  - Turret Pivot
   layers:
   - Default
   - TransparentFX
@@ -42,6 +43,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1281240485
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
