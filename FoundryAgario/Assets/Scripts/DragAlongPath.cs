@@ -21,8 +21,9 @@ public class DragAlongPath : MonoBehaviour
         GenerateLinesFromPath();
         foreach(GameObject target in targets)
         {
-            target.transform.localPosition = GetClosestPointOnPath(target.transform.localPosition, target);
-            targetPos[target] = target.transform.localPosition;
+            Vector3 newTarget = new Vector3();
+            if (GetClosestPointOnPath(target.transform.localPosition, target, ref newTarget))
+                targetPos[target] = newTarget;
             Vector3 vec = currentLines[target].b - currentLines[target].a;
             vec = new Vector3(-vec.x, -vec.y);
             float angle = Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg;
@@ -42,7 +43,9 @@ public class DragAlongPath : MonoBehaviour
                 {
                     target.GetComponent<BoxCollider2D>().enabled = true;
 
-                    targetPos[target] = GetClosestPointOnPath(transform.InverseTransformPoint(touch.position), target);
+                    Vector3 newTarget = new Vector3();
+                    if (GetClosestPointOnPath(transform.InverseTransformPoint(touch.position), target, ref newTarget))
+                        targetPos[target] = newTarget;
                     Vector3 vec = currentLines[target].b - currentLines[target].a;
                     vec = new Vector3(-vec.x, -vec.y);
                     float angle = Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg;
@@ -109,10 +112,10 @@ public class DragAlongPath : MonoBehaviour
         }
     }
 
-    private Vector3 GetClosestPointOnPath(Vector3 point, GameObject objRef)
+    private bool GetClosestPointOnPath(Vector3 point, GameObject objRef, ref Vector3 outVec)
     {
         float closestDist = 10000000;
-        Vector3 returnVec = new Vector3();
+        bool vecFound = false;
         foreach(Line line in lines)
         {
             float dist = 0;
@@ -187,13 +190,14 @@ public class DragAlongPath : MonoBehaviour
                 if (line.IsPointInLimits(vec))
                 {
                     closestDist = dist;
-                    returnVec = vec;
+                    outVec = vec;
                     currentLines[objRef] = line;
+                    vecFound = true;
                 }
             }
         }
 
-        return returnVec;
+        return vecFound;
     }
 }
 
