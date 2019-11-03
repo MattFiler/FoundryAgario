@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 67812414788326401}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 14.02, y: -3.06, z: 0}
-  m_LocalScale: {x: 0.08066619, y: 0.08066619, z: 0.08066619}
+  m_LocalScale: {x: 0.04, y: 0.04, z: 0.04}
   m_Children:
   - {fileID: 4956350731186446884}
   - {fileID: 5205539816370617068}
@@ -43,7 +43,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 67812414788326401}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -98,9 +98,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.8693867, y: -4.440952}
   serializedVersion: 2
-  m_Radius: 2.5600007
+  m_Radius: 8.002337
 --- !u!114 &3449632077289626439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canFire: 1
   turretType: 1
+  grabberMovement: {fileID: 0}
 --- !u!61 &5649510209460231570
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -122,13 +123,13 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 67812414788326401}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.2923851, y: 6.1802616}
+  m_Offset: {x: -0.06446266, y: 7.452054}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -139,7 +140,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 33.590973, y: 27.098423}
+  m_Size: {x: 47.39294, y: 38.619232}
   m_EdgeRadius: 0
 --- !u!1 &887243167611484562
 GameObject:
@@ -154,7 +155,7 @@ GameObject:
   - component: {fileID: 3648943704603607193}
   - component: {fileID: 1805116501030538774}
   m_Layer: 0
-  m_Name: Turret Guns Temp
+  m_Name: Turret Guns
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -212,8 +213,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1e1704b692bc25542b2e92dec23772ce, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.1484747, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 30fe2fe63e5e2be4e9d199c4c61875ed, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -365,7 +366,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1854067722354795858}
   m_LocalRotation: {x: -0, y: -0, z: 0.012278268, w: 0.99992466}
-  m_LocalPosition: {x: 0.44999897, y: 18.429998, z: 0}
+  m_LocalPosition: {x: 0.1, y: 31.6, z: 0}
   m_LocalScale: {x: 12.396762, y: 12.396762, z: 12.396766}
   m_Children: []
   m_Father: {fileID: 4956350731186446884}
@@ -422,8 +423,9 @@ GameObject:
   - component: {fileID: 6014129565291888853}
   - component: {fileID: 4988592118615739203}
   - component: {fileID: 5815528775744029052}
+  - component: {fileID: 1928617090082727872}
   m_Layer: 8
-  m_Name: Turret Outline Temp
+  m_Name: Turret Outline
   m_TagString: Turret Outline
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -481,7 +483,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 451cb775e653b5a469541599d7188d90, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3db04eec25cc4c9449399540ae47ad30, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -515,7 +517,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6276384634775173616}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -525,7 +527,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 2.56}
+    oldSize: {x: 10, y: 10}
     newSize: {x: 5.12, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -543,6 +545,32 @@ PolygonCollider2D:
       - {x: 2.8926613, y: 2.131622}
       - {x: 0.077998824, y: 3.3681824}
       - {x: -2.7648113, y: 1.965157}
+--- !u!61 &1928617090082727872
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6276384634775173616}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.07144213, y: 1.5480397}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 10, y: 10}
+    newSize: {x: 5.12, y: 2.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 11.428971, y: 5.760752}
+  m_EdgeRadius: 0
 --- !u!1 &7582737235572988109
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,7 +644,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8491557814917093575}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 22.3, z: 0}
+  m_LocalPosition: {x: 0, y: 33.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4956350731186446884}

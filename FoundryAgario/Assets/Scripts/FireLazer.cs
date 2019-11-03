@@ -83,7 +83,7 @@ public class FireLazer : MonoBehaviour
 
             if (hit.collider != null)
             {
-                //Debug.Log(hit.collider.gameObject.name);  
+                Debug.Log(hit.collider.gameObject.name);  
 
                 if (hit.transform.CompareTag("Friendly"))
                 {
@@ -93,7 +93,7 @@ public class FireLazer : MonoBehaviour
                     laserBeam.SetPosition(laserBeam.positionCount - 1, hit.point);
                     return;
                 }
-                else if (!hit.transform.CompareTag("Turret Outline") && !hit.transform.CompareTag("Enviroment"))
+                else if (hit.transform.CompareTag("Enemy") || hit.transform.CompareTag("Ship"))
                 {
                     ++laserBeam.positionCount;
                     laserBeam.SetPosition(laserBeam.positionCount - 1, hit.point);
