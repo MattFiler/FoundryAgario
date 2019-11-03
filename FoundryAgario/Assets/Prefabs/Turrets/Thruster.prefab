@@ -343,7 +343,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canFire: 1
-  turretType: 3
+  turretType: 2
+  grabberMovement: {fileID: 0}
 --- !u!61 &8758508820544975478
 BoxCollider2D:
   m_ObjectHideFlags: 0

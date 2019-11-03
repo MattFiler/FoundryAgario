@@ -813,6 +813,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canFire: 1
   turretType: 3
+  grabberMovement: {fileID: 8392988530394195284}
 --- !u!1 &8392988530982080178
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ public class CanFire : MonoBehaviour
     public enum TurretType { COIN, LASER, THRUSTER, GRABBER};
     public TurretType turretType;
 
+    public GrabberMovement grabberMovement;
     private void Update()
     {
         GameObject turretPivot = null;
@@ -49,7 +50,7 @@ public class CanFire : MonoBehaviour
                 //    break;
 
                 case TurretType.GRABBER:
-                    turretPivot.GetComponentInChildren<FireLazer>().enabled = canFire;
+                    grabberMovement.enabled = canFire;
                     break;
                 default:
                     break;
