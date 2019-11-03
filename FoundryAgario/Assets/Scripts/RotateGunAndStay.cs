@@ -6,6 +6,7 @@ public class RotateGunAndStay : MonoBehaviour
 {
     public GetMousePos mousePos;
     public GrabberMovement grabberMovement;
+    public bool canFire = true;
     void Start()
     {
 
@@ -14,7 +15,7 @@ public class RotateGunAndStay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (mousePos.mouseDown)
+        if (mousePos.mouseDown && canFire)
         {
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, mousePos.rotation);
         }

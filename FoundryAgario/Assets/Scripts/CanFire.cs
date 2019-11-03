@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +6,7 @@ public class CanFire : MonoBehaviour
 {
     public bool canFire = true;
 
-    public enum TurretType { COIN, LASER, CLAW, THRUSTER};
+    public enum TurretType { COIN, LASER, THRUSTER, GRABBER};
     public TurretType turretType;
 
     private void Update()
@@ -27,7 +27,14 @@ public class CanFire : MonoBehaviour
 
         if (turretPivot != null)
         {
-            turretPivot.GetComponent<RotateGun>().canFire = canFire;
+            if (turretType != TurretType.GRABBER)
+            {
+                turretPivot.GetComponent<RotateGun>().canFire = canFire;
+            }
+            else
+            {
+                turretPivot.GetComponent<RotateGunAndStay>().canFire = canFire;
+            }
 
             switch (turretType)
             {
@@ -37,12 +44,13 @@ public class CanFire : MonoBehaviour
                 case TurretType.LASER:
                     turretPivot.GetComponentInChildren<FireLazer>().enabled = canFire;
                     break;
-                case TurretType.CLAW:
-                    //gunPivot.GetComponentInChildren<FireLazer>().enabled = canFire;
-                    break;
                 //case TurretType.THRUSTER:
                 //    turretPivot.GetComponentInChildren<FireCoins>().enabled = canFire;
                 //    break;
+
+                case TurretType.GRABBER:
+                    turretPivot.GetComponentInChildren<FireLazer>().enabled = canFire;
+                    break;
                 default:
                     break;
             }
