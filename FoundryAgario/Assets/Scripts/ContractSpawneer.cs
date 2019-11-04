@@ -94,10 +94,14 @@ public class ContractSpawneer : MonoSingleton<ContractSpawneer>
         LockZonesInView();
         for (int i = friendlyObjects.Count; i < numOfFriendlyContracts; i++)
         {
-            friendlyObjects.Add(Instantiate(friendlyObject, GeneratePosition(), Quaternion.identity) as GameObject);
+            GameObject newFriendly = Instantiate(friendlyObject, GeneratePosition(), Quaternion.identity) as GameObject;
+            newFriendly.GetComponent<FriendlyAI>().SetContractValue(Random.Range(50, 101));
+            newFriendly.GetComponent<FriendlyAI>().SetContractWorth((ContractWorthAmount)Random.Range(0, (int)ContractWorthAmount.MAX_COUNT));
+            friendlyObjects.Add(newFriendly);
         }
         for (int i = enemyObjects.Count; i < numOfEnemyContracts; i++)
         {
+            //ToDo generate enemy type here
             enemyObjects.Add(Instantiate(enemyObject, GeneratePosition(), Quaternion.identity) as GameObject);
         }
     }

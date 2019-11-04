@@ -37,6 +37,9 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
         GameObject OnBoardContract = Instantiate(friendlyObject, ContractSpawnSpot.Find(ContractsInCentre.ToString())) as GameObject;
         OnBoardContract.transform.localScale = new Vector3(1, 1, 1);
         OnBoardContract.GetComponent<ContractInShip>().ResourceRemaining = contract.GetContractValue();
+        OnBoardContract.GetComponent<ContractInShip>().ResourceMax = contract.GetContractValue();
+        OnBoardContract.GetComponent<ContractInShip>().SetContractWorth(contract.GetContractWorth());
+        OnBoardContract.transform.parent = ContractSpawnSpot.transform;
         ContractsInside.Add(OnBoardContract);
         ContractsInCentre++;
     }
@@ -109,7 +112,7 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
         ContractsInside = ContractsWithJuice;
     }
 
-    /* Distribute resources from contracts to zones */
+    /* Distribute resources from contracts to zones if they're low */
     private void DistributeResources()
     {
         foreach (GameObject Contract in ContractsInside)
@@ -117,22 +120,26 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
             ContractInShip ContractMeta = Contract.GetComponent<ContractInShip>();
             if (ContractMeta.State == ContractState.BEING_WORKED_ON)
             {
-                ContractMeta.ResourceRemaining -= ResourceDepletionRate;
+                ZoneInShip ThisZone = null;
                 switch (ContractMeta.Assignee)
                 {
                     case ContractAssignee.BLUE:
-                        BlueZone.gameObject.GetComponent<ZoneInShip>().ResourceCount += ResourceDepletionRate;
+                        ThisZone = BlueZone.gameObject.GetComponent<ZoneInShip>();
                         break;
                     case ContractAssignee.GREEN:
-                        GreenZone.gameObject.GetComponent<ZoneInShip>().ResourceCount += ResourceDepletionRate;
+                        ThisZone = GreenZone.gameObject.GetComponent<ZoneInShip>();
                         break;
                     case ContractAssignee.RED:
-                        RedZone.gameObject.GetComponent<ZoneInShip>().ResourceCount += ResourceDepletionRate;
+                        ThisZone = RedZone.gameObject.GetComponent<ZoneInShip>();
                         break;
                     case ContractAssignee.YELLOW:
-                        YellowZone.gameObject.GetComponent<ZoneInShip>().ResourceCount += ResourceDepletionRate;
+                        ThisZone = YellowZone.gameObject.GetComponent<ZoneInShip>();
                         break;
                 }
+                if (ThisZone == null) continue;
+                if (ThisZone.ResourceCount >= ThisZone.ResourceMax) continue;
+                ThisZone.ResourceCount += ResourceDepletionRate;
+                ContractMeta.ResourceRemaining -= ResourceDepletionRate;
                 if (ContractMeta.ResourceRemaining <= 0.0f)
                 {
                     ContractMeta.State = ContractState.OUT_OF_JUICE;
