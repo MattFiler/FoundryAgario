@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3976878427249190441}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4050002, y: 1.2100002, z: 2}
+  m_LocalScale: {x: 0.7123025, y: 0.59550995, z: 2}
   m_Children:
   - {fileID: 126199213108140742}
   - {fileID: 8654659521644184674}
@@ -73,18 +73,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points:
-  - {x: -6.0231113, y: -1.0135739, z: -1}
+  - {x: -6.0911884, y: -0.996555, z: -1}
   - {x: -5.740676, y: -1.5128045, z: -1}
-  - {x: -0.3851291, y: -3.0832071, z: -1}
-  - {x: 0.4129777, y: -3.0697184, z: -1}
-  - {x: 5.7207923, y: -1.5057518, z: -1}
-  - {x: 6.0765433, y: -1.0802996, z: -1}
-  - {x: 5.9746876, y: 1.2036973, z: -1}
-  - {x: 5.545991, y: 1.5028138, z: -1}
-  - {x: 0.39414692, y: 3.0654573, z: -1}
-  - {x: -0.25953114, y: 3.0654573, z: -1}
+  - {x: -0.41916695, y: -3.049169, z: -1}
+  - {x: 0.39595866, y: -3.0356796, z: -1}
+  - {x: 5.8229084, y: -1.4376756, z: -1}
+  - {x: 6.1105814, y: -1.0122234, z: -1}
+  - {x: 6.127859, y: 1.0335063, z: -1}
+  - {x: 5.801277, y: 1.5028139, z: -1}
+  - {x: 0.37712765, y: 3.0314193, z: -1}
+  - {x: -0.34462613, y: 3.0484388, z: -1}
   - {x: -5.6150904, y: 1.5275232, z: -1}
-  - {x: -6.0429254, y: 1.0502658, z: -1}
+  - {x: -6.111001, y: 0.96517, z: -1}
   targets:
   - {fileID: 8367373567116192367}
   - {fileID: 4116596635064877799}
@@ -109,8 +109,8 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8.6, y: 5.1}
-    newSize: {x: 8.6, y: 5.1}
+    oldSize: {x: 18, y: 10.2}
+    newSize: {x: 4.36, y: 2.51}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -224,12 +224,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1000
-  m_Sprite: {fileID: 21300000, guid: 259e4ad77062bfa4caf5318601fb6fbb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 42fa094c8e48f6e4bb647f5d9585e44c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 8.6, y: 5.1}
+  m_Size: {x: 4.36, y: 2.51}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -492,6 +492,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShipInside
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691407347952181870, guid: 26edba7d0712c7741bb5783ada28bef1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7532433136939296683, guid: 26edba7d0712c7741bb5783ada28bef1,
         type: 3}
