@@ -9,6 +9,7 @@ public class WorldScaleManager : MonoBehaviour
     [SerializeField] private float scaleAnimDuration = 2.0f;
     [SerializeField] private Vector3 minShipScale = Vector3.one;
     [SerializeField] private Vector3 maxShipScale = Vector3.one*2;
+    [SerializeField] private SpriteRenderer backGround;
 
     // This is the current index in backgroundObjects to render
     private int scaleLevel = 0;
@@ -60,6 +61,9 @@ public class WorldScaleManager : MonoBehaviour
 
         Vector3 originalScale = ship.transform.localScale;
 
+        Vector2 startBGW = backGround.size;
+        Vector2 endBGW = backGround.size * 1.1f;
+
         while (percentDone <= 100)
         {
             if (percentDone <= 10)
@@ -87,7 +91,7 @@ public class WorldScaleManager : MonoBehaviour
                 ship.transform.localScale = Vector3.Lerp(minShipScale * 1.05f, minShipScale, (percentDone - 95) / 5.0f);
             }
 
-
+            backGround.size = Vector2.Lerp(startBGW, endBGW, percentDone / 100.0f);
 
             percentDone += percentStep;
             yield return new WaitForSeconds(0.02f);
