@@ -10,6 +10,7 @@ public class FireCoins : MonoBehaviour
     public float coinEmmisionRate = 50;
     public float sparkleEmmisionRate = 30;
     public GameObject light;
+    public AudioSource coinnoise;
 
     private void Start()
     {
@@ -21,5 +22,18 @@ public class FireCoins : MonoBehaviour
         coins.emissionRate = mousePos.mouseDown? coinEmmisionRate : 0;
         sparkles.GetComponent<ParticleSystem>().emissionRate = mousePos.mouseDown? sparkleEmmisionRate : 0;
         light.SetActive(mousePos.mouseDown);
+
+        if (mousePos.mouseDown)
+        {
+            if (!coinnoise.isPlaying)
+            {
+                coinnoise.Play();
+            }
+        }
+
+        else
+        {
+            coinnoise.Stop();
+        }
     }
 }

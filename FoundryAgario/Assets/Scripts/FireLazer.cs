@@ -6,6 +6,7 @@ using System.Linq;
 
 public class FireLazer : MonoBehaviour
 {
+    public AudioSource lasernoise;
     public Transform startRayPoint;
     public Transform endRayPoint;
     public LayerMask layerMask;
@@ -41,12 +42,14 @@ public class FireLazer : MonoBehaviour
             }
 
             laserBeam.SetPositions(positions);
-
+            lasernoise.Play();
+            
         }
         else
         {
             StopShrinking();
             laserBeam.enabled = false;
+            lasernoise.Stop();
         }
 
     }
