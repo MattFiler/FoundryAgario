@@ -24,13 +24,13 @@ public class FireCoins : MonoBehaviour
 
             coins.emissionRate = coinEmmisionRate;
             sparkles.GetComponent<ParticleSystem>().emissionRate = sparkleEmmisionRate;
-            light.SetActive(false);
+            light.SetActive(true);
         }
         else
         {
             coins.emissionRate = 0;
             sparkles.GetComponent<ParticleSystem>().emissionRate = 0;
-            light.SetActive(true);
+            light.SetActive(false);
         }
     }
 }
