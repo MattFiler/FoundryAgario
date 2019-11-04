@@ -1084,10 +1084,10 @@ MonoBehaviour:
   grabberPoint: {fileID: 8392988531360500273}
   hand1: {fileID: 8392988530479760125}
   hand2: {fileID: 8446265063532185193}
-  closingSpeed: 20
+  closingSpeed: 100
   maxClosedAngle: 70
   lengthToExtend: 30
-  extendingSpeed: 3
+  extendingSpeed: 10
   isExtending: 0
   hasExtended: 0
   hasStartedOpenClose: 0
