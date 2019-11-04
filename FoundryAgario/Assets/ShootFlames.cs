@@ -5,31 +5,34 @@ using UnityEngine;
 public class ShootFlames : MonoBehaviour
 {
     public GetMousePos mousePos;
-    ParticleSystem flames;
+    ParticleSystem[] flames;
     public float flameEmmisionRate = 50;
 
     private void Start()
     {
-        flames = GetComponentInChildren<ParticleSystem>();
+        flames = GetComponentsInChildren<ParticleSystem>();
     }
 
     void Update()
     {
-        if (mousePos.mouseDown)
+        foreach (ParticleSystem ps in flames)
         {
-            if (ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.RED))
+            if (mousePos.mouseDown)
             {
-                flames.emissionRate = 0;
+                if (ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.RED))
+                {
+                    ps.Stop();
+                }
+                else
+                {
+                    ShipResourceManagement.Instance.UseResource(ContractAssignee.RED);
+                    ps.Play();
+                }
             }
             else
             {
-                ShipResourceManagement.Instance.UseResource(ContractAssignee.RED);
-                flames.emissionRate = flameEmmisionRate;
+                ps.Stop();
             }
-        }
-        else
-        {
-            flames.emissionRate = 0;
         }
     }
 }
