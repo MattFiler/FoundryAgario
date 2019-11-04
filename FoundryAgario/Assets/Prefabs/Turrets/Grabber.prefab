@@ -288,6 +288,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grabberMovement: {fileID: 8392988530394195284}
   amountEaten: 0
+  timeToConsume: 0.25
+  timer: 0
 --- !u!1 &8392988530208403716
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,6 +488,7 @@ MonoBehaviour:
   hasExtended: 0
   hasStartedOpenClose: 0
   isOpened: 1
+  canMove: 1
 --- !u!1 &8392988530479760125
 GameObject:
   m_ObjectHideFlags: 0

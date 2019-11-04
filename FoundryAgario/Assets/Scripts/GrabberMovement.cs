@@ -26,6 +26,9 @@ public class GrabberMovement : MonoBehaviour
     public bool isOpened = true;
 
     [HideInInspector]
+    public bool canMove = true;
+
+    [HideInInspector]
     private float scaleAtStart;
     [HideInInspector]
     private float grabberPositionAtStart;
@@ -51,8 +54,16 @@ public class GrabberMovement : MonoBehaviour
         {
             if(wasMouseDown)
             {
-                isExtending = true;
-                wasMouseDown = false;
+                if(canMove)
+                {
+                    isExtending = true;
+                    wasMouseDown = false;
+                    canMove = false;
+                }
+                else
+                {
+                    wasMouseDown = false;
+                }
             }
             else
             {
@@ -150,8 +161,9 @@ public class GrabberMovement : MonoBehaviour
                 {
                     isOpened = !isOpened;
                     hasStartedOpenClose = false;
+                    canMove = true;
                 }
-                
+
 
             }
         }

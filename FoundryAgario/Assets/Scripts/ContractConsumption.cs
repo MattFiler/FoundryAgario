@@ -8,6 +8,9 @@ public class ContractConsumption : MonoBehaviour
     public GrabberMovement grabberMovement;
     private BoxCollider2D boxCollider;
     public int amountEaten = 0;
+    public float timeToConsume = 0.25f;
+
+    public float timer = 0.0f;
     void Start()
     {
         boxCollider = this.GetComponent<BoxCollider2D>();
@@ -17,13 +20,23 @@ public class ContractConsumption : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!grabberMovement.hasExtended && !grabberMovement.isExtending)
+        timer += Time.deltaTime;
+
+        if (!grabberMovement.hasExtended && !grabberMovement.isExtending)
         {
-            boxCollider.enabled = true;
+            if (timeToConsume < timer)
+            {
+                boxCollider.enabled = false;
+            }
+            else
+            {
+                boxCollider.enabled = true;
+            }
         }
         else
         {
             boxCollider.enabled = false;
+            timer = 0;
         }
     }
 
