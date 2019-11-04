@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProgressBar: {fileID: 8610077489571225961}
   Type: 2
-  ResourceCount: 0
+  ResourceCount: 150
   ResourceMax: 150
 --- !u!1 &749095713933233344
 GameObject:
@@ -402,11 +402,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0764b1a9eefd374c84f8454d61c2d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestroyOnLoad: 0
   RedZone: {fileID: 4346812227687994495}
   GreenZone: {fileID: 1805514727959814166}
   BlueZone: {fileID: 2984568073768675589}
   YellowZone: {fileID: 6364944106020319039}
   ContractSpawnSpot: {fileID: 9063384924399028806}
+  ResourceDepletionRate: 0.5
   friendlyObject: {fileID: 5633237586518882823, guid: 058b66d3ded16aa46b5400a510dfafe0,
     type: 3}
 --- !u!1 &1998570132518672139
@@ -566,7 +568,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProgressBar: {fileID: 7810125780038589220}
   Type: 3
-  ResourceCount: 0
+  ResourceCount: 150
   ResourceMax: 150
 --- !u!1 &2935218854603777140
 GameObject:
@@ -1234,7 +1236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProgressBar: {fileID: 6157582503095578466}
   Type: 4
-  ResourceCount: 0
+  ResourceCount: 150
   ResourceMax: 150
 --- !u!1 &5170451413874553240
 GameObject:
@@ -1451,7 +1453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProgressBar: {fileID: 3034726248704976275}
   Type: 1
-  ResourceCount: 0
+  ResourceCount: 150
   ResourceMax: 150
 --- !u!1 &5904724520328104137
 GameObject:
