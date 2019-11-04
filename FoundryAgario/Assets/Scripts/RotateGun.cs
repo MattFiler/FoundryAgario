@@ -5,20 +5,21 @@ using UnityEngine;
 public class RotateGun : MonoBehaviour
 {
     public GetMousePos mousePos;
+    public bool canFire = true;
     void Start()
     {
         
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (mousePos.mouseDown)
+        if (mousePos.mouseDown && canFire)
         {
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, mousePos.rotation);
         }
         else
-        { 
+        {
             transform.rotation = Quaternion.Lerp(transform.rotation, transform.parent.rotation, 0.1f);
         }
     }
