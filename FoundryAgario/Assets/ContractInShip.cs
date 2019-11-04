@@ -24,5 +24,4 @@ public class ContractInShip : MonoBehaviour
     public ContractState State = ContractState.IN_IDLE_SPOT;
     public ContractAssignee Assignee = ContractAssignee.NONE;
     public float ResourceRemaining = 100.0f;
-    public float ResourceDepetionRate = 0.5f; //Should be const
 }

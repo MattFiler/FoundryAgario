@@ -24,10 +24,13 @@ public class FireLazer : MonoBehaviour
 
     void Update()
     {
-        light.SetActive(mousePos.mouseDown);
-
         if (mousePos.mouseDown)
         {
+            if (ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.GREEN)) return;
+            ShipResourceManagement.Instance.UseResource(ContractAssignee.GREEN);
+
+            light.SetActive(true);
+
             laserBeam.enabled = true;
             laserBeam.positionCount = 1;
             laserBeam.SetPosition(0, startRayPoint.position);
@@ -45,6 +48,7 @@ public class FireLazer : MonoBehaviour
         }
         else
         {
+            light.SetActive(false);
             StopShrinking();
             laserBeam.enabled = false;
         }

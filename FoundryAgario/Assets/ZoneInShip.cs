@@ -8,7 +8,6 @@ public class ZoneInShip : MonoBehaviour
     public ContractAssignee Type; //Assigned in editor
     public float ResourceCount = 0.0f;
     public float ResourceMax = 150.0f; //Should be const
-    public float ResourceDepletionRate = 0.5f; //Should be const
 
     void FixedUpdate()
     {

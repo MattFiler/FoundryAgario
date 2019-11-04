@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
@@ -16,18 +15,77 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
     private int PrevContractTouch = -1;
     private int ContractsInCentre = 0;
 
+    public float ResourceDepletionRate = 0.5f; //Should be const
+
     [SerializeField] private GameObject friendlyObject;
+
+    /* DEBUG ONLY UNTIL GRABBER FUCKING WORKS */
+    void Awake()
+    {
+        FriendlyAI demo = new FriendlyAI();
+        demo.SetContractValue(100.0f);
+        ImportContract(demo);
+    }
     
     /* Bring the contract inside the ship */
-    public void ImportContract(GameObject contract)
+    public void ImportContract(FriendlyAI contract)
     {
         if (ContractsInCentre == 4)
         {
             Debug.LogWarning("Contract can't enter ship - no space!");
             return;
         }
-        ContractsInside.Add(contract);
+        GameObject OnBoardContract = Instantiate(friendlyObject, ContractSpawnSpot.Find(ContractsInCentre.ToString())) as GameObject;
+        OnBoardContract.transform.localScale = new Vector3(1, 1, 1);
+        OnBoardContract.GetComponent<ContractInShip>().ResourceRemaining = contract.GetContractValue();
+        ContractsInside.Add(OnBoardContract);
         ContractsInCentre++;
+    }
+
+    /* Use a specified resource (returns false if used up) */
+    public bool UseResource(ContractAssignee ResourceType)
+    {
+        ZoneInShip ThisZone = null;
+        switch (ResourceType)
+        {
+            case ContractAssignee.BLUE:
+                ThisZone = BlueZone.gameObject.GetComponent<ZoneInShip>();
+                break;
+            case ContractAssignee.GREEN:
+                ThisZone = GreenZone.gameObject.GetComponent<ZoneInShip>();
+                break;
+            case ContractAssignee.RED:
+                ThisZone = RedZone.gameObject.GetComponent<ZoneInShip>();
+                break;
+            case ContractAssignee.YELLOW:
+                ThisZone = YellowZone.gameObject.GetComponent<ZoneInShip>();
+                break;
+        }
+        if (ThisZone == null) return false;
+        ThisZone.ResourceCount -= ResourceDepletionRate;
+        return (ThisZone.ResourceCount > 0.0f);
+    }
+
+    /* Check to see if a resource is empty */
+    public bool ResourceIsEmpty(ContractAssignee ResourceType)
+    {
+        ZoneInShip ThisZone = null;
+        switch (ResourceType)
+        {
+            case ContractAssignee.BLUE:
+                ThisZone = BlueZone.gameObject.GetComponent<ZoneInShip>();
+                break;
+            case ContractAssignee.GREEN:
+                ThisZone = GreenZone.gameObject.GetComponent<ZoneInShip>();
+                break;
+            case ContractAssignee.RED:
+                ThisZone = RedZone.gameObject.GetComponent<ZoneInShip>();
+                break;
+            case ContractAssignee.YELLOW:
+                ThisZone = YellowZone.gameObject.GetComponent<ZoneInShip>();
+                break;
+        }
+        return (ThisZone == null || ThisZone.ResourceCount <= 0.0f);
     }
      
     /* Handle update logic */
@@ -60,20 +118,20 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
             ContractInShip ContractMeta = Contract.GetComponent<ContractInShip>();
             if (ContractMeta.State == ContractState.BEING_WORKED_ON)
             {
-                ContractMeta.ResourceRemaining -= ContractMeta.ResourceDepetionRate;
+                ContractMeta.ResourceRemaining -= ResourceDepletionRate;
                 switch (ContractMeta.Assignee)
                 {
                     case ContractAssignee.BLUE:
-                        BlueZone.gameObject.GetComponent<ZoneInShip>().ResourceCount += ContractMeta.ResourceDepetionRate;
+                        BlueZone.gameObject.GetComponent<ZoneInShip>().ResourceCount += ResourceDepletionRate;
                         break;
                     case ContractAssignee.GREEN:
-                        GreenZone.gameObject.GetComponent<ZoneInShip>().ResourceCount += ContractMeta.ResourceDepetionRate;
+                        GreenZone.gameObject.GetComponent<ZoneInShip>().ResourceCount += ResourceDepletionRate;
                         break;
                     case ContractAssignee.RED:
-                        RedZone.gameObject.GetComponent<ZoneInShip>().ResourceCount += ContractMeta.ResourceDepetionRate;
+                        RedZone.gameObject.GetComponent<ZoneInShip>().ResourceCount += ResourceDepletionRate;
                         break;
                     case ContractAssignee.YELLOW:
-                        YellowZone.gameObject.GetComponent<ZoneInShip>().ResourceCount += ContractMeta.ResourceDepetionRate;
+                        YellowZone.gameObject.GetComponent<ZoneInShip>().ResourceCount += ResourceDepletionRate;
                         break;
                 }
                 if (ContractMeta.ResourceRemaining <= 0.0f)

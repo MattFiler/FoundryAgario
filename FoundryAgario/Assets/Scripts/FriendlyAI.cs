@@ -8,6 +8,17 @@ public class FriendlyAI : MonoBehaviour
     public float shrinkThreshold = 0.1f;
     public bool shrink = false;
 
+    /* Set/get the worth of this contract */
+    private float ContractWorth = 100.0f;
+    public float GetContractValue()
+    {
+        return ContractWorth;
+    }
+    public void SetContractValue(float worth)
+    {
+        ContractWorth = worth;
+    }
+
     /* Our movement starts at our current position */
     private Vector3 nextMoveTo;
     void Start()
