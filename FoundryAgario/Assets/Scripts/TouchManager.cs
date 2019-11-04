@@ -75,7 +75,6 @@ public class TouchManager : MonoBehaviour
                 {
                     if (hit.collider != null && hit.transform.gameObject == lastFrameTouches[t.fingerId])
                     {
-                        Debug.Log("last frame yeet");
                         Touch touchy = t;
                         touchy.position = hit.point;
                         touchedObjects.Add(hit.collider.gameObject, touchy);
