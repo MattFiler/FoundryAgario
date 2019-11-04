@@ -2,9 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum RainyDayType
+{
+    CODING_ERROR,
+    ILLNESS,
+    POWER_OUTTAGE,
+
+    MAX_TYPES //Must be last, don't use obvs
+}
+
 public class EnemyAI : MonoBehaviour
 {
-    public int health = 100;
+    public int health = 100; //temp
+
+    [SerializeField] private Sprite[] RainyDaySprites;
+    [SerializeField] private SpriteRenderer ThisSprite;
+
+    /* Get/set the rainy day (enemy) type */
+    private RainyDayType thisType;
+    public RainyDayType GetEnemyType()
+    {
+        return thisType;
+    }
+    public void SetEnemyType(RainyDayType type)
+    {
+        thisType = type;
+        ThisSprite.sprite = RainyDaySprites[(int)type];
+    }
 
     /* When we're close to the player, start moving towards them */
     void FixedUpdate()

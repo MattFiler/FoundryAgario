@@ -101,8 +101,9 @@ public class ContractSpawneer : MonoSingleton<ContractSpawneer>
         }
         for (int i = enemyObjects.Count; i < numOfEnemyContracts; i++)
         {
-            //ToDo generate enemy type here
-            enemyObjects.Add(Instantiate(enemyObject, GeneratePosition(), Quaternion.identity) as GameObject);
+            GameObject thisEnemy = Instantiate(enemyObject, GeneratePosition(), Quaternion.identity) as GameObject;
+            thisEnemy.GetComponent<EnemyAI>().SetEnemyType((RainyDayType)Random.Range(0, (int)RainyDayType.MAX_TYPES));
+            enemyObjects.Add(thisEnemy);
         }
     }
 
