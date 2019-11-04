@@ -62,7 +62,32 @@ public class WorldScaleManager : MonoBehaviour
 
         while (percentDone <= 100)
         {
-            ship.transform.localScale = Vector3.Lerp(originalScale, minShipScale, percentDone / 100.0f);
+            if (percentDone <= 10)
+            {
+                ship.transform.localScale = Vector3.Lerp(originalScale, originalScale * 1.1f, percentDone / 10.0f);
+            }
+            else if (percentDone <= 20)
+            {
+                ship.transform.localScale = Vector3.Lerp(originalScale * 1.1f, originalScale, (percentDone - 10) / 10.0f);
+            }
+            else if (percentDone <= 75)
+            {
+                ship.transform.localScale = Vector3.Lerp(originalScale, minShipScale, (percentDone - 20) / 55.0f);
+            }
+            else if (percentDone <= 85)
+            {
+                ship.transform.localScale = Vector3.Lerp(minShipScale, minShipScale * 0.9f, (percentDone - 75) / 10.0f);
+            }
+            else if(percentDone <= 95)
+            {
+                ship.transform.localScale = Vector3.Lerp(minShipScale * 0.9f, minShipScale*1.05f, (percentDone - 85) / 10.0f);
+            }
+            else
+            {
+                ship.transform.localScale = Vector3.Lerp(minShipScale * 1.05f, minShipScale, (percentDone - 95) / 5.0f);
+            }
+
+
 
             percentDone += percentStep;
             yield return new WaitForSeconds(0.02f);
@@ -73,25 +98,30 @@ public class WorldScaleManager : MonoBehaviour
         isAnimating = false;
     }
 
-    private IEnumerator ScaleObject(GameObject obj, bool scaleUp)
+    private IEnumerator ScaleObject(GameObject obj, bool scaleIn, bool fade = false)
     {
         float percentDone = 0;
         float percentStep = 2.0f / scaleAnimDuration;
 
         Vector3 originalScale = obj.transform.localScale;
+        float originalAlpha = obj.GetComponent<SpriteRenderer>().color.a;
+        Color col = obj.GetComponent<SpriteRenderer>().color;
 
         // If scaling up then set the object as active and scale to 0
-        if(scaleUp)
+        if (scaleIn)
         {
-            obj.transform.localScale = Vector3.zero;
+            obj.transform.localScale = originalScale * 1.5f;
             obj.SetActive(true);
         }
 
         while (percentDone <= 100)
         {
-            if (scaleUp)
+            if (scaleIn)
             {
-                obj.transform.localScale = Vector3.Lerp(Vector3.zero, originalScale, percentDone / 100.0f);
+                col.a = Mathf.Lerp(0, originalAlpha, percentDone / 100.0f);
+                obj.transform.localScale = Vector3.Lerp(originalScale*1.5f, originalScale, percentDone / 100.0f);
+                obj.GetComponent<SpriteRenderer>().color = col;
+
             }
             else
             {
@@ -103,7 +133,7 @@ public class WorldScaleManager : MonoBehaviour
         }
 
         // Disable the scaled down object and return it to the original scale
-        if(!scaleUp)
+        if(!scaleIn)
         {
             obj.SetActive(false);
             obj.transform.localScale = originalScale;
