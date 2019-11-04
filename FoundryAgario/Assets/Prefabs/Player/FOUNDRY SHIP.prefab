@@ -19262,7 +19262,7 @@ GameObject:
   - component: {fileID: 2975246797096442744}
   - component: {fileID: 7867975983363480903}
   m_Layer: 0
-  m_Name: Point Light 2D
+  m_Name: Background Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24327,9 +24327,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b8b45f3167fb58409c7f04007229287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &5794329312722236298 stripped
+--- !u!4 &1910361386065076779 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5585568997236156963, guid: 40f8ccf1a1418c2419a647bbfe292e9a,
+  m_CorrespondingSourceObject: {fileID: 533831760959191938, guid: 40f8ccf1a1418c2419a647bbfe292e9a,
     type: 3}
   m_PrefabInstance: {fileID: 2155670232025471401}
   m_PrefabAsset: {fileID: 0}
@@ -24339,15 +24339,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2155670232025471401}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1910361386065076779 stripped
+--- !u!4 &5794329312722236298 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 533831760959191938, guid: 40f8ccf1a1418c2419a647bbfe292e9a,
+  m_CorrespondingSourceObject: {fileID: 5585568997236156963, guid: 40f8ccf1a1418c2419a647bbfe292e9a,
     type: 3}
   m_PrefabInstance: {fileID: 2155670232025471401}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5490289489581289837 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5898334061735094468, guid: 40f8ccf1a1418c2419a647bbfe292e9a,
 --- !u!1 &2717693291137827619 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4061495904332978826, guid: 40f8ccf1a1418c2419a647bbfe292e9a,
@@ -24501,6 +24498,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 5205539816370617068, guid: 30457006fa1c0e24787664fcb79067b7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 887243167611484562, guid: 30457006fa1c0e24787664fcb79067b7,
         type: 3}
       propertyPath: m_TagString
@@ -24511,11 +24513,6 @@ PrefabInstance:
       propertyPath: dragAlongPath
       value: 
       objectReference: {fileID: 1322222836328381016}
-    - target: {fileID: 5205539816370617068, guid: 30457006fa1c0e24787664fcb79067b7,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30457006fa1c0e24787664fcb79067b7, type: 3}
 --- !u!4 &8654659521644184674 stripped
@@ -24604,15 +24601,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7eb931261a7ed39439edcd062796de3a, type: 3}
---- !u!4 &3723884773327102101 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8392988530734097802, guid: 7eb931261a7ed39439edcd062796de3a,
-    type: 3}
-  m_PrefabInstance: {fileID: 5175770536330954015}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3723884773327102098 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8392988530734097805, guid: 7eb931261a7ed39439edcd062796de3a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5175770536330954015}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3723884773327102101 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8392988530734097802, guid: 7eb931261a7ed39439edcd062796de3a,
     type: 3}
   m_PrefabInstance: {fileID: 5175770536330954015}
   m_PrefabAsset: {fileID: 0}
@@ -24623,6 +24620,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3298604374782785190}
     m_Modifications:
+    - target: {fileID: 4061495904332978826, guid: 3ed71155d7a2318469dea3ef209ae89f,
+        type: 3}
+      propertyPath: m_Name
+      value: Money Blasta
+      objectReference: {fileID: 0}
     - target: {fileID: 5585568997236156963, guid: 3ed71155d7a2318469dea3ef209ae89f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -24678,21 +24680,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
-    - target: {fileID: 4061495904332978826, guid: 3ed71155d7a2318469dea3ef209ae89f,
+    - target: {fileID: 6805739513884722179, guid: 3ed71155d7a2318469dea3ef209ae89f,
         type: 3}
-      propertyPath: m_Name
-      value: Money Blasta
+      propertyPath: m_LocalPosition.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5898334061735094468, guid: 3ed71155d7a2318469dea3ef209ae89f,
         type: 3}
       propertyPath: dragAlongPath
       value: 
       objectReference: {fileID: 1322222836328381016}
-    - target: {fileID: 6805739513884722179, guid: 3ed71155d7a2318469dea3ef209ae89f,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6858536380058448256, guid: 3ed71155d7a2318469dea3ef209ae89f,
         type: 3}
       propertyPath: m_ApplyToSortingLayers.Array.size
@@ -24705,15 +24702,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ed71155d7a2318469dea3ef209ae89f, type: 3}
---- !u!1 &8367373567116192367 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4061495904332978826, guid: 3ed71155d7a2318469dea3ef209ae89f,
-    type: 3}
-  m_PrefabInstance: {fileID: 5495434899392082149}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &126199213108140742 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5585568997236156963, guid: 3ed71155d7a2318469dea3ef209ae89f,
+    type: 3}
+  m_PrefabInstance: {fileID: 5495434899392082149}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8367373567116192367 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4061495904332978826, guid: 3ed71155d7a2318469dea3ef209ae89f,
     type: 3}
   m_PrefabInstance: {fileID: 5495434899392082149}
   m_PrefabAsset: {fileID: 0}

@@ -50,3 +50,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Touchy
+    uniqueID: 2571259963
+    locked: 0

@@ -181,6 +181,9 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
             else
                 ContractMeta.State = ContractState.BEING_WORKED_ON;
 
+            ContractsInside[PrevContractTouch].transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            ContractsInside[PrevContractTouch].transform.Find("LIGHT").gameObject.SetActive(false);
+
             return;
         }
         if (ActiveContractTouch == -1) return;
@@ -189,5 +192,7 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
         ContractsInside[ActiveContractTouch].transform.position = UserTouch.position;
         ContractsInside[ActiveContractTouch].GetComponent<ContractInShip>().Assignee = ContractAssignee.NONE;
         ContractsInside[ActiveContractTouch].GetComponent<ContractInShip>().State = ContractState.BEING_DRAGGED;
+        ContractsInside[PrevContractTouch].transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
+        ContractsInside[PrevContractTouch].transform.Find("LIGHT").gameObject.SetActive(true);
     }
 }
