@@ -4,6 +4,11 @@ public class GrabberMovement : MonoBehaviour
 {
     public GetMousePos mousePos;
 
+    public GameObject lineRender;
+
+    public GameObject gunpivot;
+    public GameObject grabberWallUp;
+
     public GameObject grabberTransformPoint;
     public GameObject grabberExtension;
     public GameObject grabberPoint;
@@ -47,6 +52,15 @@ public class GrabberMovement : MonoBehaviour
     void Update()
     {
         if (ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.BLUE)) return;
+
+        LineRenderer mainLine = lineRender.GetComponent<LineRenderer>();
+        //public GameObject gunpivot;
+        //public GameObject grabberWallUp;
+        mainLine.useWorldSpace = true;
+
+        mainLine.SetWidth(0.2f, 0.2f);
+        mainLine.SetPosition(0, gunpivot.transform.position);
+        mainLine.SetPosition(1, grabberWallUp.transform.position);
 
         if (mousePos.mouseDown)
         {
