@@ -46,9 +46,12 @@ public class GrabberMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.BLUE)) return;
+
         if (mousePos.mouseDown)
         {
             wasMouseDown = true;
+            ShipResourceManagement.Instance.UseResource(ContractAssignee.BLUE); //todo: decrease properly (e.g. X on activation)
         }
         else
         {

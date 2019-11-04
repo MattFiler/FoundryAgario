@@ -13,6 +13,8 @@ public class ShipMovement : MonoSingleton<ShipMovement>
     // Update is called once per frame
     void Update()
     {
+        if (ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.RED)) return;
+
         Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
 
         if (mousePos.mouseDown)
