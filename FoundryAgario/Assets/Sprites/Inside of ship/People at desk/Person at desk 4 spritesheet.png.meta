@@ -1,7 +1,34 @@
 fileFormatVersion: 2
 guid: d9d180024f4e5f54eb75db1325b4905e
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -6743378044363680684
+    second: Person at desk 4 spritesheet_0
+  - first:
+      213: 2375221240973374778
+    second: Person at desk 4 spritesheet_1
+  - first:
+      213: 8622114111989955326
+    second: Person at desk 4 spritesheet_2
+  - first:
+      213: 5431510014548320249
+    second: Person at desk 4 spritesheet_3
+  - first:
+      213: -8819922845392823557
+    second: Person at desk 4 spritesheet_4
+  - first:
+      213: -6248146958639287956
+    second: Person at desk 4 spritesheet_7
+  - first:
+      213: 3610604569465111734
+    second: Person at desk 4 spritesheet_8
+  - first:
+      213: -8606955619051455716
+    second: Person at desk 4 spritesheet_9
+  - first:
+      213: 7695256691115000876
+    second: Person at desk 4 spritesheet_10
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,7 +67,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -70,9 +97,189 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Person at desk 4 spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 3198
+        width: 1083
+        height: 1264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14a9e04e2fc4a4447975db9be2ba356f
+      internalID: -6743378044363680684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Person at desk 4 spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 1757
+        y: 3198
+        width: 1085
+        height: 1264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 297316ad814bd6843a104930b357c8fb
+      internalID: 2375221240973374778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Person at desk 4 spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 3257
+        y: 3198
+        width: 1086
+        height: 1264
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61f831c01110a21459d694f55ba93dd7
+      internalID: 8622114111989955326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Person at desk 4 spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 1697
+        width: 1083
+        height: 1266
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cadb16bf692d243409188411003ffba5
+      internalID: 5431510014548320249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Person at desk 4 spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 3257
+        y: 1697
+        width: 1086
+        height: 1266
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 230d5ae3e93197e4aaa12e336373e011
+      internalID: -6248146958639287956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Person at desk 4 spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 2776
+        y: 2858
+        width: 86
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85159cf0ed44066449cef959aaeedc7e
+      internalID: 3610604569465111734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Person at desk 4 spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 197
+        width: 1083
+        height: 1265
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a293600e22d1f0142af04fa8eed9f0ab
+      internalID: -8606955619051455716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Person at desk 4 spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 1757
+        y: 197
+        width: 1085
+        height: 1265
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbad77d0e31924e4db52c38a74fb160d
+      internalID: 7695256691115000876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
