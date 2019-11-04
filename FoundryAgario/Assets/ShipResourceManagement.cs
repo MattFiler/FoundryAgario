@@ -13,7 +13,6 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
     private List<GameObject> ContractsInside = new List<GameObject>();
     private int ActiveContractTouch = -1;
     private int PrevContractTouch = -1;
-    private int ContractsInCentre = 0;
 
     public float ResourceDepletionRate = 0.5f; //Should be const
 
@@ -22,6 +21,14 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
     /* Bring the contract inside the ship */
     public void ImportContract(FriendlyAI contract)
     {
+        int ContractsInCentre = 0;
+        foreach (GameObject InShip in ContractsInside)
+        {
+            if (InShip.GetComponent<ContractInShip>().Assignee == ContractAssignee.NONE)
+            {
+                ContractsInCentre++;
+            }
+        }
         if (ContractsInCentre == 4)
         {
             Debug.LogWarning("Contract can't enter ship - no space!");
