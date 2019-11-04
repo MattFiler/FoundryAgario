@@ -18,14 +18,6 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
     public float ResourceDepletionRate = 0.5f; //Should be const
 
     [SerializeField] private GameObject friendlyObject;
-
-    /* DEBUG ONLY UNTIL GRABBER FUCKING WORKS */
-    void Awake()
-    {
-        FriendlyAI demo = new FriendlyAI();
-        demo.SetContractValue(100.0f);
-        ImportContract(demo);
-    }
     
     /* Bring the contract inside the ship */
     public void ImportContract(FriendlyAI contract)

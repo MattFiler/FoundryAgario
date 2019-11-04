@@ -45,6 +45,10 @@ public class ContractConsumption : MonoBehaviour
         if (collision.gameObject.tag == "Friendly")
         {
             amountEaten++;
+            if (collision.gameObject.GetComponent<FriendlyAI>() != null)
+            {
+                ShipResourceManagement.Instance.ImportContract(collision.gameObject.GetComponent<FriendlyAI>());
+            }
             Destroy(collision.gameObject);
         }
     }
