@@ -1662,6 +1662,16 @@ PrefabInstance:
       propertyPath: thruster
       value: 
       objectReference: {fileID: 456338555}
+    - target: {fileID: 5546343986428748069, guid: acb7738e710d2bc4a88c3440ff443c8f,
+        type: 3}
+      propertyPath: thrust
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537650618945880145, guid: acb7738e710d2bc4a88c3440ff443c8f,
+        type: 3}
+      propertyPath: m_Mass
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 4870821805854776746, guid: acb7738e710d2bc4a88c3440ff443c8f,
         type: 3}
       propertyPath: m_LocalPosition.z
