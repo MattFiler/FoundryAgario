@@ -6,7 +6,7 @@ public class ZoneInShip : MonoBehaviour
 {
     [SerializeField] GameObject ProgressBar;
     public ContractAssignee Type; //Assigned in editor
-    public float ResourceCount = 0.0f;
+    public float ResourceCount = 150.0f;
     public float ResourceMax = 150.0f; //Should be const
 
     void FixedUpdate()
