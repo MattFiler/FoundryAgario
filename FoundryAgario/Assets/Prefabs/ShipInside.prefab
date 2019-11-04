@@ -90,6 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2671050153278451318}
   - component: {fileID: 6364944106020319039}
+  - component: {fileID: 3917509345952451514}
   m_Layer: 0
   m_Name: Yellow (Bottom Right)
   m_TagString: Untagged
@@ -141,6 +142,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.67, y: 1.78}
   m_EdgeRadius: 0
+--- !u!114 &3917509345952451514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443207921390489248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8355289beb510e841bca8635f31fbd5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProgressBar: {fileID: 8610077489571225961}
+  Type: 2
+  ResourceCount: 0
+  ResourceMax: 150
 --- !u!1 &749095713933233344
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,6 +499,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5582721143896631790}
   - component: {fileID: 1805514727959814166}
+  - component: {fileID: 4107711693566520689}
   m_Layer: 0
   m_Name: Green (Top Right)
   m_TagString: Untagged
@@ -534,6 +552,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.67, y: 1.78}
   m_EdgeRadius: 0
+--- !u!114 &4107711693566520689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2869567533583774363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8355289beb510e841bca8635f31fbd5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProgressBar: {fileID: 7810125780038589220}
+  Type: 3
+  ResourceCount: 0
+  ResourceMax: 150
 --- !u!1 &2935218854603777140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,6 +1168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1835810950693058581}
   - component: {fileID: 2984568073768675589}
+  - component: {fileID: 1343549847873855052}
   m_Layer: 0
   m_Name: Blue (Bottom Left)
   m_TagString: Untagged
@@ -1185,6 +1220,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.67, y: 1.78}
   m_EdgeRadius: 0
+--- !u!114 &1343549847873855052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4804760018737693007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8355289beb510e841bca8635f31fbd5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProgressBar: {fileID: 6157582503095578466}
+  Type: 4
+  ResourceCount: 0
+  ResourceMax: 150
 --- !u!1 &5170451413874553240
 GameObject:
   m_ObjectHideFlags: 0
@@ -1334,6 +1385,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3217416333607649560}
   - component: {fileID: 4346812227687994495}
+  - component: {fileID: 2445091648121698853}
   m_Layer: 0
   m_Name: Red (Top Left)
   m_TagString: Untagged
@@ -1385,6 +1437,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.67, y: 1.78}
   m_EdgeRadius: 0
+--- !u!114 &2445091648121698853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5353214877491773615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8355289beb510e841bca8635f31fbd5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProgressBar: {fileID: 3034726248704976275}
+  Type: 1
+  ResourceCount: 0
+  ResourceMax: 150
 --- !u!1 &5904724520328104137
 GameObject:
   m_ObjectHideFlags: 0

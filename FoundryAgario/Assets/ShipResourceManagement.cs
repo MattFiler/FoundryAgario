@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipResourceManagement : MonoBehaviour
+public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
 {
     [SerializeField] private BoxCollider2D RedZone;
     [SerializeField] private BoxCollider2D GreenZone;
@@ -17,20 +17,7 @@ public class ShipResourceManagement : MonoBehaviour
     private int ContractsInCentre = 0;
 
     [SerializeField] private GameObject friendlyObject;
-
-    /* TEST ONLY: SPAWN TEMP CONTRACTS */
-    void Awake()
-    {
-        for (int i = 0; i < 1; i++)
-        {
-            GameObject newFriendlyTemp = Instantiate(friendlyObject, ContractSpawnSpot.position, Quaternion.identity) as GameObject;
-            newFriendlyTemp.transform.parent = ContractSpawnSpot;
-            newFriendlyTemp.transform.position = new Vector3(0, 0, 0);
-            newFriendlyTemp.transform.localScale = new Vector3(1, 1, 1);
-            ImportContract(newFriendlyTemp);
-        }
-    }
-
+    
     /* Bring the contract inside the ship */
     public void ImportContract(GameObject contract)
     {
@@ -42,11 +29,18 @@ public class ShipResourceManagement : MonoBehaviour
         ContractsInside.Add(contract);
         ContractsInCentre++;
     }
-    
-    /* Handle dragging of contracts */    
+     
+    /* Handle update logic */
     void Update()
     {
-        //Check all contracts and remove ones that are out of juice
+        ContractInteraction();
+        DistributeResources();
+        ClearDeJuicedContracts();
+    }
+
+    /* Check all contracts and remove ones that are out of juice */
+    private void ClearDeJuicedContracts()
+    {
         List<GameObject> ContractsWithJuice = new List<GameObject>();
         foreach (GameObject Contract in ContractsInside)
         {
@@ -56,7 +50,43 @@ public class ShipResourceManagement : MonoBehaviour
                 Destroy(Contract);
         }
         ContractsInside = ContractsWithJuice;
+    }
 
+    /* Distribute resources from contracts to zones */
+    private void DistributeResources()
+    {
+        foreach (GameObject Contract in ContractsInside)
+        {
+            ContractInShip ContractMeta = Contract.GetComponent<ContractInShip>();
+            if (ContractMeta.State == ContractState.BEING_WORKED_ON)
+            {
+                ContractMeta.ResourceRemaining -= ContractMeta.ResourceDepetionRate;
+                switch (ContractMeta.Assignee)
+                {
+                    case ContractAssignee.BLUE:
+                        BlueZone.gameObject.GetComponent<ZoneInShip>().ResourceCount += ContractMeta.ResourceDepetionRate;
+                        break;
+                    case ContractAssignee.GREEN:
+                        GreenZone.gameObject.GetComponent<ZoneInShip>().ResourceCount += ContractMeta.ResourceDepetionRate;
+                        break;
+                    case ContractAssignee.RED:
+                        RedZone.gameObject.GetComponent<ZoneInShip>().ResourceCount += ContractMeta.ResourceDepetionRate;
+                        break;
+                    case ContractAssignee.YELLOW:
+                        YellowZone.gameObject.GetComponent<ZoneInShip>().ResourceCount += ContractMeta.ResourceDepetionRate;
+                        break;
+                }
+                if (ContractMeta.ResourceRemaining <= 0.0f)
+                {
+                    ContractMeta.State = ContractState.OUT_OF_JUICE;
+                }
+            }
+        }
+    }
+
+    /* Handle dragging of contracts */
+    private void ContractInteraction()
+    {
         PrevContractTouch = ActiveContractTouch;
 
         //Work out what contract we're interacting with
