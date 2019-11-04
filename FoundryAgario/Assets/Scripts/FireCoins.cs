@@ -19,20 +19,23 @@ public class FireCoins : MonoBehaviour
 
     void Update()
     {
-        coins.emissionRate = mousePos.mouseDown? coinEmmisionRate : 0;
-        sparkles.GetComponent<ParticleSystem>().emissionRate = mousePos.mouseDown? sparkleEmmisionRate : 0;
-        light.SetActive(mousePos.mouseDown);
-
-        if (mousePos.mouseDown)
+        if (mousePos.mouseDown && !ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.YELLOW))
         {
+            ShipResourceManagement.Instance.UseResource(ContractAssignee.YELLOW);
+
+            coins.emissionRate = coinEmmisionRate;
+            sparkles.GetComponent<ParticleSystem>().emissionRate = sparkleEmmisionRate;
+            light.SetActive(true);
             if (!coinnoise.isPlaying)
             {
                 coinnoise.Play();
             }
         }
-
         else
         {
+            coins.emissionRate = 0;
+            sparkles.GetComponent<ParticleSystem>().emissionRate = 0;
+            light.SetActive(false);
             coinnoise.Stop();
         }
     }

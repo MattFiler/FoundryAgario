@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipResourceManagement : MonoBehaviour
+public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
 {
     [SerializeField] private BoxCollider2D RedZone;
     [SerializeField] private BoxCollider2D GreenZone;
@@ -16,37 +15,82 @@ public class ShipResourceManagement : MonoBehaviour
     private int PrevContractTouch = -1;
     private int ContractsInCentre = 0;
 
+    public float ResourceDepletionRate = 0.5f; //Should be const
+
     [SerializeField] private GameObject friendlyObject;
-
-    /* TEST ONLY: SPAWN TEMP CONTRACTS */
-    void Awake()
-    {
-        for (int i = 0; i < 1; i++)
-        {
-            GameObject newFriendlyTemp = Instantiate(friendlyObject, ContractSpawnSpot.position, Quaternion.identity) as GameObject;
-            newFriendlyTemp.transform.parent = ContractSpawnSpot;
-            newFriendlyTemp.transform.position = new Vector3(0, 0, 0);
-            newFriendlyTemp.transform.localScale = new Vector3(1, 1, 1);
-            ImportContract(newFriendlyTemp);
-        }
-    }
-
+    
     /* Bring the contract inside the ship */
-    public void ImportContract(GameObject contract)
+    public void ImportContract(FriendlyAI contract)
     {
         if (ContractsInCentre == 4)
         {
             Debug.LogWarning("Contract can't enter ship - no space!");
             return;
         }
-        ContractsInside.Add(contract);
+        GameObject OnBoardContract = Instantiate(friendlyObject, ContractSpawnSpot.Find(ContractsInCentre.ToString())) as GameObject;
+        OnBoardContract.transform.localScale = new Vector3(1, 1, 1);
+        OnBoardContract.GetComponent<ContractInShip>().ResourceRemaining = contract.GetContractValue();
+        ContractsInside.Add(OnBoardContract);
         ContractsInCentre++;
     }
-    
-    /* Handle dragging of contracts */    
+
+    /* Use a specified resource (returns false if used up) */
+    public bool UseResource(ContractAssignee ResourceType)
+    {
+        ZoneInShip ThisZone = null;
+        switch (ResourceType)
+        {
+            case ContractAssignee.BLUE:
+                ThisZone = BlueZone.gameObject.GetComponent<ZoneInShip>();
+                break;
+            case ContractAssignee.GREEN:
+                ThisZone = GreenZone.gameObject.GetComponent<ZoneInShip>();
+                break;
+            case ContractAssignee.RED:
+                ThisZone = RedZone.gameObject.GetComponent<ZoneInShip>();
+                break;
+            case ContractAssignee.YELLOW:
+                ThisZone = YellowZone.gameObject.GetComponent<ZoneInShip>();
+                break;
+        }
+        if (ThisZone == null) return false;
+        ThisZone.ResourceCount -= ResourceDepletionRate;
+        return (ThisZone.ResourceCount > 0.0f);
+    }
+
+    /* Check to see if a resource is empty */
+    public bool ResourceIsEmpty(ContractAssignee ResourceType)
+    {
+        ZoneInShip ThisZone = null;
+        switch (ResourceType)
+        {
+            case ContractAssignee.BLUE:
+                ThisZone = BlueZone.gameObject.GetComponent<ZoneInShip>();
+                break;
+            case ContractAssignee.GREEN:
+                ThisZone = GreenZone.gameObject.GetComponent<ZoneInShip>();
+                break;
+            case ContractAssignee.RED:
+                ThisZone = RedZone.gameObject.GetComponent<ZoneInShip>();
+                break;
+            case ContractAssignee.YELLOW:
+                ThisZone = YellowZone.gameObject.GetComponent<ZoneInShip>();
+                break;
+        }
+        return (ThisZone == null || ThisZone.ResourceCount <= 0.0f);
+    }
+     
+    /* Handle update logic */
     void Update()
     {
-        //Check all contracts and remove ones that are out of juice
+        ContractInteraction();
+        DistributeResources();
+        ClearDeJuicedContracts();
+    }
+
+    /* Check all contracts and remove ones that are out of juice */
+    private void ClearDeJuicedContracts()
+    {
         List<GameObject> ContractsWithJuice = new List<GameObject>();
         foreach (GameObject Contract in ContractsInside)
         {
@@ -56,7 +100,43 @@ public class ShipResourceManagement : MonoBehaviour
                 Destroy(Contract);
         }
         ContractsInside = ContractsWithJuice;
+    }
 
+    /* Distribute resources from contracts to zones */
+    private void DistributeResources()
+    {
+        foreach (GameObject Contract in ContractsInside)
+        {
+            ContractInShip ContractMeta = Contract.GetComponent<ContractInShip>();
+            if (ContractMeta.State == ContractState.BEING_WORKED_ON)
+            {
+                ContractMeta.ResourceRemaining -= ResourceDepletionRate;
+                switch (ContractMeta.Assignee)
+                {
+                    case ContractAssignee.BLUE:
+                        BlueZone.gameObject.GetComponent<ZoneInShip>().ResourceCount += ResourceDepletionRate;
+                        break;
+                    case ContractAssignee.GREEN:
+                        GreenZone.gameObject.GetComponent<ZoneInShip>().ResourceCount += ResourceDepletionRate;
+                        break;
+                    case ContractAssignee.RED:
+                        RedZone.gameObject.GetComponent<ZoneInShip>().ResourceCount += ResourceDepletionRate;
+                        break;
+                    case ContractAssignee.YELLOW:
+                        YellowZone.gameObject.GetComponent<ZoneInShip>().ResourceCount += ResourceDepletionRate;
+                        break;
+                }
+                if (ContractMeta.ResourceRemaining <= 0.0f)
+                {
+                    ContractMeta.State = ContractState.OUT_OF_JUICE;
+                }
+            }
+        }
+    }
+
+    /* Handle dragging of contracts */
+    private void ContractInteraction()
+    {
         PrevContractTouch = ActiveContractTouch;
 
         //Work out what contract we're interacting with

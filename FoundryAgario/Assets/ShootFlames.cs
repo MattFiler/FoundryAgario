@@ -15,6 +15,21 @@ public class ShootFlames : MonoBehaviour
 
     void Update()
     {
-        flames.emissionRate = mousePos.mouseDown ? flameEmmisionRate : 0;
+        if (mousePos.mouseDown)
+        {
+            if (ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.RED))
+            {
+                flames.emissionRate = 0;
+            }
+            else
+            {
+                ShipResourceManagement.Instance.UseResource(ContractAssignee.RED);
+                flames.emissionRate = flameEmmisionRate;
+            }
+        }
+        else
+        {
+            flames.emissionRate = 0;
+        }
     }
 }

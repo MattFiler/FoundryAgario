@@ -24,17 +24,4 @@ public class ContractInShip : MonoBehaviour
     public ContractState State = ContractState.IN_IDLE_SPOT;
     public ContractAssignee Assignee = ContractAssignee.NONE;
     public float ResourceRemaining = 100.0f;
-
-    /* When being worked on, update remaining resources every frame */
-    void FixedUpdate()
-    {
-        if (State == ContractState.BEING_WORKED_ON)
-        {
-            ResourceRemaining -= 0.5f;
-            if (ResourceRemaining <= 0.0f)
-            {
-                State = ContractState.OUT_OF_JUICE;
-            }
-        }
-    }
 }
