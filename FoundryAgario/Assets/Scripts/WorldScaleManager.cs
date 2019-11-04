@@ -7,7 +7,7 @@ public class WorldScaleManager : MonoBehaviour
     [SerializeField] private ScaleLevelContainer[] backgroundObjects;
     [SerializeField] private GameObject ship;
     [SerializeField] private float scaleAnimDuration = 2.0f;
-    [SerializeField] private Vector3 minShipScale = Vector3.one;
+    private Vector3 minShipScale = Vector3.one;
     [SerializeField] private Vector3 maxShipScale = Vector3.one*2;
     [SerializeField] private SpriteRenderer backGround;
 
@@ -147,6 +147,7 @@ public class WorldScaleManager : MonoBehaviour
 
     private void Start()
     {
+        minShipScale = ship.transform.localScale;
         targetShipScale = minShipScale;
         for (int i = 0; i < backgroundObjects.Length; i++)
         {
