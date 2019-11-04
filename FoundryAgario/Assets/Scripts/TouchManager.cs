@@ -9,11 +9,18 @@ public class TouchManager : MonoBehaviour
     public LayerMask validTouchLayers;
 
     private Dictionary<GameObject, Touch> touchedObjects = new Dictionary<GameObject, Touch>();
+    private Dictionary<int, GameObject> lastFrameTouches = new Dictionary<int, GameObject>();
+
+    private ContactFilter2D cf;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        cf = new ContactFilter2D();
+        cf.layerMask = validTouchLayers;
+        cf.useTriggers = true;
+
         if(instance == null)
         {
             instance = this;
@@ -27,6 +34,7 @@ public class TouchManager : MonoBehaviour
 
     void Update()
     {
+        Dictionary<int, GameObject> currentFrameTouches = new Dictionary<int, GameObject>();
         touchedObjects.Clear();
         Touch mouseTouch = new Touch();
         mouseTouch.position = Input.mousePosition;
@@ -38,12 +46,12 @@ public class TouchManager : MonoBehaviour
             mouseTouch.phase = TouchPhase.Began;
             mouseClicked = true;
         }
-        else if(Input.GetMouseButtonUp(0))
+        else if (Input.GetMouseButtonUp(0))
         {
             mouseTouch.phase = TouchPhase.Ended;
             mouseClicked = true;
         }
-        else if(Input.GetMouseButton(0))
+        else if (Input.GetMouseButton(0))
         {
             mouseClicked = true;
             mouseTouch.phase = TouchPhase.Stationary;
@@ -56,19 +64,53 @@ public class TouchManager : MonoBehaviour
             allTouches.Add(mouseTouch);
         }
 
-        for(int i = 0; i < allTouches.Count; i++)
+        List<Touch> removeList = new List<Touch>();
+        foreach (Touch t in allTouches)
         {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenPointToRay(allTouches[i].position).origin, Vector3.forward, Mathf.Infinity, validTouchLayers);
-            if (hit.collider != null)
+            if (lastFrameTouches.ContainsKey(t.fingerId))
             {
-                if (!touchedObjects.ContainsKey(hit.collider.gameObject))
+                RaycastHit2D[] hits = new RaycastHit2D[10];
+                Physics2D.Raycast(Camera.main.ScreenPointToRay(t.position).origin, Vector3.forward, cf, hits);
+                foreach (RaycastHit2D hit in hits)
                 {
-                    Touch touchy = allTouches[i];
-                    touchy.position = hit.point;
-                    touchedObjects.Add(hit.collider.gameObject, touchy);
+                    if (hit.collider != null && hit.transform.gameObject == lastFrameTouches[t.fingerId])
+                    {
+                        Debug.Log("last frame yeet");
+                        Touch touchy = t;
+                        touchy.position = hit.point;
+                        touchedObjects.Add(hit.collider.gameObject, touchy);
+                        removeList.Add(t);
+                        currentFrameTouches[t.fingerId] = hit.transform.gameObject;
+                        break;
+                    }
                 }
             }
         }
+
+        foreach(Touch t in removeList)
+        {
+            allTouches.Remove(t);
+        }
+
+        foreach (Touch t in allTouches)
+        {
+            RaycastHit2D[] hits = new RaycastHit2D[10];
+            Physics2D.Raycast(Camera.main.ScreenPointToRay(t.position).origin, Vector3.forward, cf, hits);
+            foreach (RaycastHit2D hit in hits)
+            {
+                if (hit.collider != null && hit.collider.gameObject.layer == 8) // I've given up on life
+                {
+                    if (!touchedObjects.ContainsKey(hit.collider.gameObject))
+                    {
+                        Touch touchy = t;
+                        touchy.position = hit.point;
+                        touchedObjects.Add(hit.collider.gameObject, touchy);
+                        currentFrameTouches[t.fingerId] = hit.transform.gameObject;
+                    }
+                }
+            }
+        }
+        lastFrameTouches = currentFrameTouches;
     }
 
     public bool GetTouch(GameObject queryObject, ref Touch touch)
