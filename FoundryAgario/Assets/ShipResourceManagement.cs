@@ -30,6 +30,24 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
     /* Bring the contract inside the ship */
     public void ImportContract(FriendlyAI contract)
     {
+        //Update score
+        switch (contract.GetContractWorth())
+        {
+            case ContractWorthAmount.TEN_K_WORTH:
+                PlayerScore.Instance.Score += 10000;
+                break;
+            case ContractWorthAmount.TWENTY_K_WORTH:
+                PlayerScore.Instance.Score += 20000;
+                break;
+            case ContractWorthAmount.FIFTY_K_WORTH:
+                PlayerScore.Instance.Score += 50000;
+                break;
+            case ContractWorthAmount.SEVENTY_K_WORTH:
+                PlayerScore.Instance.Score += 75000;
+                break;
+        }
+
+        //Work out how many contracts are in centre of ship, and don't spawn if we're at max
         int ContractsInCentre = 0;
         foreach (GameObject InShip in ContractsInside)
         {
@@ -43,6 +61,8 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
             Debug.LogWarning("Contract can't enter ship - no space!");
             return;
         }
+
+        //We're not at max, spawn in centre
         GameObject OnBoardContract = Instantiate(friendlyObject, ContractSpawnSpot.Find(ContractsInCentre.ToString())) as GameObject;
         OnBoardContract.transform.localScale = new Vector3(1, 1, 1);
         OnBoardContract.GetComponent<ContractInShip>().ResourceRemaining = contract.GetContractValue();
@@ -50,7 +70,6 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
         OnBoardContract.GetComponent<ContractInShip>().SetContractWorth(contract.GetContractWorth());
         OnBoardContract.transform.parent = ContractSpawnSpot.transform;
         ContractsInside.Add(OnBoardContract);
-        ContractsInCentre++;
     }
 
     /* Use a specified resource (returns false if used up) */

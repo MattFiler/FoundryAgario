@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: d845777c645f08f4b8b14ea6213ca9d5
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Jixellation
+  fontNames:
+  - Jixellation
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: bf1dceaa534cedd4bab9d91357c8de9a, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
