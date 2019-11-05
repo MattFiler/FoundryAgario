@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2369859943300627820}
   - component: {fileID: 6813757890894578644}
+  - component: {fileID: 5819715041648718026}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -80,6 +81,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &5819715041648718026
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420389378046223426}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 211752a6505aac344ad6ebcd28e9dfb0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &443207921390489248
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,6 +1038,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6010518090866857216}
   - component: {fileID: 6546159160121111776}
+  - component: {fileID: 8163079723634992642}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -1088,6 +1109,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8163079723634992642
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4460164654313046579}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1674dbffb65276e44b8d96830e29008d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4499401612067086743
 GameObject:
   m_ObjectHideFlags: 0
@@ -1933,6 +1973,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6372665874576297672}
   - component: {fileID: 7420570534409154693}
+  - component: {fileID: 8289474693700197213}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -2003,6 +2044,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8289474693700197213
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7105344194190163641}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6d095227a1dc87648ab32f9b825dd32d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7810125780038589220
 GameObject:
   m_ObjectHideFlags: 0
@@ -2123,6 +2183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6858468284245272353}
   - component: {fileID: 8669205869382602742}
+  - component: {fileID: 3831079401134010593}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -2193,6 +2254,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3831079401134010593
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8368451851542158067}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0834fae9fd1a7bb4880b2271d116c919, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8548323336200219118
 GameObject:
   m_ObjectHideFlags: 0
