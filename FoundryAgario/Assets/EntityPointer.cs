@@ -40,6 +40,7 @@ public class EntityPointer : MonoBehaviour
         foreach (GameObject enemyObject in ContractSpawneer.Instance.GetEnemyEntities())
         {
             if (enemyObject == null) continue;
+            if (EnemyIndex > EnemyPointers.Count - 1) break; //FUCK OFF YOU FUCKING SHIT PIECE OF WANK
             if (Vector3.Distance(enemyObject.transform.position, ShipMovement.Instance.GetPosition()) < DistanceToTrack)
             {
                 EnemyPointers[EnemyIndex].transform.position = ConvertPositionToClampedScreenspace(enemyObject.transform.position);
