@@ -10,6 +10,11 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
 
     [SerializeField] private Transform ContractSpawnSpot;
 
+    [SerializeField] private GameObject RainyDayErrorCover;
+    [SerializeField] private float TimeForRainyDay = 10.0f;
+    private RainyDayType CurrentRainyDay = RainyDayType.MAX_TYPES; //MAX_TYPES acts as NONE because I'm lazy
+    private float TimeSinceRainyDay = 0.0f;
+
     private List<GameObject> ContractsInside = new List<GameObject>();
     private int ActiveContractTouch = -1;
     private int PrevContractTouch = -1;
@@ -75,6 +80,12 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
         OnBoardContract.GetComponent<ContractInShip>().SetContractWorth(contract.GetContractWorth());
         OnBoardContract.transform.parent = ContractSpawnSpot.transform;
         ContractsInside.Add(OnBoardContract);
+    }
+
+    /* Set the current rainy day issue */
+    public void SetRainyDay(RainyDayType issue)
+    {
+        CurrentRainyDay = issue;
     }
 
     /* Use a specified resource (returns false if used up) */
