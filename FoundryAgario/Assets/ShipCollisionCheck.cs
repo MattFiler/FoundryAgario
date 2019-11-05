@@ -10,6 +10,7 @@ public class ShipCollisionCheck : MonoBehaviour
     [SerializeField] private int DamagePerBulletHit = 2;
     private int ShipHealth = 1;
     private int ShipHealthOrig = 100;
+    private bool GameEnded = false;
 
     /* When something collides with the ship, check what it is, and act appropriately. */
     private void OnCollisionEnter2D(Collision2D collision)
@@ -41,13 +42,15 @@ public class ShipCollisionCheck : MonoBehaviour
                                  ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.YELLOW) &&
                                  ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.RED) &&
                                  ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.GREEN);
-        if (ShipHealth == 0 || allResourcesEmpty)
+        if ((ShipHealth == 0 || allResourcesEmpty) && !GameEnded)
         {
             //GameOver
             PlayerPrefs.SetString("highscores", PlayerPrefs.GetString("highscores") + "," + PlayerScore.Instance.Score.ToString());
             PlayerPrefs.Save();
             //TODO: SHOW POPUP HERE
             SceneManager.LoadScene("Highscores");
+
+            GameEnded = true;
         }
     }
 }
