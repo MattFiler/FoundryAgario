@@ -13,6 +13,8 @@ public class GetMousePos : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(transform.parent.name + " " + mouseDown);
+
         Touch touch = NewMethod();
         if (TouchManager.instance.GetTouch(this.gameObject, ref touch))
         {
@@ -29,6 +31,7 @@ public class GetMousePos : MonoBehaviour
         }
         else
         {
+            Debug.Log(transform.parent.name + " test2");
             mouseDown = false;
         }
     }

@@ -26,7 +26,11 @@ public class FireLazer : MonoBehaviour
     {
         if (mousePos.mouseDown)
         {
-            if (ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.GREEN)) return;
+            if (ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.GREEN))
+            {
+                laserBeam.positionCount = 0;
+                return;
+            }
             ShipResourceManagement.Instance.UseResource(ContractAssignee.GREEN);
 
             light.SetActive(true);
