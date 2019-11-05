@@ -77,7 +77,7 @@ public class TouchManager : MonoBehaviour
                     {
                         Touch touchy = t;
                         touchy.position = hit.point;
-                        //Debug.Log("Dic 1");
+                        Debug.Log("Dic 1");
                         touchedObjects.Add(hit.collider.gameObject, touchy);
                         removeList.Add(t);
                         currentFrameTouches[t.fingerId] = hit.transform.gameObject;
@@ -107,6 +107,7 @@ public class TouchManager : MonoBehaviour
                         Debug.Log("Dic 2");
                         touchedObjects.Add(hit.collider.gameObject, touchy);
                         currentFrameTouches[t.fingerId] = hit.transform.gameObject;
+                        break;
                     }
                 }
             }
