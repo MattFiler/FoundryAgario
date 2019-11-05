@@ -47,12 +47,7 @@ public class ShipCollisionCheck : MonoBehaviour
                                  ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.GREEN);
         if ((ShipHealth == 0 || allResourcesEmpty) && !GameEnded)
         {
-            //GameOver
-            PlayerPrefs.SetString("highscores", PlayerPrefs.GetString("highscores") + "," + PlayerScore.Instance.Score.ToString());
-            PlayerPrefs.Save();
-            //TODO: SHOW POPUP HERE
-            SceneManager.LoadScene("Highscores");
-
+            ShowLoss.Instance.ShouldShowLoss = true;
             GameEnded = true;
         }
     }
