@@ -76,6 +76,8 @@ public class EnemyAI : MonoBehaviour
     /* When hit with a lazer, reduce our health */
     public void reduceHealth(int healthLost)
     {
+        GetComponent<Animator>().SetTrigger("damaged");
+
         health -= healthLost;
         Debug.Log("THANKS FOR THAT. RUINED MY HOLIDAY.");
         if(health <= 0)
