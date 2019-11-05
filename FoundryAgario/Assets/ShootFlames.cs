@@ -7,6 +7,7 @@ public class ShootFlames : MonoBehaviour
     public GetMousePos mousePos;
     ParticleSystem[] flames;
     public float flameEmmisionRate = 50;
+    public GameObject light;
 
     private void Start()
     {
@@ -15,6 +16,8 @@ public class ShootFlames : MonoBehaviour
 
     void Update()
     {
+        light.SetActive(mousePos.mouseDown && !ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.RED));
+
         foreach (ParticleSystem ps in flames)
         {
             if (mousePos.mouseDown)

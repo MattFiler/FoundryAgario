@@ -18,11 +18,20 @@ public class WorldScaleManager : MonoSingleton<WorldScaleManager>
     private Vector3 targetShipScale = Vector3.one;
     private bool isAnimating = false;
 
+    public float difficultyScale = 1;
+
     // Every scale added will increase the ships scale where 0 is minShipScale and 
     // 100 is maxShipScale and every 100 scale added will increase the scale level.
     // If already at max scale level, adding scale will have no effect
     public void AddScale(int scaleToAdd)
     {
+
+        scale += scaleToAdd;
+        difficultyScale = scaleToAdd / 30.0f;
+
+
+
+        return;
         if (isAnimating)
             return;
         scale += scaleToAdd;
@@ -154,6 +163,7 @@ public class WorldScaleManager : MonoSingleton<WorldScaleManager>
 
     private void Start()
     {
+        return;
         minShipScale = ship.transform.localScale;
         targetShipScale = minShipScale;
         for (int i = 0; i < backgroundObjects.Length; i++)
@@ -169,8 +179,9 @@ public class WorldScaleManager : MonoSingleton<WorldScaleManager>
 
     void Update()
     {
-        #if UNITY_EDITOR
-        if(Input.GetKeyDown(KeyCode.O))
+        return;
+    #if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.O))
         {
             AddScale(5);
         }

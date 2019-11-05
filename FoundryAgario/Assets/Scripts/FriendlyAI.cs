@@ -67,8 +67,8 @@ public class FriendlyAI : MonoBehaviour
     /* If the consultation beam hits us, shrink and show outline */
     private void HandleShrink()
     {
-        transform.Find("outlline").gameObject.SetActive(shrink);
-        if (shrink && transform.localScale.x > shrinkThreshold)
+        GetComponentInChildren<SpriteRenderer>().color = shrink ? Color.green : Color.white;
+        if (shrink)
         {
             Debug.Log("ICH BIN SCHRUMPFEN");
             float scaleNew = transform.localScale.x - (shrinkRate * Time.fixedDeltaTime);
