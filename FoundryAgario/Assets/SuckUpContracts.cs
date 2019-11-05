@@ -9,13 +9,16 @@ public class SuckUpContracts : MonoBehaviour
     public Transform lerpPoint;
     CheckForContracts checkForContracts;
     public GetMousePos mousePos;
-    public GameObject succParticlesObj;
+    public GameObject goodSuccParticlesObj;
+    public GameObject badSuccParticlesObj;
     public AudioSource succsound;
 
     [SerializeField] float shakeSpeed = 1.0f;
     [SerializeField] float shakeAmount = 1.0f;
 
     public float succSpeed = 1.0f;
+
+    [SerializeField] bool goodParticles = true;
     void Start()
     {
         checkForContracts = GetComponentInChildren<CheckForContracts>();
@@ -34,20 +37,31 @@ public class SuckUpContracts : MonoBehaviour
                 Debug.Log("contract size " + contract.GetComponent<FriendlyAI>().GetWidth());
                 if (contract.GetComponent<FriendlyAI>().GetWidth() > transform.localScale.x)
                 {
-                   
                     Debug.Log("Me me big boi");
+                    goodParticles = false;
+
                     //contract.transform.position = Vector2.one * Mathf.Sin(Time.time * shakeSpeed) * shakeAmount;
                     continue;
                 }
 
+                goodParticles = true;
                 contract.transform.position = Vector2.Lerp(contract.transform.position, lerpPoint.position, succSpeed * Time.deltaTime);
             }
         }
           
        
-        succParticlesObj.SetActive(mousePos.mouseDown);
+        if(mousePos.mouseDown)
+        {
+            goodSuccParticlesObj.SetActive(goodParticles);
+            badSuccParticlesObj.SetActive(!goodParticles);
+        }
+        else 
+        {
+            goodSuccParticlesObj.SetActive(false);
+            badSuccParticlesObj.SetActive(false);
+        }
 
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
