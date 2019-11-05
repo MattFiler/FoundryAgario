@@ -37,25 +37,18 @@ public class EnemyAI : MonoBehaviour
         ThisSprite.sprite = RainyDaySprites[(int)type];
     }
 
-    /* When we're close to the player, start moving towards them */
+    /* When we're close to the player, start moving towards them and shoot when in range */
     void FixedUpdate()
     {
         if (ContractSpawneer.Instance.PointIsWithinCameraView(this.gameObject.transform.position))
         {
-            if(Vector2.Distance(gameObject.transform.position, ShipMovement.Instance.GetPosition()) <= shootRange)
-            {
-                Shoot();
-            }
-            else
-            {
-                this.gameObject.transform.position = Vector3.MoveTowards(this.gameObject.transform.position, ShipMovement.Instance.GetPosition(), 0.025f);
-                //if (this.gameObject.transform.position == ShipMovement.Instance.GetPosition()) Destroy(this.gameObject);
-            }
-
+            if(Vector2.Distance(gameObject.transform.position, ShipMovement.Instance.GetPosition()) <= shootRange) Shoot();
+            this.gameObject.transform.position = Vector3.MoveTowards(this.gameObject.transform.position, ShipMovement.Instance.GetPosition(), 0.025f);
+            //if (this.gameObject.transform.position == ShipMovement.Instance.GetPosition()) Destroy(this.gameObject);
         }
     }
 
-
+    /* Shoot a bullet at the player */
     private void Shoot()
     {
         if(timeSinceShoot >= shootCooldown)
@@ -84,14 +77,6 @@ public class EnemyAI : MonoBehaviour
         health -= healthLost;
         Debug.Log("OW");
         if(health <= 0)
-        {
-            GameObject.Destroy(this.gameObject);
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ship"))
         {
             GameObject.Destroy(this.gameObject);
         }
