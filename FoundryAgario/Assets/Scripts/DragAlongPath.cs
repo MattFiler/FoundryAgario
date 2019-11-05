@@ -75,8 +75,8 @@ public class DragAlongPath : MonoBehaviour
                 }
             }
 
-            target.transform.rotation = Quaternion.Lerp(target.transform.rotation, targetAngles[target], 0.1f);
-            target.transform.localPosition = Vector3.Lerp(target.transform.localPosition, targetPos[target], 0.6f);
+            target.transform.rotation = Quaternion.Lerp(target.transform.rotation, targetAngles[target], 5 *  Time.deltaTime);
+            target.transform.localPosition = Vector3.Lerp(target.transform.localPosition, targetPos[target], 30 * Time.deltaTime);
         }
     }
 
