@@ -37,7 +37,7 @@ public class FriendlyAI : MonoBehaviour
     public void SetContractWorth(ContractWorthAmount worth)
     {
         ContractWorth = worth;
-        ContractValue = ((int)worth + 1) * 70;
+        ContractValue = ((int)worth + 1) * 30;
         ThisWorthSprite.sprite = WorthSprites[(int)worth];
 
         int thisScaleValue = Random.Range(1, ((int)worth+1) * 2);
