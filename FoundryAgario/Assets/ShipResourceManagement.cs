@@ -28,7 +28,7 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
     /* Tweak these values to change the resource depletion time! */
     private void Start()
     {
-        ResourceDepletionRate[(int)ContractAssignee.BLUE] = 20.0f; //Grabby arm
+        ResourceDepletionRate[(int)ContractAssignee.BLUE] = 0.1f; //Grabby arm
         ResourceDepletionRate[(int)ContractAssignee.RED] = 0.08f; //Booster
         ResourceDepletionRate[(int)ContractAssignee.GREEN] = 0.5f; //Lazer
         ResourceDepletionRate[(int)ContractAssignee.YELLOW] = 0.5f; //Money blastaa
