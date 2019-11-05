@@ -407,8 +407,7 @@ MonoBehaviour:
   GreenZone: {fileID: 1805514727959814166}
   BlueZone: {fileID: 2984568073768675589}
   YellowZone: {fileID: 6364944106020319039}
-  ContractSpawnSpot: {fileID: 9063384924399028806}
-  ResourceDepletionRate: 0.5
+  ContractSpawnSpot: {fileID: 6549277874712302397}
   friendlyObject: {fileID: 5633237586518882823, guid: 058b66d3ded16aa46b5400a510dfafe0,
     type: 3}
 --- !u!1 &1998570132518672139
