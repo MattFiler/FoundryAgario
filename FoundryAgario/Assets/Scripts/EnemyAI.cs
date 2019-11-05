@@ -77,7 +77,7 @@ public class EnemyAI : MonoBehaviour
     public void reduceHealth(int healthLost)
     {
         health -= healthLost;
-        Debug.Log("OW");
+        Debug.Log("THANKS FOR THAT. RUINED MY HOLIDAY.");
         if(health <= 0)
         {
             Instantiate(PoofFX, this.gameObject.transform.position, Quaternion.identity);
