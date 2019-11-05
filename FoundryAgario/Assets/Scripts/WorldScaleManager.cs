@@ -19,6 +19,7 @@ public class WorldScaleManager : MonoSingleton<WorldScaleManager>
     private bool isAnimating = false;
 
     public float difficultyScale = 1;
+    public float maxDifficulty = 2;
 
     // Every scale added will increase the ships scale where 0 is minShipScale and 
     // 100 is maxShipScale and every 100 scale added will increase the scale level.
@@ -29,9 +30,9 @@ public class WorldScaleManager : MonoSingleton<WorldScaleManager>
         scale += scaleToAdd;
         difficultyScale = scale / 150.0f;
 
-        if(difficultyScale > 2)
+        if(difficultyScale > maxDifficulty)
         {
-            difficultyScale = 2;
+            difficultyScale = maxDifficulty;
         }
 
 
