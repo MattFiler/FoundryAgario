@@ -82,6 +82,7 @@ public class EnemyAI : MonoBehaviour
         Debug.Log("THANKS FOR THAT. RUINED MY HOLIDAY.");
         if(health <= 0)
         {
+            Debug.Log("OH NO HE'S DEED");
             Instantiate(PoofFX, this.gameObject.transform.position, Quaternion.identity);
             GameObject.Destroy(this.gameObject);
         }

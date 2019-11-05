@@ -23,6 +23,8 @@ public enum ContractAssignee
 
 public class ContractInShip : MonoBehaviour
 {
+    [SerializeField] private GameObject PoofFX;
+
     [SerializeField] private Sprite[] WorthSprites;
     [SerializeField] private SpriteRenderer ThisWorthSprite;
     [SerializeField] private SpriteRenderer ThisProgressBar;
@@ -31,6 +33,12 @@ public class ContractInShip : MonoBehaviour
     public ContractAssignee Assignee = ContractAssignee.NONE;
     public float ResourceRemaining = 100.0f;
     public float ResourceMax = 100.0f;
+
+    /* On awake, play poof animation */
+    void Awake()
+    {
+        Instantiate(PoofFX, this.gameObject.transform.position, Quaternion.identity);
+    }
 
     /* Keep the progress bar updated */
     private void FixedUpdate()
