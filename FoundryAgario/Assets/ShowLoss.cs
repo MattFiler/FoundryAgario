@@ -13,7 +13,6 @@ public class ShowLoss : MonoSingleton<ShowLoss>
     {
         if (ShouldShowLoss)
         {
-            Debug.Log("ShouldShowLoss!");
             gameObject.GetComponent<Animator>().SetBool("showloss", true);
             TimeSinceShown += Time.deltaTime;
 
