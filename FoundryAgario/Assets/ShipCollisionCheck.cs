@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ShipCollisionCheck : MonoBehaviour
 {
     [SerializeField] private Text DamageCountText;
-    [SerializeField] private int DamagePerBulletHit = 1;
+    [SerializeField] private int DamagePerBulletHit = 2;
     private int ShipHealth = 100;
     private int ShipHealthOrig = 100;
 
@@ -33,6 +33,6 @@ public class ShipCollisionCheck : MonoBehaviour
     /* Update the health percent on update */
     private void Update()
     {
-        DamageCountText.text = ((ShipHealth / ShipHealthOrig) * 100).ToString() + "%";
+        DamageCountText.text = (((float)ShipHealth / (float)ShipHealthOrig) * 100).ToString() + "%";
     }
 }
