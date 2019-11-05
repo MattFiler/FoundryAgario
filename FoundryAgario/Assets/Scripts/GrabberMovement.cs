@@ -65,7 +65,6 @@ public class GrabberMovement : MonoBehaviour
         if (mousePos.mouseDown)
         {
             wasMouseDown = true;
-            ShipResourceManagement.Instance.UseResource(ContractAssignee.BLUE); //todo: decrease properly (e.g. X on activation)
         }
         else
         {
@@ -76,6 +75,7 @@ public class GrabberMovement : MonoBehaviour
                     isExtending = true;
                     wasMouseDown = false;
                     canMove = false;
+                    ShipResourceManagement.Instance.UseResource(ContractAssignee.BLUE); //todo: decrease properly (e.g. X on activation)
                 }
                 else
                 {
