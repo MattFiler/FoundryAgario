@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class ShowLoss : MonoSingleton<ShowLoss>
 {
+    [SerializeField] private Text FinalScore;
     public bool ShouldShowLoss = false;
     private float TimeSinceShown = 0.0f;
     private bool DidTriggerSceneChange = false;
@@ -13,6 +15,8 @@ public class ShowLoss : MonoSingleton<ShowLoss>
     {
         if (ShouldShowLoss)
         {
+            string ScoreAsMoney = PlayerScore.Instance.Score.ToString("C");
+            FinalScore.text = ScoreAsMoney.Substring(0, ScoreAsMoney.Length - 3);
             gameObject.GetComponent<Animator>().SetBool("showloss", true);
             TimeSinceShown += Time.deltaTime;
 

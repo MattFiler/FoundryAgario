@@ -914,6 +914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DestroyOnLoad: 1
+  FinalScore: {fileID: 1912190453384234148}
   ShouldShowLoss: 0
 --- !u!1 &5316004422110570937
 GameObject:
