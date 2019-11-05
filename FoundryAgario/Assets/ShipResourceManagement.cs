@@ -14,9 +14,18 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
     private int ActiveContractTouch = -1;
     private int PrevContractTouch = -1;
 
-    public float ResourceDepletionRate = 0.5f; //Should be const
+    private float[] ResourceDepletionRate = new float[(int)ContractAssignee.MAX_COUNT];
 
     [SerializeField] private GameObject friendlyObject;
+
+    /* Tweak these values to change the resource depletion time! */
+    private void Start()
+    {
+        ResourceDepletionRate[(int)ContractAssignee.BLUE] = 20.0f; //Grabby arm
+        ResourceDepletionRate[(int)ContractAssignee.RED] = 0.1f; //Booster
+        ResourceDepletionRate[(int)ContractAssignee.GREEN] = 1.0f; //Lazer
+        ResourceDepletionRate[(int)ContractAssignee.YELLOW] = 0.5f; //Money blastaa
+    }
     
     /* Bring the contract inside the ship */
     public void ImportContract(FriendlyAI contract)
@@ -64,7 +73,7 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
                 break;
         }
         if (ThisZone == null) return false;
-        ThisZone.ResourceCount -= ResourceDepletionRate;
+        ThisZone.ResourceCount -= ResourceDepletionRate[(int)ResourceType];
         return (ThisZone.ResourceCount > 0.0f);
     }
 
@@ -138,8 +147,8 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
                 }
                 if (ThisZone == null) continue;
                 if (ThisZone.ResourceCount >= ThisZone.ResourceMax) continue;
-                ThisZone.ResourceCount += ResourceDepletionRate;
-                ContractMeta.ResourceRemaining -= ResourceDepletionRate;
+                ThisZone.ResourceCount += ResourceDepletionRate[(int)ContractMeta.Assignee];
+                ContractMeta.ResourceRemaining -= ResourceDepletionRate[(int)ContractMeta.Assignee];
                 if (ContractMeta.ResourceRemaining <= 0.0f)
                 {
                     ContractMeta.State = ContractState.OUT_OF_JUICE;

@@ -7,7 +7,7 @@ public enum ContractState
     IN_IDLE_SPOT, //In the centre of the ship
     BEING_DRAGGED, //Being dragged around
     BEING_WORKED_ON, //Being worked on by red/yellow/green/blue
-    OUT_OF_JUICE //Was being worked on, now run out of resources
+    OUT_OF_JUICE, //Was being worked on, now run out of resources
 }
 
 public enum ContractAssignee
@@ -16,7 +16,9 @@ public enum ContractAssignee
     RED,
     YELLOW,
     GREEN,
-    BLUE
+    BLUE,
+
+    MAX_COUNT //must be last dont use obvs
 }
 
 public class ContractInShip : MonoBehaviour
