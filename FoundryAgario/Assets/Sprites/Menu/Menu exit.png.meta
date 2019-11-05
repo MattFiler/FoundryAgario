@@ -1,5 +1,6 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: 6370a97bacd7af74287cf17e5c75dcfc
 =======
 <<<<<<< HEAD
@@ -8,6 +9,9 @@ guid: 75106a3710519f64b9e5b0916afbf537
 guid: de3aa4190a73e5243958e2a43d038c9a
 >>>>>>> master
 >>>>>>> master
+=======
+guid: a04b2881e6627e346a2d0f519ba3722d
+>>>>>>> Pearce
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

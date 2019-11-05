@@ -1,9 +1,13 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: 7386d69cf691e3f49884578e5f41a90d
 =======
 guid: 6d052a3d0c87c4f49afd983217e296a1
 >>>>>>> master
+=======
+guid: c3b229c07b93ffa4d8dd3d74d1d780e5
+>>>>>>> Pearce
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -41,10 +45,14 @@ TextureImporter:
     wrapU: 1
     wrapV: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
     wrapW: 1
 =======
     wrapW: -1
 >>>>>>> master
+=======
+    wrapW: 1
+>>>>>>> Pearce
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -79,6 +87,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   - serializedVersion: 3
     buildTarget: Standalone
@@ -93,6 +102,8 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
 >>>>>>> master
+=======
+>>>>>>> Pearce
   spriteSheet:
     serializedVersion: 2
     sprites: []
@@ -100,10 +111,14 @@ TextureImporter:
     physicsShape: []
     bones: []
 <<<<<<< HEAD
+<<<<<<< HEAD
     spriteID: 5e97eb03825dee720800000000000000
 =======
     spriteID: 
 >>>>>>> master
+=======
+    spriteID: 5e97eb03825dee720800000000000000
+>>>>>>> Pearce
     internalID: 0
     vertices: []
     indices: 
