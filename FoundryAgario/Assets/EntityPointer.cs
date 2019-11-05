@@ -16,7 +16,7 @@ public class EntityPointer : MonoBehaviour
     void Awake()
     {
         //Create all possible enemy pointer arrows
-        for (int i = 0; i < ContractSpawneer.Instance.GetEnemyEntityMaxCount(); i++)
+        for (int i = 0; i < ContractSpawneer.Instance.GetEnemyEntityMaxCount() * WorldScaleManager.Instance.maxDifficulty; i++)
         {
             EnemyPointers.Add(Instantiate(EnemyPointer, this.transform) as GameObject);
         }

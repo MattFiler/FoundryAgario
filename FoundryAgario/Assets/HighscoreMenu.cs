@@ -22,6 +22,7 @@ public class HighscoreMenu : MonoBehaviour
             allScoresInt.Add(Convert.ToInt32(scoreString));
         }
         allScoresInt.Sort();
+        allScoresInt.Reverse();
         for (int i = 0; i < (allScoresInt.Count > 6 ? 6 : allScoresInt.Count); i++)
         {
             HighscoreList.text += "\n" + (i+1) + " - " + allScoresInt[i];
