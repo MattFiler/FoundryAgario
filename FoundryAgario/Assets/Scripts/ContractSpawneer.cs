@@ -95,7 +95,6 @@ public class ContractSpawneer : MonoSingleton<ContractSpawneer>
         for (int i = friendlyObjects.Count; i < numOfFriendlyContracts; i++)
         {
             GameObject newFriendly = Instantiate(friendlyObject, GeneratePosition(), Quaternion.identity) as GameObject;
-            newFriendly.GetComponent<FriendlyAI>().SetContractValue(Random.Range(50, 101));
             newFriendly.GetComponent<FriendlyAI>().SetContractWorth((ContractWorthAmount)Random.Range(0, (int)ContractWorthAmount.MAX_COUNT));
             friendlyObjects.Add(newFriendly);
         }

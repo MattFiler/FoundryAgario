@@ -21,23 +21,14 @@ public class FriendlyAI : MonoBehaviour
     public float shrinkThreshold = 0.1f;
     public bool shrink = false;
 
-    /* Set/get the value of this contract (the value that is given out in resources) */
+    /* Get the value of this contract (the value that is given out in resources) */
     private float ContractValue = 100.0f;
     public float GetContractValue()
     {
         return ContractValue;
     }
-    public void SetContractValue(float worth)
-    {
-        if (worth > 100)
-        {
-            Debug.LogWarning("100 is the max!");
-            worth = 100;
-        }
-        ContractValue = worth;
-    }
 
-    /* Set/get the worth of this contract (the visual sprite) */
+    /* Set/get the worth of this contract (the visual sprite, and subsequently the value) */
     private ContractWorthAmount ContractWorth;
     public ContractWorthAmount GetContractWorth()
     {
@@ -46,7 +37,11 @@ public class FriendlyAI : MonoBehaviour
     public void SetContractWorth(ContractWorthAmount worth)
     {
         ContractWorth = worth;
+        ContractValue = ((int)worth + 1) * 70;
         ThisWorthSprite.sprite = WorthSprites[(int)worth];
+
+        int thisScaleValue = Random.Range(1, ((int)worth+1) * 2);
+        transform.localScale = new Vector3(thisScaleValue, thisScaleValue, thisScaleValue);
     }
 
     /* Our movement starts at our current position */
