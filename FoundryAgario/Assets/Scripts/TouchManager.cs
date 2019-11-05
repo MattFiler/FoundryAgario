@@ -59,7 +59,7 @@ public class TouchManager : MonoBehaviour
 
         List<Touch> allTouches = new List<Touch>(Input.touches);
 
-        if (mouseClicked)
+        if (mouseClicked && allTouches.Count == 0)
         {
             mouseTouch.fingerId = -1;
             allTouches.Add(mouseTouch);
