@@ -22,8 +22,8 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
     private void Start()
     {
         ResourceDepletionRate[(int)ContractAssignee.BLUE] = 20.0f; //Grabby arm
-        ResourceDepletionRate[(int)ContractAssignee.RED] = 0.1f; //Booster
-        ResourceDepletionRate[(int)ContractAssignee.GREEN] = 1.0f; //Lazer
+        ResourceDepletionRate[(int)ContractAssignee.RED] = 0.08f; //Booster
+        ResourceDepletionRate[(int)ContractAssignee.GREEN] = 0.5f; //Lazer
         ResourceDepletionRate[(int)ContractAssignee.YELLOW] = 0.5f; //Money blastaa
     }
     
@@ -31,21 +31,26 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
     public void ImportContract(FriendlyAI contract)
     {
         //Update score
+        int ThisScore = 0;
         switch (contract.GetContractWorth())
         {
             case ContractWorthAmount.TEN_K_WORTH:
-                PlayerScore.Instance.Score += 10000;
+                ThisScore = 10000;
                 break;
             case ContractWorthAmount.TWENTY_K_WORTH:
-                PlayerScore.Instance.Score += 20000;
+                ThisScore = 20000;
                 break;
             case ContractWorthAmount.FIFTY_K_WORTH:
-                PlayerScore.Instance.Score += 50000;
+                ThisScore = 50000;
                 break;
             case ContractWorthAmount.SEVENTY_K_WORTH:
-                PlayerScore.Instance.Score += 75000;
+                ThisScore = 75000;
                 break;
         }
+        PlayerScore.Instance.Score += ThisScore;
+
+        //Increase ship size
+        WorldScaleManager.Instance.AddScale(ThisScore == 0 ? 0 : ThisScore / 10);
 
         //Work out how many contracts are in centre of ship, and don't spawn if we're at max
         int ContractsInCentre = 0;

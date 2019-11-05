@@ -2881,6 +2881,36 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5316004422987346701, guid: 6d585fbdb6dfce04782618b4b8a86a68,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5316004422987346701, guid: 6d585fbdb6dfce04782618b4b8a86a68,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5316004422987346701, guid: 6d585fbdb6dfce04782618b4b8a86a68,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5316004422987346701, guid: 6d585fbdb6dfce04782618b4b8a86a68,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5316004422987346701, guid: 6d585fbdb6dfce04782618b4b8a86a68,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 716
+      objectReference: {fileID: 0}
+    - target: {fileID: 5316004422987346701, guid: 6d585fbdb6dfce04782618b4b8a86a68,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 400
+      objectReference: {fileID: 0}
     - target: {fileID: 1503288838627925308, guid: 6d585fbdb6dfce04782618b4b8a86a68,
         type: 3}
       propertyPath: DistanceToTrackEnemy
