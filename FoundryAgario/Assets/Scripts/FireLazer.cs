@@ -16,6 +16,8 @@ public class FireLazer : MonoBehaviour
 
     public float laserZPos = -1;
     public GameObject light;
+
+    public GameObject particleSystem;
     private void Start()
     {
         laserBeam = GetComponent<LineRenderer>();
@@ -24,6 +26,9 @@ public class FireLazer : MonoBehaviour
 
     void Update()
     {
+        light.SetActive(mousePos.mouseDown);
+        particleSystem.SetActive(mousePos.mouseDown);
+
         if (mousePos.mouseDown)
         {
             if (ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.GREEN))
@@ -33,7 +38,6 @@ public class FireLazer : MonoBehaviour
             }
             ShipResourceManagement.Instance.UseResource(ContractAssignee.GREEN);
 
-            light.SetActive(true);
 
             laserBeam.enabled = true;
             laserBeam.positionCount = 1;
@@ -52,7 +56,6 @@ public class FireLazer : MonoBehaviour
         }
         else
         {
-            light.SetActive(false);
             StopShrinking();
             laserBeam.enabled = false;
         }

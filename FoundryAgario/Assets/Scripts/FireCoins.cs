@@ -10,7 +10,7 @@ public class FireCoins : MonoBehaviour
     public float coinEmmisionRate = 50;
     public float sparkleEmmisionRate = 30;
     public GameObject light;
-
+    public GameObject particleSystem;
     private void Start()
     {
         coins = GetComponentInChildren<ParticleSystem>();
@@ -18,6 +18,8 @@ public class FireCoins : MonoBehaviour
 
     void Update()
     {
+        particleSystem.SetActive(mousePos.mouseDown);
+
         if (mousePos.mouseDown && !ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.YELLOW))
         {
             ShipResourceManagement.Instance.UseResource(ContractAssignee.YELLOW);
