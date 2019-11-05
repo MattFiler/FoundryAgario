@@ -61,6 +61,7 @@ public class TouchManager : MonoBehaviour
 
         if (mouseClicked)
         {
+            mouseTouch.fingerId = -1;
             allTouches.Add(mouseTouch);
         }
 
@@ -73,14 +74,14 @@ public class TouchManager : MonoBehaviour
                 Physics2D.Raycast(Camera.main.ScreenPointToRay(t.position).origin, Vector3.forward, cf, hits);
                 foreach (RaycastHit2D hit in hits)
                 {
-                    if (hit.collider != null && hit.transform.gameObject == lastFrameTouches[t.fingerId])
+
+                    if (hit.collider != null && hit.collider.gameObject == lastFrameTouches[t.fingerId])
                     {
                         Touch touchy = t;
                         touchy.position = hit.point;
-                        Debug.Log("Dic 1");
                         touchedObjects.Add(hit.collider.gameObject, touchy);
                         removeList.Add(t);
-                        currentFrameTouches[t.fingerId] = hit.transform.gameObject;
+                        currentFrameTouches.Add(t.fingerId, hit.collider.gameObject);
                         break;
                     }
                 }
@@ -104,9 +105,8 @@ public class TouchManager : MonoBehaviour
                     {
                         Touch touchy = t;
                         touchy.position = hit.point;
-                        Debug.Log("Dic 2");
                         touchedObjects.Add(hit.collider.gameObject, touchy);
-                        currentFrameTouches[t.fingerId] = hit.transform.gameObject;
+                        currentFrameTouches.Add(touchy.fingerId, hit.collider.gameObject);
                         break;
                     }
                 }
