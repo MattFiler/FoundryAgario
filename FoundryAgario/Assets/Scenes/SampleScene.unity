@@ -284,6 +284,8 @@ MonoBehaviour:
   scaleAnimDuration: 2
   maxShipScale: {x: 2, y: 2, z: 2}
   backGround: {fileID: 0}
+  difficultyScale: 1
+  maxDifficulty: 2
 --- !u!4 &117978240
 Transform:
   m_ObjectHideFlags: 0
@@ -3161,6 +3163,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 1.0999756
       objectReference: {fileID: 0}
+    - target: {fileID: 2472384391734698772, guid: 6d585fbdb6dfce04782618b4b8a86a68,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2472384391734698772, guid: 6d585fbdb6dfce04782618b4b8a86a68,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d585fbdb6dfce04782618b4b8a86a68, type: 3}
 --- !u!114 &5316004422109886118 stripped
@@ -3187,7 +3199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd7d7f9b9805c1943b9ae880eb23f17a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestroyOnLoad: 0
+  DestroyOnLoad: 1
   environmentObject: {fileID: 8529672937011174769}
   friendlyObject: {fileID: 5633237586518882823, guid: cd62f024992e1c6458ef8a7b073498d0,
     type: 3}

@@ -13,11 +13,13 @@ public class ShowLoss : MonoSingleton<ShowLoss>
     {
         if (ShouldShowLoss)
         {
-            GetComponent<Animator>().SetBool("showloss", true);
+            Debug.Log("ShouldShowLoss!");
+            gameObject.GetComponent<Animator>().SetBool("showloss", true);
             TimeSinceShown += Time.deltaTime;
 
             if (TimeSinceShown >= 5.0f && !DidTriggerSceneChange)
             {
+                Debug.Log("GAMEOVER! CYA NERDS.");
                 //GameOver
                 PlayerPrefs.SetString("highscores", PlayerPrefs.GetString("highscores") + "," + PlayerScore.Instance.Score.ToString());
                 PlayerPrefs.Save();

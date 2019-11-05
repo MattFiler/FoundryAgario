@@ -10,7 +10,7 @@ public class ShipCollisionCheck : MonoBehaviour
     [SerializeField] private Text DamageCountText;
     [SerializeField] private int DamagePerBulletHit = 2;
     [SerializeField] private int DamagePerEnemyImpact = 6;
-    private int ShipHealth = 100;
+    private int ShipHealth = 1;
     private int ShipHealthOrig = 100;
     private bool GameEnded = false;
 
@@ -45,7 +45,7 @@ public class ShipCollisionCheck : MonoBehaviour
                                  ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.YELLOW) &&
                                  ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.RED) &&
                                  ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.GREEN);
-        if ((ShipHealth == 0 || allResourcesEmpty) && !GameEnded)
+        if ((ShipHealth <= 0 || allResourcesEmpty) && !GameEnded)
         {
             ShowLoss.Instance.ShouldShowLoss = true;
             GameEnded = true;
