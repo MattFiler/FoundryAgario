@@ -10,7 +10,9 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
 
     [SerializeField] private Transform ContractSpawnSpot;
 
+    [SerializeField] private Sprite[] RainyDaySprites;
     [SerializeField] private GameObject RainyDayErrorCover;
+    [SerializeField] private SpriteRenderer RainyDayTypeSprite;
     [SerializeField] private float TimeForRainyDay = 10.0f;
     private RainyDayType CurrentRainyDay = RainyDayType.MAX_TYPES; //MAX_TYPES acts as NONE because I'm lazy
     private float TimeSinceRainyDay = 0.0f;
@@ -82,12 +84,6 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
         ContractsInside.Add(OnBoardContract);
     }
 
-    /* Set the current rainy day issue */
-    public void SetRainyDay(RainyDayType issue)
-    {
-        CurrentRainyDay = issue;
-    }
-
     /* Use a specified resource (returns false if used up) */
     public bool UseResource(ContractAssignee ResourceType)
     {
@@ -133,7 +129,37 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
         }
         return (ThisZone == null || ThisZone.ResourceCount <= 0.0f);
     }
-     
+
+    /* Set the current rainy day issue */
+    public void SetRainyDay(RainyDayType issue)
+    {
+        CurrentRainyDay = issue;
+        RainyDayTypeSprite.gameObject.SetActive(true);
+        RainyDayTypeSprite.sprite = RainyDaySprites[(int)issue];
+        TimeSinceRainyDay = 0.0f;
+        RainyDayErrorCover.SetActive(true);
+        RainyDayErrorCover.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+    }
+
+    /* Update the rainy day progress bar, and disable rainy day status if zero */
+    void FixedUpdate()
+    {
+        TimeSinceRainyDay += Time.deltaTime;
+        if (TimeSinceRainyDay >= TimeForRainyDay)
+        {
+            CurrentRainyDay = RainyDayType.MAX_TYPES;
+            RainyDayTypeSprite.gameObject.SetActive(false);
+            RainyDayErrorCover.SetActive(false);
+            return;
+        }
+
+        float RainyDayProgress = TimeSinceRainyDay / TimeForRainyDay;
+        if (RainyDayProgress > 1) RainyDayProgress = 1;
+        if (RainyDayProgress < 0) RainyDayProgress = 0;
+        RainyDayProgress = (RainyDayProgress - 1) * -1;
+        RainyDayErrorCover.transform.localScale = new Vector3(1.0f, RainyDayProgress, 1.0f);
+    }
+
     /* Handle update logic */
     void Update()
     {
@@ -159,6 +185,8 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
     /* Distribute resources from contracts to zones if they're low */
     private void DistributeResources()
     {
+        if (CurrentRainyDay != RainyDayType.MAX_TYPES) return; //Only allow contract consumption when no rainy day issues are active
+
         foreach (GameObject Contract in ContractsInside)
         {
             ContractInShip ContractMeta = Contract.GetComponent<ContractInShip>();
