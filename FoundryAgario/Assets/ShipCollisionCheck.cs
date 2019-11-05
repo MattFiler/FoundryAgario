@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ShipCollisionCheck : MonoBehaviour
@@ -30,9 +31,22 @@ public class ShipCollisionCheck : MonoBehaviour
         }
     }
 
-    /* Update the health percent on update */
+    /* Update the health percent on update, and check for loss states */
     private void Update()
     {
         DamageCountText.text = (((float)ShipHealth / (float)ShipHealthOrig) * 100).ToString() + "%";
+
+        //If out of health or resources, we lost
+        bool allResourcesEmpty = ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.BLUE) &&
+                                 ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.YELLOW) &&
+                                 ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.RED) &&
+                                 ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.GREEN);
+        if (ShipHealth == 0 || allResourcesEmpty)
+        {
+            //GameOver
+            PlayerPrefs.SetString("highscores", PlayerPrefs.GetString("highscores") + "," + PlayerScore.Instance.Score.ToString());
+            //TODO: SHOW POPUP HERE
+            SceneManager.LoadScene("Highscores");
+        }
     }
 }
