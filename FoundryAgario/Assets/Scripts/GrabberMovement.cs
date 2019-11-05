@@ -92,6 +92,7 @@ public class GrabberMovement : MonoBehaviour
         {
             Vector3 translationAddition = new Vector3(0.0f, ((0.25f * extendingSpeed) * Time.deltaTime), 0.0f);
             Vector3 scalingAddition = new Vector3(0.0f, ((5.0f * extendingSpeed) * Time.deltaTime), 0.0f);
+        
 
             if (!hasExtended)
             {
