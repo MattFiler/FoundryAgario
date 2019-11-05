@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
+  PoofFX: {fileID: 8798098861716359313, guid: c2264d158db41b445bc6c7db6dd1a7fa, type: 3}
   RainyDaySprites:
   - {fileID: 21300000, guid: 3f079fa105270f344a9384ed33441c66, type: 3}
   - {fileID: 21300000, guid: 768664219976a7e4984b7a3507109eb2, type: 3}

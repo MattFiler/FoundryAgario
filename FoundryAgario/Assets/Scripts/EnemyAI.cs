@@ -15,6 +15,8 @@ public class EnemyAI : MonoBehaviour
 {
     public int health = 100; //temp
 
+    [SerializeField] private GameObject PoofFX;
+
     [SerializeField] private Sprite[] RainyDaySprites;
     [SerializeField] private Sprite[] BulletSprites;
     [SerializeField] private GameObject Bullet;
@@ -78,6 +80,7 @@ public class EnemyAI : MonoBehaviour
         Debug.Log("OW");
         if(health <= 0)
         {
+            Instantiate(PoofFX, this.gameObject.transform.position, Quaternion.identity);
             GameObject.Destroy(this.gameObject);
         }
     }

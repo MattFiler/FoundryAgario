@@ -31,8 +31,7 @@ public class ShipCollisionCheck : MonoBehaviour
             Debug.Log("SOME CUNT INFECTED MEEEE!");
             ShipResourceManagement.Instance.SetRainyDay(collision.gameObject.GetComponent<EnemyAI>().GetEnemyType());
             ShipHealth -= DamagePerEnemyImpact;
-            Instantiate(PoofFX, collision.gameObject.transform.position, Quaternion.identity);
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<EnemyAI>().health = -1;
         }
     }
 
