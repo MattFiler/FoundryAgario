@@ -25,12 +25,14 @@ public class SuckUpContracts : MonoBehaviour
     {
         if (mousePos.mouseDown)
         {
+            Debug.Log("my size " +  transform.localScale.x);
             foreach (GameObject contract in checkForContracts.currentContracts)
             {
-                if(contract.GetComponent<BoxCollider2D>().size.x > GetComponent<BoxCollider2D>().size.x)
+                Debug.Log("contract size " + contract.GetComponent<FriendlyAI>().GetWidth());
+                if (contract.GetComponent<FriendlyAI>().GetWidth() > transform.localScale.x)
                 {
                     Debug.Log("Me me big boi");
-                    contract.transform.position = Vector2.one * Mathf.Sin(Time.time * shakeSpeed) * shakeAmount;
+                    //contract.transform.position = Vector2.one * Mathf.Sin(Time.time * shakeSpeed) * shakeAmount;
                     continue;
                 }
 
@@ -43,7 +45,8 @@ public class SuckUpContracts : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (checkForContracts.currentContracts.Contains(collision.gameObject))
+        if (mousePos.mouseDown && checkForContracts.currentContracts.Contains(collision.gameObject)
+            && collision.GetComponent<FriendlyAI>().GetWidth() <= transform.localScale.x)
         {
             FriendlyAI thisAI = collision.gameObject.GetComponent<FriendlyAI>();
             if (thisAI)
