@@ -9,7 +9,7 @@ public class WorldScaleManager : MonoSingleton<WorldScaleManager>
     [SerializeField] private float scaleAnimDuration = 2.0f;
     private Vector3 minShipScale = Vector3.one;
     [SerializeField] private Vector3 maxShipScale = Vector3.one*2;
-    [SerializeField] private SpriteRenderer backGround;
+    [SerializeField] private ParticleSystem backGround;
 
     // This is the current index in backgroundObjects to render
     private int scaleLevel = 0;
@@ -61,8 +61,12 @@ public class WorldScaleManager : MonoSingleton<WorldScaleManager>
 
         Vector3 originalScale = ship.transform.localScale;
 
-        Vector2 startBGW = backGround.size;
-        Vector2 endBGW = backGround.size * 1.1f;
+        Vector3 startShapeScale = backGround.shape.scale;
+        Vector3 endShapeScale = backGround.shape.scale * 2.0f;
+
+        Vector3 startPSScale = backGround.gameObject.transform.localScale;
+        Vector3 endPSScale = backGround.gameObject.transform.localScale * 0.5f;
+
 
         while (percentDone <= 100)
         {
@@ -91,7 +95,10 @@ public class WorldScaleManager : MonoSingleton<WorldScaleManager>
                 ship.transform.localScale = Vector3.Lerp(minShipScale * 1.05f, minShipScale, (percentDone - 95) / 5.0f);
             }
 
-            backGround.size = Vector2.Lerp(startBGW, endBGW, percentDone / 100.0f);
+            var whaat = backGround.shape;
+            whaat.scale = Vector3.Lerp(startShapeScale, endShapeScale, percentDone / 100.0f);
+
+            backGround.gameObject.transform.localScale = Vector3.Lerp(startPSScale, endPSScale, percentDone / 100.0f);
 
             percentDone += percentStep;
             yield return new WaitForSeconds(0.02f);

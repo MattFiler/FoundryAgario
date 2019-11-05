@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ShipCollisionCheck : MonoBehaviour
 {
     [SerializeField] private Text DamageCountText;
     [SerializeField] private int DamagePerBulletHit = 2;
-    private int ShipHealth = 100;
+    private int ShipHealth = 1;
     private int ShipHealthOrig = 100;
+    private bool GameEnded = false;
 
     /* When something collides with the ship, check what it is, and act appropriately. */
     private void OnCollisionEnter2D(Collision2D collision)
@@ -30,9 +32,25 @@ public class ShipCollisionCheck : MonoBehaviour
         }
     }
 
-    /* Update the health percent on update */
+    /* Update the health percent on update, and check for loss states */
     private void Update()
     {
         DamageCountText.text = (((float)ShipHealth / (float)ShipHealthOrig) * 100).ToString() + "%";
+
+        //If out of health or resources, we lost
+        bool allResourcesEmpty = ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.BLUE) &&
+                                 ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.YELLOW) &&
+                                 ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.RED) &&
+                                 ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.GREEN);
+        if ((ShipHealth == 0 || allResourcesEmpty) && !GameEnded)
+        {
+            //GameOver
+            PlayerPrefs.SetString("highscores", PlayerPrefs.GetString("highscores") + "," + PlayerScore.Instance.Score.ToString());
+            PlayerPrefs.Save();
+            //TODO: SHOW POPUP HERE
+            SceneManager.LoadScene("Highscores");
+
+            GameEnded = true;
+        }
     }
 }
