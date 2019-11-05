@@ -72,7 +72,7 @@ public class EntityPointer : MonoBehaviour
     private Vector3 ConvertPositionToClampedScreenspace(Vector3 position)
     {
         Vector3 ScreenspacePosition = Camera.main.WorldToScreenPoint(position);
-        return new Vector3(Mathf.Clamp(ScreenspacePosition.x, 0, Screen.width), Mathf.Clamp(ScreenspacePosition.y, 0, Screen.height - 1), 0.0f);
+        return new Vector3(Mathf.Clamp(ScreenspacePosition.x, 0, Screen.width), Mathf.Clamp(ScreenspacePosition.y, 0, Screen.height), 0.0f);
     }
 
     /* Get distance from pointer to entity */
