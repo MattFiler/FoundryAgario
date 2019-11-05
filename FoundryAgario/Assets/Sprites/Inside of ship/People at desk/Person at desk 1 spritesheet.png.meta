@@ -203,10 +203,10 @@ TextureImporter:
       name: Person at desk 1 spritesheet_4
       rect:
         serializedVersion: 2
-        x: 1602
+        x: 1658
         y: 1697
-        width: 1141
-        height: 1331
+        width: 1085
+        height: 1266
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
