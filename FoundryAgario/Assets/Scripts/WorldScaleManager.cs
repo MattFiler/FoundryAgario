@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WorldScaleManager : MonoBehaviour
+public class WorldScaleManager : MonoSingleton<WorldScaleManager>
 {
     [SerializeField] private ScaleLevelContainer[] backgroundObjects;
     [SerializeField] private GameObject ship;
