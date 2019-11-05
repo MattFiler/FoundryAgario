@@ -18,7 +18,7 @@ public class FireLazer : MonoBehaviour
     public GameObject light;
 
     public GameObject particleSystem;
-
+    public AudioSource laserclip;
     public List<GameObject> ignoreObjects;
     private void Start()
     {
@@ -42,7 +42,7 @@ public class FireLazer : MonoBehaviour
             }
             ShipResourceManagement.Instance.UseResource(ContractAssignee.GREEN);
 
-
+            laserclip.Play();
             laserBeam.enabled = true;
             laserBeam.positionCount = 1;
             laserBeam.SetPosition(0, startRayPoint.position);
@@ -62,6 +62,7 @@ public class FireLazer : MonoBehaviour
         {
             StopShrinking();
             laserBeam.enabled = false;
+            laserclip.Stop();
         }
 
     }
