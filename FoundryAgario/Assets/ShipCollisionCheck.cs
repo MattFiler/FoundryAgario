@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class ShipCollisionCheck : MonoBehaviour
 {
+    [SerializeField] private GameObject PoofFX;
     [SerializeField] private Text DamageCountText;
     [SerializeField] private int DamagePerBulletHit = 2;
     [SerializeField] private int DamagePerEnemyImpact = 6;
@@ -30,6 +31,7 @@ public class ShipCollisionCheck : MonoBehaviour
             Debug.Log("SOME CUNT INFECTED MEEEE!");
             ShipResourceManagement.Instance.SetRainyDay(collision.gameObject.GetComponent<EnemyAI>().GetEnemyType());
             ShipHealth -= DamagePerEnemyImpact;
+            Instantiate(PoofFX, collision.gameObject.transform.position, Quaternion.identity);
             Destroy(collision.gameObject);
         }
     }
