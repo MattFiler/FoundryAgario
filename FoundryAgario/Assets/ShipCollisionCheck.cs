@@ -8,7 +8,8 @@ public class ShipCollisionCheck : MonoBehaviour
 {
     [SerializeField] private Text DamageCountText;
     [SerializeField] private int DamagePerBulletHit = 2;
-    private int ShipHealth = 1;
+    [SerializeField] private int DamagePerEnemyImpact = 6;
+    private int ShipHealth = 100;
     private int ShipHealthOrig = 100;
     private bool GameEnded = false;
 
@@ -28,6 +29,7 @@ public class ShipCollisionCheck : MonoBehaviour
         {
             Debug.Log("SOME CUNT INFECTED MEEEE!");
             ShipResourceManagement.Instance.SetRainyDay(collision.gameObject.GetComponent<EnemyAI>().GetEnemyType());
+            ShipHealth -= DamagePerEnemyImpact;
             Destroy(collision.gameObject);
         }
     }
