@@ -5067,6 +5067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0db9a5349a36f24eb6407790d96fc09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PoofFX: {fileID: 8798098861716359313, guid: c2264d158db41b445bc6c7db6dd1a7fa, type: 3}
   DamageCountText: {fileID: 0}
   DamagePerBulletHit: 1
   DamagePerEnemyImpact: 6
