@@ -22,8 +22,8 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
     private void Start()
     {
         ResourceDepletionRate[(int)ContractAssignee.BLUE] = 20.0f; //Grabby arm
-        ResourceDepletionRate[(int)ContractAssignee.RED] = 0.001f; //Booster
-        ResourceDepletionRate[(int)ContractAssignee.GREEN] = 1.0f; //Lazer
+        ResourceDepletionRate[(int)ContractAssignee.RED] = 0.08f; //Booster
+        ResourceDepletionRate[(int)ContractAssignee.GREEN] = 0.5f; //Lazer
         ResourceDepletionRate[(int)ContractAssignee.YELLOW] = 0.5f; //Money blastaa
     }
     
