@@ -18,7 +18,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private GameObject PoofFX;
 
     [SerializeField] private Sprite[] RainyDaySprites;
-    [SerializeField] private Sprite[] BulletSprites;
+    //[SerializeField] private Sprite[] BulletSprites;
     [SerializeField] private GameObject Bullet;
     [SerializeField] private SpriteRenderer ThisSprite;
 
@@ -57,7 +57,7 @@ public class EnemyAI : MonoBehaviour
         {
             GameObject newBullet = Instantiate(Bullet);
             newBullet.transform.position = transform.position;
-            Bullet.GetComponent<SpriteRenderer>().sprite = BulletSprites[(int)thisType];
+            //Bullet.GetComponent<SpriteRenderer>().sprite = BulletSprites[(int)thisType];
             Vector3 moveVector = ShipMovement.Instance.GetPosition() - newBullet.transform.position;
             moveVector.Normalize();
             moveVector *= bulletSpeed * (WorldScaleManager.Instance.difficultyScale*2);
