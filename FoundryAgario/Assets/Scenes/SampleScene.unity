@@ -854,7 +854,7 @@ Transform:
   - {fileID: 28629788}
   - {fileID: 317410224}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &974942758
 GameObject:
@@ -2821,6 +2821,11 @@ PrefabInstance:
       propertyPath: ScoreUI
       value: 
       objectReference: {fileID: 362186621}
+    - target: {fileID: 7145021629096309874, guid: acb7738e710d2bc4a88c3440ff443c8f,
+        type: 3}
+      propertyPath: DamageCountText
+      value: 
+      objectReference: {fileID: 5316004422109886118}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acb7738e710d2bc4a88c3440ff443c8f, type: 3}
 --- !u!61 &2731431490291025380
@@ -2899,7 +2904,7 @@ PrefabInstance:
     - target: {fileID: 5316004422003398603, guid: 6d585fbdb6dfce04782618b4b8a86a68,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5316004422003398603, guid: 6d585fbdb6dfce04782618b4b8a86a68,
         type: 3}
@@ -3006,8 +3011,25 @@ PrefabInstance:
       propertyPath: DistanceToTrackFriendly
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 2750616933953974755, guid: 6d585fbdb6dfce04782618b4b8a86a68,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.0999756
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d585fbdb6dfce04782618b4b8a86a68, type: 3}
+--- !u!114 &5316004422109886118 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5465021609814659227, guid: 6d585fbdb6dfce04782618b4b8a86a68,
+    type: 3}
+  m_PrefabInstance: {fileID: 5316004422109886117}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6369250133708515352
 MonoBehaviour:
   m_ObjectHideFlags: 0

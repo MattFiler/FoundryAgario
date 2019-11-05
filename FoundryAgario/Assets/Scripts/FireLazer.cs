@@ -18,6 +18,8 @@ public class FireLazer : MonoBehaviour
     public GameObject light;
 
     public GameObject particleSystem;
+    public AudioSource laserclip;
+    public List<GameObject> ignoreObjects;
     private void Start()
     {
         laserBeam = GetComponent<LineRenderer>();
@@ -33,12 +35,14 @@ public class FireLazer : MonoBehaviour
         {
             if (ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.GREEN))
             {
+                light.SetActive(false);
+                particleSystem.SetActive(false);
                 laserBeam.positionCount = 0;
                 return;
             }
             ShipResourceManagement.Instance.UseResource(ContractAssignee.GREEN);
 
-
+            laserclip.Play();
             laserBeam.enabled = true;
             laserBeam.positionCount = 1;
             laserBeam.SetPosition(0, startRayPoint.position);
@@ -58,6 +62,7 @@ public class FireLazer : MonoBehaviour
         {
             StopShrinking();
             laserBeam.enabled = false;
+            laserclip.Stop();
         }
 
     }
@@ -94,7 +99,10 @@ public class FireLazer : MonoBehaviour
 
             if (hit.collider != null)
             {
-                Debug.Log(hit.collider.gameObject.name);  
+                if(ignoreObjects.Contains(hit.collider.gameObject))
+                {
+                    continue;
+                }
 
                 if (hit.transform.CompareTag("Friendly"))
                 {
@@ -106,6 +114,8 @@ public class FireLazer : MonoBehaviour
                 }
                 else if (hit.transform.CompareTag("Enemy") || hit.transform.CompareTag("Ship"))
                 {
+                    Debug.Log(hit.collider.gameObject.name);
+
                     ++laserBeam.positionCount;
                     laserBeam.SetPosition(laserBeam.positionCount - 1, hit.point);
                     Vector2 reflectedBeam = Vector2.Reflect(rayDirection, hit.normal);
@@ -124,7 +134,5 @@ public class FireLazer : MonoBehaviour
         StopShrinking();
 
     }
-
-
 }
 
