@@ -50,7 +50,15 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3f079fa105270f344a9384ed33441c66, type: 3}
   - {fileID: 21300000, guid: 768664219976a7e4984b7a3507109eb2, type: 3}
   - {fileID: 21300000, guid: fa48fa92867e93844957cf15f5f97838, type: 3}
+  BulletSprites:
+  - {fileID: 21300000, guid: a09e8144a1505fa4682cb01ea91f5927, type: 3}
+  - {fileID: 21300000, guid: a09e8144a1505fa4682cb01ea91f5927, type: 3}
+  - {fileID: 21300000, guid: a09e8144a1505fa4682cb01ea91f5927, type: 3}
+  Bullet: {fileID: 4149116382722129177, guid: 587f94806b7ec0f4bbb8d90d647c1af6, type: 3}
   ThisSprite: {fileID: 9119808104270773147}
+  shootRange: 10
+  shootCooldown: 1
+  bulletSpeed: 1
 --- !u!61 &8033423349352876706
 BoxCollider2D:
   m_ObjectHideFlags: 0
