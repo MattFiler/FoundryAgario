@@ -12,12 +12,18 @@ public class HighscoreMenu : MonoBehaviour
     void Awake()
     {
         HighscoreList.text = "";
-        if (!PlayerPrefs.GetString("highscores").Contains(",")) return;
-        List<int> allScores = new List<int>(Convert.ToInt32(PlayerPrefs.GetString("highscores").Split(',')));
-        allScores.Sort();
-        for (int i = 0; i < (allScores.Count > 6 ? 6 : allScores.Count); i++)
+        Debug.Log(PlayerPrefs.GetString("highscores"));
+        if (!PlayerPrefs.HasKey("highscores")) return;
+        List<string> allScores = new List<string>(PlayerPrefs.GetString("highscores").Substring(1).Split(','));
+        List<int> allScoresInt = new List<int>();
+        foreach (string scoreString in allScores)
         {
-            HighscoreList.text += "\n" + (i+1) + " - " + allScores[i];
+            allScoresInt.Add(Convert.ToInt32(scoreString));
+        }
+        allScoresInt.Sort();
+        for (int i = 0; i < (allScoresInt.Count > 6 ? 6 : allScoresInt.Count); i++)
+        {
+            HighscoreList.text += "\n" + (i+1) + " - " + allScoresInt[i];
         }
     }
 }

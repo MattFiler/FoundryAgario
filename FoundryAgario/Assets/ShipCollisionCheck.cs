@@ -45,6 +45,7 @@ public class ShipCollisionCheck : MonoBehaviour
         {
             //GameOver
             PlayerPrefs.SetString("highscores", PlayerPrefs.GetString("highscores") + "," + PlayerScore.Instance.Score.ToString());
+            PlayerPrefs.Save();
             //TODO: SHOW POPUP HERE
             SceneManager.LoadScene("Highscores");
         }
