@@ -70,6 +70,7 @@ public class FriendlyAI : MonoBehaviour
         transform.Find("outlline").gameObject.SetActive(shrink);
         if (shrink && transform.localScale.x > shrinkThreshold)
         {
+            Debug.Log("ICH BIN SCHRUMPFEN");
             float scaleNew = transform.localScale.x - (shrinkRate * Time.fixedDeltaTime);
             transform.localScale = new Vector3(scaleNew, scaleNew, scaleNew);
         }

@@ -72,7 +72,7 @@ public class ContractSpawneer : MonoSingleton<ContractSpawneer>
                 PlayspaceZone zone = new PlayspaceZone();
                 zone.bounds = new Bounds(new Vector3((zoneSize.x * x) + (zoneSize.x / 2), (zoneSize.y * y) + (zoneSize.y / 2)) + environmentObject.transform.position - (envBounds.size / 2), new Vector3(zoneSize.x, zoneSize.y));
                 if (drawDebug) Gizmos.DrawWireCube(zone.bounds.center, zone.bounds.size);
-                zone.locked = PointIsWithinCameraView(zone.bounds.center, drawDebug);
+                zone.locked = PointIsWithinCameraView(zone.bounds.center, 0.0f, drawDebug);
                 spawnZones.Add(zone);
             }
         }
@@ -177,9 +177,9 @@ public class ContractSpawneer : MonoSingleton<ContractSpawneer>
     }
 
     /* Check if a point is visible within the view space */
-    public bool PointIsWithinCameraView(Vector3 point, bool drawDebug = false)
+    public bool PointIsWithinCameraView(Vector3 point, float lenience = 0.0f, bool drawDebug = false)
     {
-        Bounds camBounds = new Bounds(ShipMovement.Instance.GetPosition(), new Vector3((Camera.main.aspect * (Camera.main.orthographicSize * 2)) + zoneSize.x, (Camera.main.orthographicSize * 2) + zoneSize.y));
+        Bounds camBounds = new Bounds(ShipMovement.Instance.GetPosition(), new Vector3((Camera.main.aspect * (Camera.main.orthographicSize * 2)) + zoneSize.x + lenience, (Camera.main.orthographicSize * 2) + zoneSize.y + lenience));
         if (drawDebug) Gizmos.DrawWireCube(camBounds.center, camBounds.size);
         return camBounds.Contains(point);
     }
