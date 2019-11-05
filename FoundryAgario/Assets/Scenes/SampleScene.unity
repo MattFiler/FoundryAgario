@@ -751,7 +751,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 544.4945, y: 520.7324}
+  m_Size: {x: 369.38, y: 313.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2847,7 +2847,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 515.9, y: 498.6}
+  m_Size: {x: 358.4, y: 301.1}
   m_EdgeRadius: 0
 --- !u!1001 &5316004422109886117
 PrefabInstance:
@@ -3026,10 +3026,10 @@ MonoBehaviour:
     type: 3}
   enemyObject: {fileID: 5194240773105621499, guid: 55da88d71e5d1bd41b6e1e08aae1db95,
     type: 3}
-  numOfFriendlyContracts: 200
-  numOfEnemyContracts: 100
-  zonesX: 40
-  zonesY: 40
+  numOfFriendlyContracts: 100
+  numOfEnemyContracts: 50
+  zonesX: 20
+  zonesY: 20
   spawnInterval: 5
 --- !u!4 &8292564318475293126
 Transform:
@@ -3090,15 +3090,15 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -257.95, y: 249.3}
-      - {x: -258.95, y: 250.3}
-      - {x: -258.95, y: -250.3}
-      - {x: 258.95, y: -250.3}
-      - {x: 258.95, y: 250.3}
-      - {x: 257.95, y: 249.3}
-      - {x: 257.95, y: -249.3}
-      - {x: -257.95, y: -249.3}
-      - {x: -257.95, y: 249.3}
-      - {x: 257.95, y: 249.3}
-      - {x: 258.95, y: 250.3}
-      - {x: -258.95, y: 250.3}
+    - - {x: -179.2, y: 150.55}
+      - {x: -180.2, y: 151.55}
+      - {x: -180.2, y: -151.55}
+      - {x: 180.2, y: -151.55}
+      - {x: 180.2, y: 151.55}
+      - {x: 179.2, y: 150.55}
+      - {x: 179.2, y: -150.55}
+      - {x: -179.2, y: -150.55}
+      - {x: -179.2, y: 150.55}
+      - {x: 179.2, y: 150.55}
+      - {x: 180.2, y: 151.55}
+      - {x: -180.2, y: 151.55}
