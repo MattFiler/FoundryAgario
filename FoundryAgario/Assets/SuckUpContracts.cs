@@ -19,6 +19,8 @@ public class SuckUpContracts : MonoBehaviour
     public float succSpeed = 1.0f;
 
     [SerializeField] bool goodParticles = true;
+
+    public GameObject light;
     void Start()
     {
         checkForContracts = GetComponentInChildren<CheckForContracts>();
@@ -28,8 +30,13 @@ public class SuckUpContracts : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (mousePos.mouseDown)
+        light.SetActive(mousePos.mouseDown && !ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.BLUE));
+
+        if (mousePos.mouseDown && !ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.BLUE))
         {
+            ShipResourceManagement.Instance.UseResource(ContractAssignee.BLUE);
+
+
             Debug.Log("my size " +  transform.localScale.x);
             succsound.Play();
             foreach (GameObject contract in checkForContracts.currentContracts)

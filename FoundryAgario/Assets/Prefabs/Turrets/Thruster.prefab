@@ -96,6 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mousePos: {fileID: 5898334061735094468}
   flameEmmisionRate: 50
+  light: {fileID: 6642471313693042572}
 --- !u!1 &1302071466120949797
 GameObject:
   m_ObjectHideFlags: 0

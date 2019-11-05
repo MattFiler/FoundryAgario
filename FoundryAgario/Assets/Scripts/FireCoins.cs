@@ -20,7 +20,7 @@ public class FireCoins : MonoBehaviour
 
     void Update()
     {
-        particleSystem.SetActive(mousePos.mouseDown);
+        particleSystem.SetActive(mousePos.mouseDown && !ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.YELLOW));
 
         if (mousePos.mouseDown && !ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.YELLOW))
         {
