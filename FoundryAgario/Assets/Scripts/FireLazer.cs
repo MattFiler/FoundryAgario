@@ -18,6 +18,8 @@ public class FireLazer : MonoBehaviour
     public GameObject light;
 
     public GameObject particleSystem;
+
+    public List<GameObject> ignoreObjects;
     private void Start()
     {
         laserBeam = GetComponent<LineRenderer>();
@@ -33,6 +35,8 @@ public class FireLazer : MonoBehaviour
         {
             if (ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.GREEN))
             {
+                light.SetActive(false);
+                particleSystem.SetActive(false);
                 laserBeam.positionCount = 0;
                 return;
             }
@@ -94,7 +98,10 @@ public class FireLazer : MonoBehaviour
 
             if (hit.collider != null)
             {
-                Debug.Log(hit.collider.gameObject.name);  
+                if(ignoreObjects.Contains(hit.collider.gameObject))
+                {
+                    continue;
+                }
 
                 if (hit.transform.CompareTag("Friendly"))
                 {
@@ -106,6 +113,8 @@ public class FireLazer : MonoBehaviour
                 }
                 else if (hit.transform.CompareTag("Enemy") || hit.transform.CompareTag("Ship"))
                 {
+                    Debug.Log(hit.collider.gameObject.name);
+
                     ++laserBeam.positionCount;
                     laserBeam.SetPosition(laserBeam.positionCount - 1, hit.point);
                     Vector2 reflectedBeam = Vector2.Reflect(rayDirection, hit.normal);
@@ -124,7 +133,5 @@ public class FireLazer : MonoBehaviour
         StopShrinking();
 
     }
-
-
 }
 
