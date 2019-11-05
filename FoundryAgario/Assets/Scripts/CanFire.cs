@@ -6,10 +6,9 @@ public class CanFire : MonoBehaviour
 {
     public bool canFire = true;
 
-    public enum TurretType { COIN, LASER, THRUSTER, GRABBER};
+    public enum TurretType { COIN, LASER, THRUSTER, TRACTOR};
     public TurretType turretType;
 
-    public GrabberMovement grabberMovement;
     private void Update()
     {
         GameObject turretPivot = null;
@@ -28,14 +27,7 @@ public class CanFire : MonoBehaviour
 
         if (turretPivot != null)
         {
-            if (turretType != TurretType.GRABBER)
-            {
-                turretPivot.GetComponent<RotateGun>().canFire = canFire;
-            }
-            else
-            {
-                turretPivot.GetComponent<RotateGunAndStay>().canFire = canFire;
-            }
+           
 
             switch (turretType)
             {
@@ -49,8 +41,7 @@ public class CanFire : MonoBehaviour
                 //    turretPivot.GetComponentInChildren<FireCoins>().enabled = canFire;
                 //    break;
 
-                case TurretType.GRABBER:
-                    grabberMovement.enabled = canFire;
+                case TurretType.TRACTOR:
                     break;
                 default:
                     break;
