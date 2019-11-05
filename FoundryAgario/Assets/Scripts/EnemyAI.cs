@@ -45,7 +45,7 @@ public class EnemyAI : MonoBehaviour
         if (ContractSpawneer.Instance.PointIsWithinCameraView(this.gameObject.transform.position, 20))
         {
             if(Vector2.Distance(gameObject.transform.position, ShipMovement.Instance.GetPosition()) <= shootRange) Shoot();
-            this.gameObject.transform.position = Vector3.MoveTowards(this.gameObject.transform.position, ShipMovement.Instance.GetPosition(), 0.025f);
+            this.gameObject.transform.position = Vector3.MoveTowards(this.gameObject.transform.position, ShipMovement.Instance.GetPosition(), 0.025f * WorldScaleManager.Instance.difficultyScale);
             //if (this.gameObject.transform.position == ShipMovement.Instance.GetPosition()) Destroy(this.gameObject);
         }
     }
@@ -60,7 +60,7 @@ public class EnemyAI : MonoBehaviour
             Bullet.GetComponent<SpriteRenderer>().sprite = BulletSprites[(int)thisType];
             Vector3 moveVector = ShipMovement.Instance.GetPosition() - newBullet.transform.position;
             moveVector.Normalize();
-            moveVector *= bulletSpeed;
+            moveVector *= bulletSpeed * (WorldScaleManager.Instance.difficultyScale*2);
             var angle = Mathf.Atan2(moveVector.y, moveVector.x) * Mathf.Rad2Deg;
 
             newBullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
