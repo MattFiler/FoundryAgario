@@ -184,4 +184,24 @@ public class ContractSpawneer : MonoSingleton<ContractSpawneer>
         if (drawDebug) Gizmos.DrawWireCube(camBounds.center, camBounds.size);
         return camBounds.Contains(point);
     }
+
+    /* Return the spawned friendly/enemy objects */
+    public List<GameObject> GetFriendlyEntities()
+    {
+        return friendlyObjects;
+    }
+    public List<GameObject> GetEnemyEntities()
+    {
+        return enemyObjects;
+    }
+
+    /* Return the max count of friendly/enemy objects */
+    public int GetFriendlyEntityMaxCount()
+    {
+        return numOfFriendlyContracts;
+    }
+    public int GetEnemyEntityMaxCount()
+    {
+        return numOfEnemyContracts;
+    }
 }

@@ -2880,6 +2880,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1503288838627925308, guid: 6d585fbdb6dfce04782618b4b8a86a68,
+        type: 3}
+      propertyPath: DistanceToTrackEnemy
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503288838627925308, guid: 6d585fbdb6dfce04782618b4b8a86a68,
+        type: 3}
+      propertyPath: DistanceToTrackFriendly
+      value: 60
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d585fbdb6dfce04782618b4b8a86a68, type: 3}
 --- !u!114 &6369250133708515352
