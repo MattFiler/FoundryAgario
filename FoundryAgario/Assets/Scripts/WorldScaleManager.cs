@@ -27,7 +27,12 @@ public class WorldScaleManager : MonoSingleton<WorldScaleManager>
     {
 
         scale += scaleToAdd;
-        difficultyScale = scaleToAdd / 30.0f;
+        difficultyScale = scale / 150.0f;
+
+        if(difficultyScale > 2)
+        {
+            difficultyScale = 2;
+        }
 
 
 
