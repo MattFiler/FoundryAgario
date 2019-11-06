@@ -42,9 +42,9 @@ public class SuckUpContracts : MonoBehaviour
             ShipResourceManagement.Instance.UseResource(ContractAssignee.BLUE);
 
 
-            Debug.Log("my size " +  transform.localScale.x);
 
-           
+            Debug.Log("my size " + transform.localScale.x);
+
 
             foreach (GameObject contract in checkForContracts.currentContracts)
             {
