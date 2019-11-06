@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b629423ef57aa34fbe7cdfacf47ac3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PoofFX: {fileID: 8798098861716359313, guid: bb0dbb44a31123b429708cb98792a942, type: 3}
   WorthSprites:
   - {fileID: 21300000, guid: 9023fef514ea66b45968eee5efac63cd, type: 3}
   - {fileID: 21300000, guid: 5d1b829420caea045b73ee392e43a4ed, type: 3}
