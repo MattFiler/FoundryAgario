@@ -5,6 +5,7 @@ using UnityEngine;
 public class Blocker : MonoBehaviour
 {
     [SerializeField] private ParticleSystem ps;
+    public AudioSource blockerClip;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -12,6 +13,11 @@ public class Blocker : MonoBehaviour
         {
             Destroy(collision.gameObject);
             ps.Play();
+
+            if(!blockerClip.isPlaying)
+            {
+                blockerClip.PlayOneShot(blockerClip.clip);
+            }
         }
     }
 }

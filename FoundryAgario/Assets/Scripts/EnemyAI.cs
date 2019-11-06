@@ -27,6 +27,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float bulletSpeed = 1;
     private float timeSinceShoot = 100;
 
+    public AudioSource deathClip;
+
     /* Get/set the rainy day (enemy) type */
     private RainyDayType thisType;
     public RainyDayType GetEnemyType()
@@ -83,6 +85,12 @@ public class EnemyAI : MonoBehaviour
         if(health <= 0)
         {
             Debug.Log("OH NO HE'S DEED");
+
+            if(!deathClip.isPlaying)
+            {
+               deathClip.PlayOneShot(deathClip.clip);
+            }
+
             Instantiate(PoofFX, this.gameObject.transform.position, Quaternion.identity);
             GameObject.Destroy(this.gameObject);
         }
