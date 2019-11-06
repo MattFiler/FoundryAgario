@@ -665,8 +665,8 @@ ParticleSystem:
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 0
     donutRadius: 0.2
-    m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 90, y: -48.76, z: 0}
+    m_Position: {x: 0.123836644, y: 0.010807022, z: 0.19762029}
+    m_Rotation: {x: 90, y: 307.8, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -1371,7 +1371,7 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 0.63836485, g: 0.4575472, b: 1, a: 0}
-        key1: {r: 0.31940922, g: 0.16037735, b: 0.6415094, a: 0.53234583}
+        key1: {r: 0, g: 0.7176819, b: 1, a: 0.53234583}
         key2: {r: 0.6392157, g: 0.45882356, b: 1, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 1}
         key4: {r: 0, g: 0, b: 0, a: 0}

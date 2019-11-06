@@ -242,6 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ps: {fileID: 5435105697050594019}
+  blockerClip: {fileID: 0}
 --- !u!61 &7265398017937442919
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -385,11 +386,6 @@ PrefabInstance:
         type: 3}
       propertyPath: looping
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5223249982223223137, guid: 9fb88554ef2b94c46998849ea3e5cc45,
-        type: 3}
-      propertyPath: ShapeModule.m_Rotation.y
-      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 5223249982223223137, guid: 9fb88554ef2b94c46998849ea3e5cc45,
         type: 3}
