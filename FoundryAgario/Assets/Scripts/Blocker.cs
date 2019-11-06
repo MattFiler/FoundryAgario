@@ -9,7 +9,8 @@ public class Blocker : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.GetComponent<Bullet>())
+        //Shield shot - destroy bullet
+        if (collision.gameObject.CompareTag("EnemyBullet"))
         {
             Destroy(collision.gameObject);
             ps.Play();
@@ -18,6 +19,13 @@ public class Blocker : MonoBehaviour
             {
                 blockerClip.PlayOneShot(blockerClip.clip);
             }
+        }
+
+        //Collided with enemy - fuck em up!
+        if (collision.gameObject.CompareTag("Enemy") && collision.gameObject.GetComponent<EnemyAI>() != null)
+        {
+            Debug.Log("LARGE OOF");
+            collision.gameObject.GetComponent<EnemyAI>().reduceHealth(1000);
         }
     }
 }
