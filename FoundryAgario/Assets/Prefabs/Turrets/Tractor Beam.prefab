@@ -603,6 +603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 166f3676022060a47852a5aafe93312d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PoofFX: {fileID: 8798098861716359313, guid: c2264d158db41b445bc6c7db6dd1a7fa, type: 3}
   lerpPoint: {fileID: 2863761666726994080}
   mousePos: {fileID: 4988592118615739203}
   goodSuccParticlesObj: {fileID: 8861258852035260943}
