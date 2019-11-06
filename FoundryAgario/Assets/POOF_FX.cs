@@ -10,7 +10,7 @@ public class POOF_FX : MonoBehaviour
     {
         Timer += Time.deltaTime;
 
-        if (Timer > 1.0f)
+        if (Timer > 2.4f)
         {
             Destroy(this.gameObject);
         }
