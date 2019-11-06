@@ -9,6 +9,7 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
     [SerializeField] private BoxCollider2D YellowZone;
 
     [SerializeField] private Transform ContractSpawnSpot;
+    [SerializeField] private Transform[] ResourceSpawnSpots;
 
     [SerializeField] private Sprite[] RainyDaySprites;
     [SerializeField] private GameObject RainyDayErrorCover;
@@ -24,9 +25,9 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
     private float[] ResourceDepletionRate = new float[(int)ContractAssignee.MAX_COUNT];
 
     [SerializeField] private GameObject friendlyObject;
+    [SerializeField] private GameObject resourceObject;
 
     public AudioSource workingAudio;
-
 
     /* Tweak these values to change the resource depletion time! */
     private void Start()
@@ -282,5 +283,40 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
         ContractsInside[ActiveContractTouch].GetComponent<ContractInShip>().State = ContractState.BEING_DRAGGED;
         ContractsInside[ActiveContractTouch].transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
         ContractsInside[ActiveContractTouch].transform.Find("LIGHT").gameObject.SetActive(true);
+    }
+    
+    /* Convert a zone's resources into a resource entity */
+    public void ConvertResourcesToEntity(ContractAssignee zoneType)
+    {
+        //Get the zone that this resource is coming from
+        ZoneInShip ThisZone = null;
+        switch (zoneType)
+        {
+            case ContractAssignee.BLUE:
+                ThisZone = BlueZone.gameObject.GetComponent<ZoneInShip>();
+                break;
+            case ContractAssignee.GREEN:
+                ThisZone = GreenZone.gameObject.GetComponent<ZoneInShip>();
+                break;
+            case ContractAssignee.RED:
+                ThisZone = RedZone.gameObject.GetComponent<ZoneInShip>();
+                break;
+            case ContractAssignee.YELLOW:
+                ThisZone = YellowZone.gameObject.GetComponent<ZoneInShip>();
+                break;
+        }
+        if (ThisZone == null) return;
+
+        //We have some resources to distribute, so spawn the entity
+        GameObject NewResourceEntity = Instantiate(resourceObject, ResourceSpawnSpots[(int)zoneType]) as GameObject;
+        NewResourceEntity.transform.localScale = new Vector3(1, 1, 1);
+        NewResourceEntity.GetComponent<ContractInShip>().ResourceRemaining = ThisZone.ResourceCount;
+        NewResourceEntity.GetComponent<ContractInShip>().ResourceMax = ThisZone.ResourceCount;
+        NewResourceEntity.GetComponent<ContractInShip>().SetResourceAssignee(zoneType);
+        NewResourceEntity.transform.parent = ContractSpawnSpot.transform;
+        ContractsInside.Add(NewResourceEntity);
+
+        //Depleat the resource we took
+        ThisZone.ResourceCount = 0;
     }
 }
