@@ -6,6 +6,8 @@ public class SuckUpContracts : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    [SerializeField] private GameObject PoofFX;
+
     public Transform lerpPoint;
     CheckForContracts checkForContracts;
     public GetMousePos mousePos;
@@ -100,6 +102,7 @@ public class SuckUpContracts : MonoBehaviour
             if (thisAI)
             {
                 ShipResourceManagement.Instance.ImportContract(thisAI);
+                Instantiate(PoofFX, collision.gameObject.transform.position, Quaternion.identity);
                 GameObject.Destroy(collision.gameObject); 
                 goodSuccSound.Stop();
             }
