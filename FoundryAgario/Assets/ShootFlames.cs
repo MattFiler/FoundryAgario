@@ -8,6 +8,7 @@ public class ShootFlames : MonoBehaviour
     ParticleSystem[] flames;
     public float flameEmmisionRate = 50;
     public GameObject light;
+    public AudioSource flameaudio;
 
     private void Start()
     {
@@ -25,15 +26,22 @@ public class ShootFlames : MonoBehaviour
                 if (ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.RED))
                 {
                     ps.Stop();
+                    flameaudio.Stop();
+
                 }
                 else
                 {
                     ShipResourceManagement.Instance.UseResource(ContractAssignee.RED);
                     ps.Play();
+                    if (!flameaudio.isPlaying)
+                    {
+                        flameaudio.Play();
+                    }
                 }
             }
             else
             {
+                flameaudio.Stop();
                 ps.Stop();
             }
         }

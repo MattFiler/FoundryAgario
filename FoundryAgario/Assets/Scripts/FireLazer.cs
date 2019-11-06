@@ -39,11 +39,17 @@ public class FireLazer : MonoBehaviour
                 particleSystem.SetActive(false);
                 laserBeam.positionCount = 0;
                 StopShrinking();
+                laserclip.Stop();
+
                 return;
             }
             ShipResourceManagement.Instance.UseResource(ContractAssignee.GREEN);
 
-            laserclip.Play();
+            if (!laserclip.isPlaying)
+            {
+                laserclip.Play();
+            }
+
             laserBeam.enabled = true;
             laserBeam.positionCount = 1;
             laserBeam.SetPosition(0, startRayPoint.position);
@@ -108,6 +114,7 @@ public class FireLazer : MonoBehaviour
                 if (hit.transform.CompareTag("Friendly"))
                 {
                     Debug.Log("Shrink");
+                    Debug.Log(hit.collider.name);
                     hit.collider.GetComponent<FriendlyAI>().shrink = true;
                     ++laserBeam.positionCount;
                     laserBeam.SetPosition(laserBeam.positionCount - 1, hit.point);

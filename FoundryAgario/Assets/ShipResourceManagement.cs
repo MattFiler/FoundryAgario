@@ -25,6 +25,9 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
 
     [SerializeField] private GameObject friendlyObject;
 
+    public AudioSource workingAudio;
+
+
     /* Tweak these values to change the resource depletion time! */
     private void Start()
     {
@@ -187,11 +190,15 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
     {
         if (CurrentRainyDay != RainyDayType.MAX_TYPES) return; //Only allow contract consumption when no rainy day issues are active
 
+        bool contractBeingWorked = false;
         foreach (GameObject Contract in ContractsInside)
         {
             ContractInShip ContractMeta = Contract.GetComponent<ContractInShip>();
             if (ContractMeta.State == ContractState.BEING_WORKED_ON)
             {
+                contractBeingWorked = true;
+                if(!workingAudio.isPlaying) workingAudio.Play();
+                
                 ZoneInShip ThisZone = null;
                 switch (ContractMeta.Assignee)
                 {
@@ -218,6 +225,8 @@ public class ShipResourceManagement : MonoSingleton<ShipResourceManagement>
                 }
             }
         }
+
+        if(!contractBeingWorked) workingAudio.Stop();
     }
 
     /* Handle dragging of contracts */

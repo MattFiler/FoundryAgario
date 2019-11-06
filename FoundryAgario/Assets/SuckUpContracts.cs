@@ -38,7 +38,12 @@ public class SuckUpContracts : MonoBehaviour
 
 
             Debug.Log("my size " +  transform.localScale.x);
-            succsound.Play();
+
+            if (!succsound.isPlaying)
+            {
+                succsound.Play();
+            }
+
             foreach (GameObject contract in checkForContracts.currentContracts)
             {
                 Debug.Log("contract size " + contract.GetComponent<FriendlyAI>().GetWidth());
@@ -54,6 +59,10 @@ public class SuckUpContracts : MonoBehaviour
                 goodParticles = true;
                 contract.transform.position = Vector2.Lerp(contract.transform.position, lerpPoint.position, succSpeed * Time.deltaTime);
             }
+        }
+        else
+        {
+            succsound.Stop();
         }
           
        
