@@ -48,7 +48,7 @@ public class ContractInShip : MonoBehaviour
         ThisProgressBar.transform.localScale = new Vector3(ResourceProgress, 1.0f, 1.0f);
     }
     
-    /* Set/get the worth of this contract (the visual sprite) */
+    /* Set/get the worth of this contract (the visual sprite) --- FOR CONTRACTS */
     private ContractWorthAmount ContractWorth;
     public ContractWorthAmount GetContractWorth()
     {
@@ -57,6 +57,18 @@ public class ContractInShip : MonoBehaviour
     public void SetContractWorth(ContractWorthAmount worth)
     {
         ContractWorth = worth;
+        ThisWorthSprite.sprite = WorthSprites[(int)worth];
+    }
+
+    /* Set/get the colour of this resource (the sprite) --- FOR RESOURCE DISTRIBUTION */
+    private ContractAssignee ResourceExAssignee;
+    public ContractAssignee GetResourceAssignee()
+    {
+        return ResourceExAssignee;
+    }
+    public void SetResourceAssignee(ContractAssignee worth)
+    {
+        ResourceExAssignee = worth;
         ThisWorthSprite.sprite = WorthSprites[(int)worth];
     }
 }
