@@ -11,7 +11,8 @@ public class SuckUpContracts : MonoBehaviour
     public GetMousePos mousePos;
     public GameObject goodSuccParticlesObj;
     public GameObject badSuccParticlesObj;
-    public AudioSource succsound;
+    public AudioSource goodSuccSound;
+    public AudioSource badSuccSound;
 
     [SerializeField] float shakeSpeed = 1.0f;
     [SerializeField] float shakeAmount = 1.0f;
@@ -39,10 +40,7 @@ public class SuckUpContracts : MonoBehaviour
 
             Debug.Log("my size " +  transform.localScale.x);
 
-            if (!succsound.isPlaying)
-            {
-                succsound.Play();
-            }
+           
 
             foreach (GameObject contract in checkForContracts.currentContracts)
             {
@@ -52,6 +50,12 @@ public class SuckUpContracts : MonoBehaviour
                     Debug.Log("Me me big boi");
                     goodParticles = false;
 
+                    if(!badSuccSound.isPlaying)
+                    {
+                        badSuccSound.PlayOneShot(badSuccSound.clip);
+                        goodSuccSound.Stop();
+                    }
+
                     //contract.transform.position = Vector2.one * Mathf.Sin(Time.time * shakeSpeed) * shakeAmount;
                     continue;
                 }
@@ -59,10 +63,15 @@ public class SuckUpContracts : MonoBehaviour
                 goodParticles = true;
                 contract.transform.position = Vector2.Lerp(contract.transform.position, lerpPoint.position, succSpeed * Time.deltaTime);
             }
+
+            if (goodParticles && !goodSuccSound.isPlaying)
+            {
+                goodSuccSound.Play();
+            }
         }
         else
         {
-            succsound.Stop();
+            goodSuccSound.Stop();
         }
           
        
@@ -90,7 +99,7 @@ public class SuckUpContracts : MonoBehaviour
             {
                 ShipResourceManagement.Instance.ImportContract(thisAI);
                 GameObject.Destroy(collision.gameObject); 
-                succsound.Stop();
+                goodSuccSound.Stop();
             }
         }
     }
