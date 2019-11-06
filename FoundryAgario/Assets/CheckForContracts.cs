@@ -21,9 +21,9 @@ public class CheckForContracts : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Friendly") && collision.gameObject.GetComponent<FriendlyAI>().GetWidth() > LazyGlobalStuff.Instance.ThisWidth)
+        if(collision.gameObject.CompareTag("Friendly") && collision.gameObject.GetComponent<FriendlyAI>().GetWidth() < LazyGlobalStuff.Instance.ThisWidth)
         {
-            collision.GetComponent<FriendlyAI>().SetShouldMove(false);
+            collision.GetComponent<FriendlyAI>().SetShouldMove(false); //Stop moving if we can fit
             currentContracts.Add(collision.gameObject);
         }
     }
