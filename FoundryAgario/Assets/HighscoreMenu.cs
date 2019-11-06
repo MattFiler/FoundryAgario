@@ -8,12 +8,13 @@ using UnityEngine.UI;
 public class HighscoreMenu : MonoBehaviour
 {
     [SerializeField] private Text HighscoreList;
-    
+    [SerializeField] private GameObject YouGotHighscore;
+
     /* Populate highscores on awake */
     void Awake()
     {
+        //Show highscore list if they're available
         HighscoreList.text = "";
-        Debug.Log(PlayerPrefs.GetString("highscores"));
         if (!PlayerPrefs.HasKey("highscores")) return;
         List<string> allScores = new List<string>(PlayerPrefs.GetString("highscores").Substring(1).Split(','));
         List<int> allScoresInt = new List<int>();
@@ -27,6 +28,11 @@ public class HighscoreMenu : MonoBehaviour
         {
             HighscoreList.text += "\n" + (i+1) + " - " + allScoresInt[i];
         }
+
+        //If the latest score is at the top of the list, we got a new highscore
+        if (!PlayerPrefs.HasKey("latest_score")) return;
+        if (Convert.ToInt32(PlayerPrefs.GetString("latest_score")) != allScoresInt[0]) return;
+        YouGotHighscore.SetActive(true);
     }
 
     public void PlayGame()

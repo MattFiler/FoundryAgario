@@ -25,6 +25,7 @@ public class ShowLoss : MonoSingleton<ShowLoss>
                 Debug.Log("GAMEOVER! CYA NERDS.");
                 //GameOver
                 PlayerPrefs.SetString("highscores", PlayerPrefs.GetString("highscores") + "," + PlayerScore.Instance.Score.ToString());
+                PlayerPrefs.SetString("latest_score", PlayerScore.Instance.Score.ToString());
                 PlayerPrefs.Save();
                 //TODO: SHOW POPUP HERE
                 SceneManager.LoadScene("Highscores");
