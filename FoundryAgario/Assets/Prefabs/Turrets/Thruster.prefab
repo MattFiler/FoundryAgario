@@ -97,6 +97,7 @@ MonoBehaviour:
   mousePos: {fileID: 5898334061735094468}
   flameEmmisionRate: 50
   light: {fileID: 6642471313693042572}
+  flameaudio: {fileID: 0}
 --- !u!1 &1302071466120949797
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,7 +386,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 7}
+  m_Offset: {x: 0, y: -17.74377}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -396,7 +397,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 81.003395, y: 50}
+  m_Size: {x: 133.57994, y: 99.48754}
   m_EdgeRadius: 0
 --- !u!1 &6642471313693042572
 GameObject:
@@ -522,11 +523,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 533831760959191938}
     m_Modifications:
-    - target: {fileID: 8358209800397836024, guid: e96544d0f8b63cf41972428d774a854c,
-        type: 3}
-      propertyPath: m_Name
-      value: Fire
-      objectReference: {fileID: 0}
     - target: {fileID: 8358209800397836025, guid: e96544d0f8b63cf41972428d774a854c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -596,6 +592,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.6920035
+      objectReference: {fileID: 0}
+    - target: {fileID: 8358209800397836024, guid: e96544d0f8b63cf41972428d774a854c,
+        type: 3}
+      propertyPath: m_Name
+      value: Fire
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e96544d0f8b63cf41972428d774a854c, type: 3}
