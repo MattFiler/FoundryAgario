@@ -54,11 +54,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fa48fa92867e93844957cf15f5f97838, type: 3}
   Bullet: {fileID: 4149116382722129177, guid: 587f94806b7ec0f4bbb8d90d647c1af6, type: 3}
   ThisSprite: {fileID: 9119808104270773147}
-  shootRange: 10
+  shootRange: 15
   shootCooldown: 1
-  bulletSpeed: 1
-  deathClip: {fileID: 7594751434363231572, guid: 4f30f9730fb64f04fb9a85f9776fae0a,
-    type: 3}
+  bulletSpeed: 1.5
 --- !u!61 &8033423349352876706
 BoxCollider2D:
   m_ObjectHideFlags: 0

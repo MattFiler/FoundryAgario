@@ -38,6 +38,7 @@ public class ShipCollisionCheck : MonoBehaviour
     /* Update the health percent on update, and check for loss states */
     private void Update()
     {
+
         DamageCountText.text = (((float)ShipHealth / (float)ShipHealthOrig) * 100).ToString() + "%";
 
         //If out of health or resources, we lost
@@ -49,6 +50,22 @@ public class ShipCollisionCheck : MonoBehaviour
         {
             ShowLoss.Instance.ShouldShowLoss = true;
             GameEnded = true;
+        }
+    }
+
+    private void Start()
+    {
+        StartCoroutine(GIFFHP());
+    }
+
+    private IEnumerator GIFFHP()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(3);
+            ShipHealth += 1;
+            if (ShipHealth > ShipHealthOrig)
+                ShipHealth = ShipHealthOrig;
         }
     }
 }
