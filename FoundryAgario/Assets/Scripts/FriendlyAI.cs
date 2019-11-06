@@ -20,6 +20,7 @@ public class FriendlyAI : MonoBehaviour
     public float shrinkRate = 1.0f;
     public float shrinkThreshold = 0.5f;
     public bool shrink = false;
+    private bool shouldMove = true;
 
     /* Get the value of this contract (the value that is given out in resources) */
     private float ContractValue = 100.0f;
@@ -79,6 +80,7 @@ public class FriendlyAI : MonoBehaviour
     /* Float around in the environment in a dumb way */
     private void DumbMove()
     {
+        if (!shouldMove) return;
         if (ContractSpawneer.Instance.PointIsWithinCameraView(this.gameObject.transform.position))
         {
             if (nextMoveTo == null || this.gameObject.transform.position == nextMoveTo)
@@ -87,5 +89,11 @@ public class FriendlyAI : MonoBehaviour
             }
             this.gameObject.transform.position = Vector3.MoveTowards(this.gameObject.transform.position, nextMoveTo, 0.008f);
         }
+    }
+
+    /* Stop the dumb move */
+    public void SetShouldMove(bool move)
+    {
+        shouldMove = move;
     }
 }

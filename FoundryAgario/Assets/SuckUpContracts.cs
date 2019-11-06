@@ -31,6 +31,8 @@ public class SuckUpContracts : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        LazyGlobalStuff.Instance.ThisWidth = transform.localScale.x;
+
         light.SetActive(mousePos.mouseDown && !ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.BLUE));
 
         if (mousePos.mouseDown && !ShipResourceManagement.Instance.ResourceIsEmpty(ContractAssignee.BLUE))

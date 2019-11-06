@@ -516,6 +516,7 @@ GameObject:
   - component: {fileID: 871171827940432747}
   - component: {fileID: 1902207130054269881}
   - component: {fileID: 2354323354287324674}
+  - component: {fileID: 8969826487057034958}
   m_Layer: 0
   m_Name: Tractor Beam
   m_TagString: Untagged
@@ -606,7 +607,8 @@ MonoBehaviour:
   mousePos: {fileID: 4988592118615739203}
   goodSuccParticlesObj: {fileID: 8861258852035260943}
   badSuccParticlesObj: {fileID: 6709854189166233706}
-  succsound: {fileID: 0}
+  goodSuccSound: {fileID: 0}
+  badSuccSound: {fileID: 0}
   shakeSpeed: 1
   shakeAmount: 1
   succSpeed: 1
@@ -638,6 +640,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 13.977501, y: 1.3658948}
   m_EdgeRadius: 0
+--- !u!114 &8969826487057034958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4849570516676554398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71d6688e374c3a479faeb640a39d2c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyOnLoad: 1
+  ThisWidth: 0
 --- !u!1 &6276384634775173616
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,16 +975,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4093228866681039079}
     m_Modifications:
-    - target: {fileID: 6621726432976022909, guid: 4e6fe5020e9f2b143a4a35ca668a16e5,
-        type: 3}
-      propertyPath: m_Name
-      value: GrabbyBeam
-      objectReference: {fileID: 0}
-    - target: {fileID: 6621726432976022909, guid: 4e6fe5020e9f2b143a4a35ca668a16e5,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4316832698383515662, guid: 4e6fe5020e9f2b143a4a35ca668a16e5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1038,6 +1044,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.3658458
+      objectReference: {fileID: 0}
+    - target: {fileID: 6621726432976022909, guid: 4e6fe5020e9f2b143a4a35ca668a16e5,
+        type: 3}
+      propertyPath: m_Name
+      value: GrabbyBeam
+      objectReference: {fileID: 0}
+    - target: {fileID: 6621726432976022909, guid: 4e6fe5020e9f2b143a4a35ca668a16e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5057043662663075223, guid: 4e6fe5020e9f2b143a4a35ca668a16e5,
         type: 3}

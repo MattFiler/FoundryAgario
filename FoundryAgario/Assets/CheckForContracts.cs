@@ -14,16 +14,16 @@ public class CheckForContracts : MonoBehaviour
             FriendlyAI thisAi = contract.GetComponent<FriendlyAI>();
             if (thisAi != null)
             {
-                thisAi.enabled = mousePos.mouseDown;
+                thisAi.SetShouldMove(mousePos.mouseDown);
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Friendly"))
+        if(collision.gameObject.CompareTag("Friendly") && collision.gameObject.GetComponent<FriendlyAI>().GetWidth() > LazyGlobalStuff.Instance.ThisWidth)
         {
-            collision.GetComponent<FriendlyAI>().enabled = false;
+            collision.GetComponent<FriendlyAI>().SetShouldMove(false);
             currentContracts.Add(collision.gameObject);
         }
     }
@@ -34,7 +34,7 @@ public class CheckForContracts : MonoBehaviour
         {
            if(currentContracts.Contains(collision.gameObject))
            {
-                collision.GetComponent<FriendlyAI>().enabled = true;
+                collision.GetComponent<FriendlyAI>().SetShouldMove(true);
                 currentContracts.Remove(collision.gameObject);
            }
         }
