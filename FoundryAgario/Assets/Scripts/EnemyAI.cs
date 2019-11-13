@@ -44,9 +44,9 @@ public class EnemyAI : MonoBehaviour
     /* When we're close to the player, start moving towards them and shoot when in range */
     void FixedUpdate()
     {
-        if (ContractSpawneer.Instance.PointIsWithinCameraView(this.gameObject.transform.position, 20 * (WorldScaleManager.Instance.difficultyScale)))
+        if (ContractSpawneer.Instance.PointIsWithinCameraView(this.gameObject.transform.position, 5 + (10 * (WorldScaleManager.Instance.difficultyScale))))
         {
-            if(Vector2.Distance(gameObject.transform.position, ShipMovement.Instance.GetPosition()) <= shootRange * WorldScaleManager.Instance.difficultyScale) Shoot();
+            if(Vector2.Distance(gameObject.transform.position, ShipMovement.Instance.GetPosition()) <= shootRange * WorldScaleManager.Instance.difficultyScale * 0.75) Shoot();
             this.gameObject.transform.position = Vector3.MoveTowards(this.gameObject.transform.position, ShipMovement.Instance.GetPosition(), 0.025f * WorldScaleManager.Instance.difficultyScale);
             //if (this.gameObject.transform.position == ShipMovement.Instance.GetPosition()) Destroy(this.gameObject);
         }
@@ -62,7 +62,7 @@ public class EnemyAI : MonoBehaviour
             //Bullet.GetComponent<SpriteRenderer>().sprite = BulletSprites[(int)thisType];
             Vector3 moveVector = ShipMovement.Instance.GetPosition() - newBullet.transform.position;
             moveVector.Normalize();
-            moveVector *= bulletSpeed * (WorldScaleManager.Instance.difficultyScale*2);
+            moveVector *= bulletSpeed * WorldScaleManager.Instance.difficultyScale * 2;
             var angle = Mathf.Atan2(moveVector.y, moveVector.x) * Mathf.Rad2Deg;
 
             newBullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
