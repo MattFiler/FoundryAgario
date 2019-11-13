@@ -44,7 +44,7 @@ public class EnemyAI : MonoBehaviour
     /* When we're close to the player, start moving towards them and shoot when in range */
     void FixedUpdate()
     {
-        if (ContractSpawneer.Instance.PointIsWithinCameraView(this.gameObject.transform.position, 25 * (WorldScaleManager.Instance.difficultyScale)))
+        if (ContractSpawneer.Instance.PointIsWithinCameraView(this.gameObject.transform.position, 20 * (WorldScaleManager.Instance.difficultyScale)))
         {
             if(Vector2.Distance(gameObject.transform.position, ShipMovement.Instance.GetPosition()) <= shootRange * WorldScaleManager.Instance.difficultyScale) Shoot();
             this.gameObject.transform.position = Vector3.MoveTowards(this.gameObject.transform.position, ShipMovement.Instance.GetPosition(), 0.025f * WorldScaleManager.Instance.difficultyScale);
